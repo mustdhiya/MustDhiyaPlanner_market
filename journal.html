@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal & Insights - Premium Organizer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="media/img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.0/dist/full.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        script: ['WindSong', 'cursive'],
+                    },
+                    colors: {
+                        'brand-bg': 'var(--bg-color)',
+                        'brand-surface': 'var(--surface-color)',
+                        'brand-text': 'var(--text-color)',
+                        'brand-primary': 'var(--primary-color)',
+                        'brand-primary-light': 'var(--primary-light)',
+                        'brand-accent': 'var(--accent-color)',
+                        'brand-border': 'var(--border-color)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #f7f4ee;
+            --surface-color: #ffffff;
+            --text-color: #33312e;
+            --text-muted: #787369;
+            --primary-color: #63768d;
+            --primary-light: #9db2c7;
+            --accent-color: #c9a491;
+            --border-color: #e5dfd3;
+            --theme-transition: background-color 0.8s ease, color 0.5s ease, border-color 0.5s ease, fill 0.8s ease, box-shadow 0.5s ease;
+        }
+
+        body {
+            background-color: var(--brand-bg);
+            color: var(--brand-text);
+            transition: var(--theme-transition);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .shape-arch { border-radius: 9999px 9999px 0 0; }
+
+        .shadow-premium { box-shadow: 0 20px 40px -10px rgba(0,0,0,.05), 0 10px 20px -5px rgba(0,0,0,.02); }
+        .shadow-hover { box-shadow: 0 30px 60px -15px rgba(0,0,0,.1), 0 15px 30px -10px rgba(0,0,0,.05); }
+
+        .blob-bg { position: absolute; z-index: -1; opacity: 0.6; transition: var(--theme-transition); }
+
+        @keyframes float {
+            0% { transform: translate(0px,0px) rotate(0deg) scale(1); }
+            33% { transform: translate(30px,-50px) rotate(10deg) scale(1.05); }
+            66% { transform: translate(-20px,20px) rotate(-5deg) scale(0.95); }
+            100% { transform: translate(0px,0px) rotate(0deg) scale(1); }
+        }
+        .animate-float-slow { animation: float 20s ease-in-out infinite; }
+
+        .glass-panel {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .transition-all-smooth { transition: all 0.4s cubic-bezier(0.25,1,0.5,1); }
+
+        .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25,1,0.5,1); }
+        .reveal-up.active { opacity: 1; transform: translateY(0); }
+
+        .pattern-dots { background-image: radial-gradient(var(--primary-light) 1.5px, transparent 1.5px); background-size: 16px 16px; opacity: 0.2; }
+        .pattern-lines { background-image: repeating-linear-gradient(45deg, var(--border-color) 0, var(--border-color) 1px, transparent 0, transparent 50%); background-size: 10px 10px; opacity: 0.5; }
+
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* Category filter pills */
+        .filter-pill { background: transparent; border: 1px solid var(--border-color); color: var(--text-color); }
+        .filter-pill.active { background: var(--text-color); color: #fff; border-color: var(--text-color); }
+
+        /* Article filtering: hide non-matching without layout jump flicker */
+        .article-card.is-hidden { display: none; }
+        .article-card { transition: opacity .3s ease; }
+
+        /* Newly loaded articles enter with same reveal pattern */
+        .article-card.reveal-up.active { opacity: 1; }
+
+        /* Newsletter form states */
+        .form-feedback { display: none; }
+        .form-feedback.show { display: flex; }
+    </style>
+</head>
+<body class="antialiased relative min-h-screen flex flex-col">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <svg class="blob-bg animate-float-slow" style="top:-10%; right:-10%; width:600px; height:600px; opacity:0.3;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="var(--primary-light)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.1,-46.3C90.4,-33.5,96.1,-18.1,96.4,-2.5C96.7,13.1,91.6,28.8,81.5,41.2C71.4,53.6,56.3,62.8,40.9,69.7C25.5,76.6,9.8,81.2,-5.3,79.5C-20.4,77.8,-34.8,69.8,-48.6,60.8C-62.4,51.8,-75.6,41.9,-83.4,28.7C-91.2,15.5,-93.6,-1.1,-89,-16.1C-84.4,-31.1,-72.8,-44.6,-59.1,-52.7C-45.4,-60.8,-29.6,-63.5,-15.1,-69.6C-0.6,-75.7,12.6,-85.2,26.7,-84.9C40.8,-84.6,55.9,-74.5,44.7,-76.4Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="glass-panel mx-auto max-w-6xl mt-4 rounded-full px-6 py-3 flex justify-between items-center shadow-sm transition-all-smooth">
+            <a href="index.html" class="flex items-center gap-2 cursor-pointer">
+                <span class="font-serif font-bold text-xl tracking-wider text-brand-text">Aesthetic</span>
+                <span class="font-script text-2xl text-brand-text -ml-1">Planner</span>
+            </a>
+            <nav class="hidden md:flex gap-8 font-sans text-sm tracking-wide font-medium">
+                <a href="index.html" class="hover:text-[var(--primary-color)] transition-colors">Home</a>
+                <a href="about.html" class="hover:text-[var(--primary-color)] transition-colors">Philosophy</a>
+                <a href="journal.html" class="text-[var(--primary-color)] transition-colors">Journal</a>
+            </nav>
+            <a href="shopnow.html" class="bg-[var(--primary-color)] text-white px-6 py-2 rounded-full font-sans text-sm hover:bg-opacity-90 hover:shadow-lg transition-all-smooth inline-block">
+                Shop Now
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-32 pb-16">
+
+        <section class="py-12 md:py-20 px-4 relative z-10">
+            <div class="max-w-5xl mx-auto text-center reveal-up">
+                <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--primary-color)] mb-4 block">Editorial</span>
+                <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 text-brand-text">
+                    The <span class="font-script font-normal text-[var(--accent-color)] text-6xl md:text-8xl align-middle -ml-2">Mindful</span> Journal
+                </h1>
+                <p class="font-sans text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed mb-10">
+                    Kumpulan esai, panduan produktivitas, dan refleksi tentang cara hidup yang lebih disengaja (intentional living) di era serba cepat.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-3 font-sans text-sm" id="category-filters">
+                    <button type="button" class="filter-pill active px-5 py-2 rounded-full transition-all-smooth shadow-sm" data-filter="all">Semua Artikel</button>
+                    <button type="button" class="filter-pill px-5 py-2 rounded-full transition-all-smooth hover:bg-[var(--surface-color)]" data-filter="produktivitas">Produktivitas</button>
+                    <button type="button" class="filter-pill px-5 py-2 rounded-full transition-all-smooth hover:bg-[var(--surface-color)]" data-filter="mindfulness">Mindfulness</button>
+                    <button type="button" class="filter-pill px-5 py-2 rounded-full transition-all-smooth hover:bg-[var(--surface-color)]" data-filter="organisasi">Sistem Organisasi</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[auto]" id="articles-grid">
+
+                    <article class="article-card md:col-span-2 md:row-span-2 bg-[var(--primary-color)] text-white rounded-[2rem] overflow-hidden group cursor-pointer shadow-premium hover:shadow-hover transition-all-smooth reveal-up relative flex flex-col justify-end min-h-[450px] p-8" data-category="mindfulness">
+                        <div class="absolute inset-0 pattern-dots opacity-20"></div>
+                        <div class="absolute top-0 right-0 w-64 h-80 bg-white opacity-10 shape-arch transform rotate-45 translate-x-12 -translate-y-12 transition-transform duration-700 group-hover:scale-110"></div>
+                        <div class="relative z-10 mt-auto w-full md:w-4/5">
+                            <div class="flex items-center gap-3 mb-4 text-xs font-sans tracking-wide uppercase text-white/80">
+                                <span class="bg-white/20 px-3 py-1 rounded-full">Mindfulness</span>
+                                <span>&bull;</span>
+                                <span>5 Min Read</span>
+                            </div>
+                            <h2 class="font-serif text-3xl md:text-5xl font-bold leading-tight mb-4 group-hover:text-[var(--accent-color)] transition-colors">
+                                Seni Menulis Jurnal: Mengubah Distraksi Menjadi Fokus
+                            </h2>
+                            <p class="font-sans text-white/80 text-base mb-6 line-clamp-3">
+                                Di dunia yang menuntut respons instan, duduk dengan pena dan kertas adalah tindakan perlawanan. Temukan bagaimana memisahkan diri dari layar selama 15 menit sehari dapat mengubah struktur kognitif Anda.
+                            </p>
+                            <div class="flex items-center gap-2 font-sans font-medium text-sm">
+                                <span>Baca Artikel</span>
+                                <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-2">arrow_forward</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card md:col-span-1 bg-[var(--surface-color)] rounded-[2rem] p-6 group cursor-pointer shadow-premium hover:-translate-y-2 hover:shadow-hover transition-all-smooth border border-[var(--border-color)] reveal-up flex flex-col" data-category="produktivitas">
+                        <div class="w-full h-48 rounded-2xl bg-[var(--bg-color)] mb-6 flex items-center justify-center relative overflow-hidden pattern-lines">
+                            <div class="w-20 h-20 bg-[var(--accent-color)] opacity-80 rounded-full blur-md"></div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3 text-xs font-sans tracking-wide uppercase text-[var(--primary-color)]">
+                            <span class="font-semibold">Produktivitas</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold mb-3 group-hover:text-[var(--primary-color)] transition-colors leading-snug">Metode Time-Blocking yang Sebenarnya</h3>
+                        <p class="font-sans text-[var(--text-muted)] text-sm mb-4 line-clamp-3 flex-grow">
+                            Banyak orang salah menerapkan time-blocking dengan merencanakan 100% waktunya. Rahasianya terletak pada 'ruang putih' antar blok tugas.
+                        </p>
+                        <div class="text-xs text-[var(--text-muted)] font-sans border-t border-[var(--border-color)] pt-3 flex justify-between items-center">
+                            <span>12 Juli 2026</span>
+                            <span>3 Min Read</span>
+                        </div>
+                    </article>
+
+                    <article class="article-card md:col-span-1 bg-[var(--accent-color)] text-white rounded-[2rem] p-6 group cursor-pointer shadow-premium hover:-translate-y-2 hover:shadow-hover transition-all-smooth reveal-up relative overflow-hidden flex flex-col justify-between min-h-[300px]" data-category="lifestyle" style="transition-delay:100ms;">
+                        <span class="font-serif text-[120px] absolute -top-4 -right-2 opacity-20 leading-none">"</span>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-2 mb-4 text-xs font-sans tracking-wide uppercase text-white/90">
+                                <span class="bg-white/20 px-3 py-1 rounded-full">Gaya Hidup</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold mb-4 leading-snug">Mengapa Kertas Masih Relevan di Tahun 2026?</h3>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-2 font-sans font-medium text-sm text-white/90">
+                                <span>Baca Artikel</span>
+                                <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-2">arrow_forward</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card md:col-span-1 bg-[var(--surface-color)] rounded-[2rem] p-6 group cursor-pointer shadow-premium hover:-translate-y-2 hover:shadow-hover transition-all-smooth border border-[var(--border-color)] reveal-up flex flex-col" data-category="organisasi" style="transition-delay:200ms;">
+                        <div class="w-full h-40 rounded-2xl bg-[#e5dfd3] mb-6 flex items-center justify-center shape-arch relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full h-1/2 bg-[var(--primary-light)] opacity-30"></div>
+                            <span class="material-symbols-outlined text-4xl text-[var(--text-color)] opacity-60">format_list_bulleted</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3 text-xs font-sans tracking-wide uppercase text-[var(--primary-color)]">
+                            <span class="font-semibold">Sistem Organisasi</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold mb-3 group-hover:text-[var(--primary-color)] transition-colors leading-snug">Review Sistem: Metode Ivy Lee</h3>
+                        <p class="font-sans text-[var(--text-muted)] text-sm mb-4 line-clamp-3 flex-grow">
+                            Sistem produktivitas berusia lebih dari satu abad ini hanya membutuhkan 6 baris di jurnal Anda. Sangat sederhana, sangat efektif.
+                        </p>
+                        <div class="text-xs text-[var(--text-muted)] font-sans border-t border-[var(--border-color)] pt-3 flex justify-between items-center">
+                            <span>05 Juli 2026</span>
+                            <span>4 Min Read</span>
+                        </div>
+                    </article>
+
+                    <article class="article-card md:col-span-2 bg-[var(--bg-color)] rounded-[2rem] p-8 group cursor-pointer shadow-sm hover:shadow-md transition-all-smooth border border-[var(--border-color)] reveal-up flex flex-col md:flex-row items-center gap-8" data-category="mindfulness">
+                        <div class="w-full md:w-1/3 h-full min-h-[150px] rounded-2xl bg-[var(--surface-color)] flex items-center justify-center shadow-inner relative overflow-hidden">
+                            <div class="w-24 h-24 border border-[var(--primary-color)] rounded-full opacity-20 absolute -left-4 -top-4"></div>
+                            <div class="w-16 h-16 border border-[var(--accent-color)] rounded-full opacity-20 absolute right-4 bottom-4"></div>
+                            <span class="font-script text-3xl text-[var(--text-muted)]">Reflection</span>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <div class="flex items-center gap-2 mb-2 text-xs font-sans tracking-wide uppercase text-[var(--primary-color)]">
+                                <span class="font-semibold">Mindfulness</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold mb-3 group-hover:text-[var(--primary-color)] transition-colors">Audit Energi Harian Anda</h3>
+                            <p class="font-sans text-[var(--text-muted)] text-sm mb-4">
+                                Waktu adalah aset yang berharga, tetapi energi adalah aset yang krusial. Alih-alih melacak menit, cobalah melacak kapan energi Anda memuncak menggunakan matriks 4-kuadran sederhana di jurnal Anda.
+                            </p>
+                            <div class="text-xs text-[var(--text-muted)] font-sans flex gap-4">
+                                <span>28 Juni 2026</span>
+                                <span>&bull;</span>
+                                <span>6 Min Read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Extra articles: hidden by default, revealed via "Muat Lebih Banyak" -->
+                    <article class="article-card extra-article md:col-span-1 bg-[var(--surface-color)] rounded-[2rem] p-6 group cursor-pointer shadow-premium hover:-translate-y-2 hover:shadow-hover transition-all-smooth border border-[var(--border-color)] flex flex-col is-hidden" data-category="produktivitas">
+                        <div class="w-full h-48 rounded-2xl bg-[var(--bg-color)] mb-6 flex items-center justify-center relative overflow-hidden pattern-lines">
+                            <div class="w-20 h-20 bg-[var(--primary-light)] opacity-80 rounded-full blur-md"></div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3 text-xs font-sans tracking-wide uppercase text-[var(--primary-color)]">
+                            <span class="font-semibold">Produktivitas</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold mb-3 group-hover:text-[var(--primary-color)] transition-colors leading-snug">Deep Work dalam 30 Menit Sehari</h3>
+                        <p class="font-sans text-[var(--text-muted)] text-sm mb-4 line-clamp-3 flex-grow">
+                            Anda tidak butuh 4 jam kosong untuk fokus maksimal. Pelajari cara memicu deep work dalam sesi singkat namun intens.
+                        </p>
+                        <div class="text-xs text-[var(--text-muted)] font-sans border-t border-[var(--border-color)] pt-3 flex justify-between items-center">
+                            <span>20 Juni 2026</span>
+                            <span>4 Min Read</span>
+                        </div>
+                    </article>
+
+                    <article class="article-card extra-article md:col-span-2 bg-[var(--bg-color)] rounded-[2rem] p-8 group cursor-pointer shadow-sm hover:shadow-md transition-all-smooth border border-[var(--border-color)] is-hidden flex flex-col md:flex-row items-center gap-8" data-category="organisasi">
+                        <div class="w-full md:w-1/3 h-full min-h-[150px] rounded-2xl bg-[var(--surface-color)] flex items-center justify-center shadow-inner relative overflow-hidden">
+                            <span class="material-symbols-outlined text-4xl text-[var(--text-color)] opacity-60">inventory_2</span>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <div class="flex items-center gap-2 mb-2 text-xs font-sans tracking-wide uppercase text-[var(--primary-color)]">
+                                <span class="font-semibold">Sistem Organisasi</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold mb-3 group-hover:text-[var(--primary-color)] transition-colors">Bullet Journal vs Planner Tercetak</h3>
+                            <p class="font-sans text-[var(--text-muted)] text-sm mb-4">
+                                Mana yang lebih cocok untuk gaya hidup Anda? Kami membandingkan fleksibilitas bullet journal dengan struktur planner premium.
+                            </p>
+                            <div class="text-xs text-[var(--text-muted)] font-sans flex gap-4">
+                                <span>10 Juni 2026</span>
+                                <span>&bull;</span>
+                                <span>5 Min Read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p class="text-center font-sans text-sm text-[var(--text-muted)] mt-10 hidden" id="no-results-msg">
+                    Tidak ada artikel untuk kategori ini.
+                </p>
+
+                <div class="mt-16 text-center reveal-up">
+                    <button type="button" id="load-more-btn" class="bg-transparent border-2 border-[var(--text-color)] text-[var(--text-color)] px-8 py-3 rounded-full font-sans font-medium hover:bg-[var(--text-color)] hover:text-white transition-all-smooth">
+                        Muat Lebih Banyak Artikel
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 relative z-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-panel p-10 md:p-16 rounded-[3rem] shape-arch shadow-premium text-center border-t border-[var(--border-color)] relative overflow-hidden reveal-up">
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-96 h-96 bg-[var(--primary-light)] opacity-20 rounded-full blur-3xl z-0"></div>
+
+                    <div class="relative z-10">
+                        <span class="material-symbols-outlined text-4xl text-[var(--accent-color)] mb-4">local_post_office</span>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Dosis Ketenangan Mingguan</h2>
+                        <p class="font-sans text-[var(--text-muted)] mb-8 max-w-lg mx-auto">
+                            Daftarkan email Anda untuk menerima kurasi artikel terbaru, kiat organisasi, dan insight eksklusif seputar mindful living. Tanpa spam, hanya esensi.
+                        </p>
+
+                        <form id="newsletter-form" class="flex flex-col md:flex-row gap-4 justify-center max-w-lg mx-auto" novalidate>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Alamat email Anda" required
+                                class="flex-grow px-6 py-3 rounded-full bg-white border border-[var(--border-color)] focus:outline-none focus:border-[var(--primary-color)] font-sans text-sm shadow-inner transition-colors">
+                            <button type="submit" id="newsletter-submit" class="bg-[var(--text-color)] text-white px-8 py-3 rounded-full font-sans font-medium hover:bg-[var(--primary-color)] transition-colors whitespace-nowrap shadow-sm">
+                                Berlangganan
+                            </button>
+                        </form>
+                        <p class="form-feedback items-center justify-center gap-2 mt-4 font-sans text-sm text-[var(--primary-color)]" id="newsletter-success">
+                            <span class="material-symbols-outlined text-base">check_circle</span>
+                            Terima kasih! Cek email Anda untuk konfirmasi.
+                        </p>
+                        <p class="form-feedback items-center justify-center gap-2 mt-4 font-sans text-sm text-red-500" id="newsletter-error">
+                            <span class="material-symbols-outlined text-base">error</span>
+                            Masukkan alamat email yang valid.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[var(--text-color)] text-white py-12 text-center rounded-t-[3rem] relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-serif text-2xl mb-6">Aesthetic <span class="font-script text-[var(--accent-color)] text-3xl">Planner</span></h2>
+            <div class="flex justify-center gap-6 mb-8 font-sans text-sm text-gray-400">
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">TikTok</a>
+                <a href="#" class="hover:text-white transition-colors">Pinterest</a>
+            </div>
+            <p class="text-xs text-gray-500 font-sans tracking-wider uppercase">&copy; 2026 Aesthetic Planner. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Scroll reveal (IntersectionObserver, replaces expensive scroll listener)
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+
+        // Navbar glass effect on scroll
+        const navInner = document.querySelector('#navbar > div');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY > 50;
+            navInner.classList.toggle('shadow-md', scrolled);
+            navInner.style.backgroundColor = scrolled ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.7)';
+        });
+
+        // Category filter
+        const filterButtons = document.querySelectorAll('#category-filters .filter-pill');
+        const noResultsMsg = document.getElementById('no-results-msg');
+
+        function getVisibleCards() {
+            return document.querySelectorAll('.article-card:not(.extra-article)');
+        }
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                const cards = document.querySelectorAll('.article-card');
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const matches = filter === 'all' || card.dataset.category === filter;
+                    const isExtraUnloaded = card.classList.contains('extra-article') && card.classList.contains('not-loaded');
+                    card.classList.toggle('is-hidden', !matches);
+                    if (matches && !card.classList.contains('extra-article')) visibleCount++;
+                });
+
+                noResultsMsg.classList.toggle('hidden', visibleCount > 0 || filter === 'all');
+            });
+        });
+
+        // Load more articles
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const extraArticles = document.querySelectorAll('.extra-article');
+        extraArticles.forEach(a => a.classList.add('not-loaded'));
+
+        loadMoreBtn.addEventListener('click', () => {
+            const activeFilter = document.querySelector('#category-filters .filter-pill.active').dataset.filter;
+            extraArticles.forEach(article => {
+                article.classList.remove('not-loaded');
+                const matches = activeFilter === 'all' || article.dataset.category === activeFilter;
+                article.classList.toggle('is-hidden', !matches);
+                article.classList.add('reveal-up');
+                requestAnimationFrame(() => article.classList.add('active'));
+            });
+            loadMoreBtn.textContent = 'Semua Artikel Termuat';
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        });
+
+        // Newsletter form: inline validation + feedback instead of alert()
+        const form = document.getElementById('newsletter-form');
+        const emailInput = document.getElementById('newsletter-email');
+        const successMsg = document.getElementById('newsletter-success');
+        const errorMsg = document.getElementById('newsletter-error');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const isValid = emailInput.checkValidity() && emailInput.value.trim() !== '';
+
+            successMsg.classList.remove('show');
+            errorMsg.classList.remove('show');
+
+            if (!isValid) {
+                errorMsg.classList.add('show');
+                emailInput.focus();
+                return;
+            }
+
+            successMsg.classList.add('show');
+            form.reset();
+        });
+
+    });
+    </script>
+</body>
+</html>

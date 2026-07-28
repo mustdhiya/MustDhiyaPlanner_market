@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Collection - Premium Aesthetic Planners</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Symbols Outlined -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="icon" type="image/x-icon" href="media/img/logo.png">
+
+    <!-- Tailwind CSS & DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        script: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        canvas: 'var(--bg-canvas)',
+                        surface: 'var(--bg-surface)',
+                        ink: 'var(--text-ink)',
+                        inkLight: 'var(--text-ink-light)',
+                        primary: 'var(--color-primary)',
+                        primaryGlow: 'var(--color-primary-glow)',
+                        accentColor: 'var(--color-accent)',
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'float': '0 30px 60px -20px rgba(0,0,0,0.12)',
+                        'glow': '0 0 25px var(--color-primary-glow)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Style Sheet -->
+    <style>
+        :root {
+            /* Default Theme (Neutral / Organic Wood / Beige) */
+            --bg-canvas: #F9F8F6;
+            --bg-surface: #FFFFFF;
+            --text-ink: #2C2825;
+            --text-ink-light: #706861;
+            --color-primary: #BCA38F;
+            --color-accent: #8C6D53;
+            --color-primary-glow: rgba(188, 163, 143, 0.35);
+            --blob-1: #E6DCD3;
+            --blob-2: #F0EAE1;
+            
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Color Theme Variations */
+        .theme-blue {
+            --color-primary: #6B889C;
+            --color-accent: #486375;
+            --color-primary-glow: rgba(107, 136, 156, 0.35);
+            --blob-1: #D9E2E8;
+            --blob-2: #E8EEF2;
+        }
+
+        .theme-green {
+            --color-primary: #788B6C;
+            --color-accent: #536448;
+            --color-primary-glow: rgba(120, 139, 108, 0.35);
+            --blob-1: #E2E7DE;
+            --blob-2: #EDF1EB;
+        }
+
+        .theme-terracotta {
+            --color-primary: #C48B71;
+            --color-accent: #9B624A;
+            --color-primary-glow: rgba(196, 139, 113, 0.35);
+            --blob-1: #F0E0D9;
+            --blob-2: #F7EDE8;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-ink);
+            overflow-x: hidden;
+            transition: background-color 0.6s ease;
+        }
+
+        /* Arch Layouts & Containers */
+        .arch-container {
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+
+        /* Glassmorphism Components */
+        .glass-nav {
+            background: rgba(249, 248, 246, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+        }
+
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* Animated Ambient Blobs */
+        .blob {
+            position: fixed;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.65;
+            pointer-events: none;
+            animation: float 18s infinite alternate ease-in-out;
+            transition: background-color 0.8s ease;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            50% { transform: translate(40px, 30px) rotate(12deg) scale(1.08); }
+            100% { transform: translate(-30px, -20px) rotate(-8deg) scale(0.95); }
+        }
+
+        /* Product Cards */
+        .product-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px var(--color-primary-glow);
+        }
+
+        .color-swatch {
+            transition: all 0.25s ease;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.18);
+        }
+        
+        .color-swatch.active {
+            outline-color: var(--text-ink);
+            transform: scale(1.15);
+        }
+
+        /* Premium Buttons */
+        .btn-premium {
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-premium:hover {
+            background-color: var(--text-ink);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -4px var(--color-primary-glow);
+        }
+        
+        .btn-premium:hover::after {
+            left: 100%;
+        }
+
+        .btn-outline-premium {
+            border: 1.5px solid var(--color-primary);
+            color: var(--text-ink);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-premium:hover {
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-canvas); }
+        ::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Dynamic Canvas Captcha Frame */
+        #captchaCanvas {
+            background-color: #F3EFEA;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative font-sans text-ink flex flex-col justify-between">
+
+    <!-- Ambient Floating Background Blobs -->
+    <div class="blob w-[28rem] h-[28rem] rounded-full -top-20 -left-20" style="background-color: var(--blob-1);"></div>
+    <div class="blob w-[32rem] h-[32rem] rounded-full top-[35%] -right-32" style="background-color: var(--blob-2); animation-delay: -6s;"></div>
+    <div class="blob w-[24rem] h-[24rem] rounded-full bottom-10 left-[15%]" style="background-color: var(--blob-1); animation-delay: -12s;"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="glass-nav fixed w-full z-40 top-0 transition-all duration-300 h-20 flex items-center shadow-sm">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            
+            <!-- Brand Logo -->
+            <a href="index.html" class="font-serif text-2xl md:text-3xl font-bold tracking-tight text-ink transition-colors duration-300 hover:text-primary flex items-center">
+                Aesthetics<span class="font-script text-3xl md:text-4xl font-normal ml-1 text-primary">Planner</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-10 items-center">
+                <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
+                <a href="shopnow.html" class="text-sm font-semibold text-primary border-b-2 border-primary pb-1">Shop Collection</a>
+                <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
+                <a href="journal.html" class="text-sm font-medium hover:text-primary transition-colors">Journal</a>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center space-x-3 md:space-x-5">
+                <!-- Search Button -->
+                <button onclick="toggleSearchModal(true)" class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center" title="Search Planners">
+                    <span class="material-symbols-outlined text-[22px]">search</span>
+                </button>
+                
+                <!-- Cart Trigger Drawer Button -->
+                <button onclick="toggleCartDrawer(true)" class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center relative" title="Shopping Cart">
+                    <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                    <span id="cart-badge" class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center transform scale-0 transition-transform duration-300">0</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <div class="dropdown dropdown-end md:hidden">
+                    <div tabindex="0" role="button" class="p-2 rounded-full hover:bg-white/80">
+                        <span class="material-symbols-outlined">menu</span>
+                    </div>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-3 shadow-float glass-modal rounded-2xl w-52 mt-3 space-y-2 text-ink font-medium">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shopnow.html" class="active text-primary">Shop Collection</a></li>
+                        <li><a href="#about" onclick="showToast('Explore our design philosophy below')">Philosophy</a></li>
+                        <li><a href="#journal" onclick="showToast('Journal coming soon!')">Journal</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-32 pb-20 relative z-10 flex-grow">
+        
+        <!-- Header Banner Section -->
+        <header class="px-6 md:px-12 container mx-auto text-center mb-12">
+            <span class="text-xs uppercase font-bold tracking-[0.2em] text-primary mb-3 block">Intentionally Designed</span>
+            <h1 class="font-serif text-4xl md:text-6xl text-ink mb-4 font-normal">
+                Curated <span class="font-script text-primary text-5xl md:text-7xl">Collection</span>
+            </h1>
+            <p class="text-inkLight max-w-xl mx-auto font-light text-sm md:text-base leading-relaxed">
+                Empower your days with structured serenity. Explore physical planners crafted with tactile wooden accents, soothing color science, and organic layouts.
+            </p>
+        </header>
+
+        <!-- Interactive Filter & Search Bar Section -->
+        <section class="container mx-auto px-6 md:px-12 mb-10">
+            <div class="glass-card p-4 md:p-6 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-4 shadow-soft">
+                
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 w-full md:w-auto" id="category-tabs">
+                    <button onclick="filterByCategory('all')" class="cat-btn active px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all bg-primary text-white shadow-sm" data-category="all">
+                        All Items
+                    </button>
+                    <button onclick="filterByCategory('daily')" class="cat-btn px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all text-inkLight hover:text-ink hover:bg-white/60" data-category="daily">
+                        Daily Planners
+                    </button>
+                    <button onclick="filterByCategory('weekly')" class="cat-btn px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all text-inkLight hover:text-ink hover:bg-white/60" data-category="weekly">
+                        Weekly Planners
+                    </button>
+                    <button onclick="filterByCategory('accessories')" class="cat-btn px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all text-inkLight hover:text-ink hover:bg-white/60" data-category="accessories">
+                        Desk Accessories
+                    </button>
+                </div>
+
+                <!-- Sort & View Controls -->
+                <div class="flex items-center justify-between w-full md:w-auto gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-gray-200/50">
+                    <span class="text-xs text-inkLight font-medium whitespace-nowrap">Sort by:</span>
+                    <select id="sort-select" onchange="handleSortChange(this.value)" class="bg-white/80 border border-gray-200/80 rounded-full px-4 py-1.5 text-xs md:text-sm font-medium text-ink focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer shadow-sm">
+                        <option value="featured">Featured Collection</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Product Catalog Grid -->
+        <section class="container mx-auto px-6 md:px-12">
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <!-- Products dynamically rendered here by JavaScript -->
+            </div>
+
+            <!-- Empty Search / Filter State -->
+            <div id="empty-state" class="hidden text-center py-20 glass-card rounded-3xl my-8">
+                <span class="material-symbols-outlined text-6xl text-primary/60 mb-4">search_off</span>
+                <h3 class="font-serif text-2xl font-semibold mb-2">No planners match your criteria</h3>
+                <p class="text-inkLight text-sm mb-6">Try resetting filters or searching for different keywords.</p>
+                <button onclick="resetFilters()" class="btn-premium px-6 py-2.5 rounded-full text-sm font-medium">
+                    Reset All Filters
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-primary/20 bg-canvas/80 backdrop-blur-md pt-16 pb-12 relative z-10">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="font-serif text-2xl font-bold text-ink">Aesthetics<span class="font-script text-3xl font-normal ml-1 text-primary">Planner</span></a>
+                    <p class="text-sm text-inkLight mt-3 max-w-md font-light leading-relaxed">
+                        Mindfully crafted tools for daily productivity, intention setting, and peaceful living. Shipping nationwide across Indonesia and internationally.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-serif text-base font-semibold mb-4 text-ink">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-inkLight">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Home Page</a></li>
+                        <li><a href="shopnow.html" class="hover:text-primary transition-colors">Shop Catalog</a></li>
+                        <li><a href="#" onclick="showToast('Sizing guide downloaded.')" class="hover:text-primary transition-colors">Print & Paper Specs</a></li>
+                        <li><a href="#" onclick="showToast('FAQ page opening...') hover:text-primary transition-colors">Shipping & FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-serif text-base font-semibold mb-4 text-ink">Connect With Us</h4>
+                    <p class="text-xs text-inkLight mb-3">Join our community for daily motivation & design insights.</p>
+                    <div class="flex space-x-3 text-ink">
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm">
+                            <span class="material-symbols-outlined text-lg">camera</span>
+                        </a>
+                        <a href="mailto:hello@aestheticsplanner.com" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm">
+                            <span class="material-symbols-outlined text-lg">mail</span>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm">
+                            <span class="material-symbols-outlined text-lg">chat</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200/60 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-inkLight gap-4">
+                <p>&copy; 2026 Aesthetics Planner Studio. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" onclick="showToast('Privacy Policy viewed')" class="hover:text-primary">Privacy Policy</a>
+                    <a href="#" onclick="showToast('Terms of Service viewed')" class="hover:text-primary">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OVER CART DRAWER -->
+    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="cart-drawer" class="fixed top-0 right-0 w-full sm:w-[420px] h-full glass-modal z-50 shadow-float transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
+        
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-gray-200/60 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="material-symbols-outlined text-primary">shopping_bag</span>
+                <h2 class="font-serif text-xl font-semibold text-ink">Your Cart</h2>
+                <span id="drawer-item-count" class="text-xs bg-primary/10 text-primary font-bold px-2 py-0.5 rounded-full">(0)</span>
+            </div>
+            <button onclick="toggleCartDrawer(false)" class="p-1 rounded-full hover:bg-gray-100 transition-colors text-inkLight">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Cart Items List (Scrollable) -->
+        <div id="cart-items-container" class="p-6 flex-grow overflow-y-auto space-y-4">
+            <!-- Dynamic Cart Items Rendered Here -->
+        </div>
+
+        <!-- Empty Cart State -->
+        <div id="cart-empty-view" class="flex-grow flex flex-col items-center justify-center p-8 text-center">
+            <span class="material-symbols-outlined text-5xl text-gray-300 mb-3">remove_shopping_cart</span>
+            <p class="font-serif text-lg font-medium text-ink mb-1">Your cart is empty</p>
+            <p class="text-xs text-inkLight mb-6">Discover our curated collection and add your favorite planner.</p>
+            <button onclick="toggleCartDrawer(false)" class="btn-premium px-6 py-2.5 rounded-full text-xs font-medium">
+                Continue Shopping
+            </button>
+        </div>
+
+        <!-- Drawer Footer (Subtotal & Checkout) -->
+        <div id="cart-footer" class="p-6 border-t border-gray-200/60 bg-white/50 space-y-4 hidden">
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between text-inkLight">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal" class="font-medium text-ink">Rp 0</span>
+                </div>
+                <div class="flex justify-between text-inkLight text-xs">
+                    <span>Estimated Shipping (Indonesia)</span>
+                    <span class="text-emerald-600 font-medium">Calculated at Checkout</span>
+                </div>
+                <div class="flex justify-between text-base font-semibold text-ink border-t border-gray-200/60 pt-2">
+                    <span>Total</span>
+                    <span id="cart-total" class="text-primary">Rp 0</span>
+                </div>
+            </div>
+            
+            <button onclick="openCheckoutModal()" class="w-full btn-premium py-3.5 rounded-2xl text-sm font-semibold flex items-center justify-center space-x-2 shadow-md">
+                <span>Proceed to Order</span>
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- QUICK VIEW PRODUCT MODAL -->
+    <dialog id="quickview-modal" class="modal modal-bottom sm:modal-middle backdrop-blur-md">
+        <div class="modal-box glass-modal p-0 max-w-3xl rounded-3xl overflow-hidden shadow-float">
+            <button onclick="document.getElementById('quickview-modal').close()" class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 z-20 text-ink">✕</button>
+            <div id="quickview-content" class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- ORDER / CHECKOUT MODAL WITH ANTI-SPAM CAPTCHA -->
+    <dialog id="checkout-modal" class="modal modal-bottom sm:modal-middle backdrop-blur-md">
+        <div class="modal-box glass-modal p-6 md:p-8 max-w-2xl rounded-3xl shadow-float max-h-[90vh] overflow-y-auto">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center border-b border-gray-200/60 pb-4 mb-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary">Final Step</span>
+                    <h3 class="font-serif text-2xl font-bold text-ink">Complete Your Order</h3>
+                </div>
+                <button onclick="document.getElementById('checkout-modal').close()" class="p-1 rounded-full hover:bg-gray-100 text-inkLight">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Order Form -->
+            <form id="checkout-form" onsubmit="handleOrderSubmission(event)" class="space-y-6">
+                
+                <!-- Summary Mini Card -->
+                <div class="bg-white/70 p-4 rounded-2xl border border-gray-200/60 space-y-2 text-xs">
+                    <div class="flex justify-between font-semibold text-ink text-sm">
+                        <span>Items Total</span>
+                        <span id="checkout-summary-subtotal" class="text-primary">Rp 0</span>
+                    </div>
+                    <div id="checkout-items-summary" class="text-inkLight space-y-1 pt-1 border-t border-gray-100">
+                        <!-- Brief items list -->
+                    </div>
+                </div>
+
+                <!-- Customer Details -->
+                <div class="space-y-4">
+                    <h4 class="font-serif text-sm font-semibold text-ink border-b pb-1">Customer Shipping Details</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-inkLight mb-1">Full Name *</label>
+                            <input type="text" id="cust-name" required placeholder="e.g. Amanda Putri" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white/80">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-inkLight mb-1">WhatsApp Number *</label>
+                            <input type="tel" id="cust-phone" required placeholder="081234567890" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white/80">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-inkLight mb-1">Email Address *</label>
+                        <input type="email" id="cust-email" required placeholder="amanda@example.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white/80">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-inkLight mb-1">Full Delivery Address *</label>
+                        <textarea id="cust-address" rows="2" required placeholder="Street name, District, City, Postal Code" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white/80 resize-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- Payment Method Selection -->
+                <div class="space-y-3">
+                    <h4 class="font-serif text-sm font-semibold text-ink border-b pb-1">Select Payment Method</h4>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <label class="border border-gray-200 p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-primary bg-white/60">
+                            <input type="radio" name="payment" value="Bank Transfer (BCA/Mandiri)" checked class="radio radio-xs radio-primary">
+                            <span class="font-medium text-ink">Bank Transfer</span>
+                        </label>
+                        <label class="border border-gray-200 p-3 rounded-xl flex items-center space-x-2 cursor-pointer hover:border-primary bg-white/60">
+                            <input type="radio" name="payment" value="QRIS / E-Wallet" class="radio radio-xs radio-primary">
+                            <span class="font-medium text-ink">QRIS / E-Wallet</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ENHANCED ANTI-SPAM CANVAS CAPTCHA SECTION -->
+                <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200/70 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="material-symbols-outlined text-amber-700 text-sm">verified_user</span>
+                            <span class="text-xs font-bold text-amber-900">Security Verification (Anti-Spam)</span>
+                        </div>
+                        <button type="button" onclick="generateCaptcha()" class="text-[11px] text-primary hover:underline flex items-center space-x-1 font-medium">
+                            <span class="material-symbols-outlined text-xs">refresh</span>
+                            <span>Refresh Code</span>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-3">
+                        <!-- Canvas Visual Code -->
+                        <div class="relative shrink-0">
+                            <canvas id="captchaCanvas" width="150" height="42" class="border border-amber-200 rounded-lg shadow-inner" onclick="generateCaptcha()" title="Click to refresh"></canvas>
+                        </div>
+
+                        <!-- User Input Field -->
+                        <div class="w-full">
+                            <input type="text" id="captcha-input" required placeholder="Type the 5 characters above" class="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary text-xs bg-white font-mono uppercase tracking-widest">
+                            <p id="captcha-error" class="text-[11px] text-red-500 font-medium mt-1 hidden">Incorrect captcha code. Please try again.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submit-order-btn" class="w-full btn-premium py-3.5 rounded-2xl text-sm font-semibold flex items-center justify-center space-x-2 shadow-lg">
+                    <span class="material-symbols-outlined text-lg">lock</span>
+                    <span>Confirm Order via WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- SUCCESS ORDER CONFIRMATION MODAL -->
+    <dialog id="success-modal" class="modal modal-bottom sm:modal-middle backdrop-blur-md">
+        <div class="modal-box glass-modal p-8 max-w-md rounded-3xl text-center shadow-float">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                <span class="material-symbols-outlined text-3xl">check_circle</span>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-ink mb-1">Order Placed Successfully!</h3>
+            <p class="text-xs text-inkLight mb-6">Your order invoice reference <strong id="success-ref-code" class="text-primary">#AP-8921</strong> has been generated.</p>
+            
+            <div class="bg-white/80 p-4 rounded-2xl text-left text-xs space-y-2 mb-6 border border-gray-100">
+                <div class="flex justify-between text-inkLight">
+                    <span>Customer:</span>
+                    <span id="succ-name" class="font-medium text-ink">-</span>
+                </div>
+                <div class="flex justify-between text-inkLight">
+                    <span>Total Payment:</span>
+                    <span id="succ-total" class="font-bold text-primary">-</span>
+                </div>
+                <div class="flex justify-between text-inkLight">
+                    <span>Status:</span>
+                    <span class="text-amber-600 font-medium">Awaiting Confirmation</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-inkLight mb-6">Redirecting you to our official WhatsApp line to complete payment details...</p>
+
+            <button onclick="document.getElementById('success-modal').close()" class="w-full btn-premium py-3 rounded-xl text-xs font-semibold">
+                Back to Shop
+            </button>
+        </div>
+    </dialog>
+
+    <!-- SEARCH MODAL -->
+    <dialog id="search-modal" class="modal modal-top backdrop-blur-md pt-20">
+        <div class="modal-box glass-modal p-6 max-w-2xl rounded-3xl shadow-float mx-auto">
+            <div class="flex items-center space-x-3 border-b border-gray-200 pb-3">
+                <span class="material-symbols-outlined text-primary">search</span>
+                <input type="text" id="search-input" oninput="handleSearchInput(this.value)" placeholder="Search planners by keyword (e.g., 'Wood', 'Botanical', 'Weekly')..." class="w-full bg-transparent text-base focus:outline-none text-ink">
+                <button onclick="toggleSearchModal(false)" class="text-xs text-inkLight hover:text-ink">ESC</button>
+            </div>
+            <div id="search-results" class="mt-4 max-h-60 overflow-y-auto space-y-2 text-xs">
+                <p class="text-inkLight text-center py-4">Start typing to filter catalog in real-time...</p>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-8 right-8 transform translate-y-24 opacity-0 transition-all duration-300 z-50 glass-modal px-6 py-4 rounded-2xl flex items-center space-x-3 shadow-float pointer-events-none border border-white">
+        <span id="toast-icon" class="material-symbols-outlined text-primary">check_circle</span>
+        <p class="text-xs font-semibold text-ink" id="toast-message">Item added to cart</p>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & INTERACTION ENGINE -->
+    <script>
+        /* -------------------------------------------------------------
+           1. PRODUCT DATASET & STATE MANAGEMENT
+        ------------------------------------------------------------- */
+        const PRODUCTS = [
+            {
+                id: 'prod-1',
+                name: 'The Minimalist Wood Daily',
+                category: 'daily',
+                price: 249000,
+                theme: 'default',
+                colorName: 'Natural Beige',
+                colorHex: '#BCA38F',
+                image: 'https://images.unsplash.com/photo-1611077544781-a67b2d56a73c?q=80&w=800&auto=format&fit=crop',
+                rating: 4.9,
+                reviews: 128,
+                badge: 'BESTSELLER',
+                desc: 'Premium arch daily planner encysted in a handcrafted teak wood arch frame. Features hourly schedules, priority grids, and daily affirmations.'
+            },
+            {
+                id: 'prod-2',
+                name: 'Ocean Abstract Schedule',
+                category: 'daily',
+                price: 189000,
+                theme: 'blue',
+                colorName: 'Dusty Blue',
+                colorHex: '#6B889C',
+                image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop',
+                rating: 4.8,
+                reviews: 94,
+                badge: 'POPULAR',
+                desc: 'Soothing oceanic palette daily planner. Includes habit streaks, moisture intake trackers, and spacious notes space.'
+            },
+            {
+                id: 'prod-3',
+                name: 'Botanical Week Planner',
+                category: 'weekly',
+                price: 199000,
+                theme: 'green',
+                colorName: 'Sage Green',
+                colorHex: '#788B6C',
+                image: 'https://images.unsplash.com/photo-1531346878377-a54c46583f20?q=80&w=800&auto=format&fit=crop',
+                rating: 5.0,
+                reviews: 156,
+                badge: 'ECO CHOICE',
+                desc: 'Serene weekly overview planner with organic monstera and eucalyptus illustrations on 100gsm recycled cream paper.'
+            },
+            {
+                id: 'prod-4',
+                name: 'Warm Terracotta Desk Arc',
+                category: 'weekly',
+                price: 199000,
+                theme: 'terracotta',
+                colorName: 'Warm Terracotta',
+                colorHex: '#C48B71',
+                image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop',
+                rating: 4.9,
+                reviews: 82,
+                badge: 'NEW',
+                desc: 'Cozy terracotta aesthetic desk planner with weekly check boxes, lamp illustrations, and goal setting sections.'
+            },
+            {
+                id: 'prod-5',
+                name: 'Earthy Linen Hardcover',
+                category: 'daily',
+                price: 279000,
+                theme: 'default',
+                colorName: 'Oatmeal Beige',
+                colorHex: '#D6C5B3',
+                image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=800&auto=format&fit=crop',
+                rating: 4.7,
+                reviews: 64,
+                badge: 'LIMITED',
+                desc: 'Hardcover bound in natural unbleached linen with gold foil details and dual ribbon bookmarks.'
+            },
+            {
+                id: 'prod-6',
+                name: 'Sage Leaf Tear-Off Pad',
+                category: 'accessories',
+                price: 129000,
+                theme: 'green',
+                colorName: 'Eucalyptus',
+                colorHex: '#8DA082',
+                image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=800&auto=format&fit=crop',
+                rating: 4.9,
+                reviews: 110,
+                badge: 'ESSENTIAL',
+                desc: '50-sheet desktop weekly tear-off memo pad. Smooth writing texture designed for fountain pen fountain ink.'
+            }
+        ];
+
+        // Global Application State
+        let cartState = [];
+        let activeCategory = 'all';
+        let currentSort = 'featured';
+        let currentSearchQuery = '';
+        let generatedCaptchaCode = '';
+
+        /* -------------------------------------------------------------
+           2. DOM INITIALIZATION & EVENT LISTENERS
+        ------------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            generateCaptcha();
+
+            // Parallax Scroll Effect for Blobs
+            window.addEventListener('scroll', () => {
+                const blobs = document.querySelectorAll('.blob');
+                const scrollY = window.scrollY;
+                blobs.forEach((blob, index) => {
+                    const speed = (index + 1) * 0.08;
+                    blob.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            });
+        });
+
+        /* -------------------------------------------------------------
+           3. DYNAMIC PRODUCT RENDERING & FILTERING
+        ------------------------------------------------------------- */
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const emptyState = document.getElementById('empty-state');
+
+            // 1. Filter Logic
+            let filtered = PRODUCTS.filter(prod => {
+                const matchCategory = (activeCategory === 'all') || (prod.category === activeCategory);
+                const matchSearch = prod.name.toLowerCase().includes(currentSearchQuery.toLowerCase()) ||
+                                    prod.desc.toLowerCase().includes(currentSearchQuery.toLowerCase());
+                return matchCategory && matchSearch;
+            });
+
+            // 2. Sort Logic
+            if (currentSort === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSort === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            }
+
+            // 3. Render HTML
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map(product => `
+                <article class="product-card glass-card p-5 rounded-[2.5rem] flex flex-col group cursor-pointer relative" onclick="openQuickView('${product.id}')">
+                    
+                    <!-- Arch Frame Image Container -->
+                    <div class="relative overflow-hidden arch-container bg-[#F4F1ED] aspect-[3/4] mb-5 flex items-center justify-center p-4">
+                        <img src="${product.image}" 
+                             alt="${product.name}" 
+                             class="w-full h-full object-cover rounded-t-full rounded-b-xl shadow-soft transition-transform duration-700 group-hover:scale-105"
+                             loading="lazy">
+                        
+                        <!-- Badge -->
+                        ${product.badge ? `
+                            <div class="absolute top-4 right-4 bg-white/85 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-ink tracking-wider shadow-sm border border-white">
+                                ${product.badge}
+                            </div>
+                        ` : ''}
+
+                        <!-- Rating Tag -->
+                        <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md px-2.5 py-0.5 rounded-full text-xs font-semibold text-ink flex items-center space-x-1 shadow-sm">
+                            <span class="material-symbols-outlined text-amber-500 text-sm">star</span>
+                            <span>${product.rating}</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="px-1 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-1.5">
+                            <h3 class="font-serif text-xl font-semibold text-ink group-hover:text-primary transition-colors">${product.name}</h3>
+                        </div>
+                        
+                        <p class="text-xs text-inkLight font-light mb-4 line-clamp-2 leading-relaxed flex-grow">${product.desc}</p>
+                        
+                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-200/60">
+                            <div>
+                                <span class="text-xs text-inkLight block">Price</span>
+                                <span class="font-semibold text-base text-ink">Rp ${product.price.toLocaleString('id-ID')}</span>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <!-- Theme swatch picker -->
+                                <button class="color-swatch w-7 h-7 rounded-full shadow-inner" 
+                                        style="background-color: ${product.colorHex};" 
+                                        title="Switch theme to ${product.colorName}" 
+                                        onclick="event.stopPropagation(); setTheme('${product.theme}', this)">
+                                </button>
+
+                                <!-- Add to Cart Button -->
+                                <button onclick="event.stopPropagation(); addToCart('${product.id}')" 
+                                        class="btn-premium px-4 py-2 rounded-full text-xs font-medium flex items-center space-x-1">
+                                    <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        /* -------------------------------------------------------------
+           4. CATEGORY, SEARCH & SORT CONTROLS
+        ------------------------------------------------------------- */
+        function filterByCategory(category) {
+            activeCategory = category;
+            
+            // Update button styles
+            document.querySelectorAll('#category-tabs .cat-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.className = 'cat-btn active px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all bg-primary text-white shadow-sm';
+                } else {
+                    btn.className = 'cat-btn px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all text-inkLight hover:text-ink hover:bg-white/60';
+                }
+            });
+
+            renderProducts();
+        }
+
+        function handleSortChange(sortVal) {
+            currentSort = sortVal;
+            renderProducts();
+        }
+
+        function resetFilters() {
+            activeCategory = 'all';
+            currentSearchQuery = '';
+            currentSort = 'featured';
+            document.getElementById('sort-select').value = 'featured';
+            document.getElementById('search-input').value = '';
+            filterByCategory('all');
+        }
+
+        function handleSearchInput(query) {
+            currentSearchQuery = query;
+            renderProducts();
+
+            const resContainer = document.getElementById('search-results');
+            if (!query.trim()) {
+                resContainer.innerHTML = '<p class="text-inkLight text-center py-4">Start typing to filter catalog in real-time...</p>';
+                return;
+            }
+
+            const matches = PRODUCTS.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+            if (matches.length === 0) {
+                resContainer.innerHTML = '<p class="text-inkLight text-center py-4">No matching planners found.</p>';
+            } else {
+                resContainer.innerHTML = matches.map(m => `
+                    <div onclick="openQuickView('${m.id}'); toggleSearchModal(false)" class="p-2 hover:bg-white/80 rounded-xl cursor-pointer flex items-center justify-between border-b border-gray-100">
+                        <div class="flex items-center space-x-3">
+                            <img src="${m.image}" class="w-10 h-10 object-cover rounded-lg">
+                            <div>
+                                <p class="font-medium text-ink">${m.name}</p>
+                                <p class="text-[10px] text-inkLight">Rp ${m.price.toLocaleString('id-ID')}</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-sm text-primary">arrow_forward</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleSearchModal(show) {
+            const modal = document.getElementById('search-modal');
+            if (show) {
+                modal.showModal();
+                document.getElementById('search-input').focus();
+            } else {
+                modal.close();
+            }
+        }
+
+        /* -------------------------------------------------------------
+           5. DYNAMIC THEME SWITCHER
+        ------------------------------------------------------------- */
+        function setTheme(themeName, swatchElement = null) {
+            document.body.classList.remove('theme-blue', 'theme-green', 'theme-terracotta');
+            
+            if (themeName !== 'default') {
+                document.body.classList.add(`theme-${themeName}`);
+            }
+
+            if (swatchElement) {
+                document.querySelectorAll('.color-swatch').forEach(sw => sw.classList.remove('active'));
+                swatchElement.classList.add('active');
+            }
+
+            showToast(`Theme changed to ${themeName.toUpperCase()} palette`);
+        }
+
+        /* -------------------------------------------------------------
+           6. SHOPPING CART ENGINE (VANILLA JS STATE)
+        ------------------------------------------------------------- */
+        function addToCart(productId, qty = 1) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = cartState.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cartState[existingIndex].qty += qty;
+            } else {
+                cartState.push({ ...product, qty });
+            }
+
+            updateCartUI();
+            showToast(`${product.name} added to cart!`);
+
+            // Animate badge
+            const badge = document.getElementById('cart-badge');
+            badge.classList.remove('scale-100');
+            badge.classList.add('scale-125');
+            setTimeout(() => badge.classList.add('scale-100'), 200);
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const index = cartState.findIndex(item => item.id === productId);
+            if (index > -1) {
+                cartState[index].qty += delta;
+                if (cartState[index].qty <= 0) {
+                    cartState.splice(index, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cartState.reduce((sum, item) => sum + item.qty, 0);
+            const badge = document.getElementById('cart-badge');
+            const drawerCount = document.getElementById('drawer-item-count');
+            
+            // Badge counter
+            badge.textContent = totalItems;
+            drawerCount.textContent = `(${totalItems})`;
+            if (totalItems > 0) {
+                badge.classList.remove('scale-0');
+                badge.classList.add('scale-100');
+            } else {
+                badge.classList.add('scale-0');
+            }
+
+            // Container Elements
+            const itemsContainer = document.getElementById('cart-items-container');
+            const emptyView = document.getElementById('cart-empty-view');
+            const footer = document.getElementById('cart-footer');
+
+            if (cartState.length === 0) {
+                itemsContainer.innerHTML = '';
+                emptyView.classList.remove('hidden');
+                footer.classList.add('hidden');
+                return;
+            }
+
+            emptyView.classList.add('hidden');
+            footer.classList.remove('hidden');
+
+            // Subtotal Calculation
+            const subtotal = cartState.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('cart-total').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+
+            // Render Items
+            itemsContainer.innerHTML = cartState.map(item => `
+                <div class="glass-card p-3 rounded-2xl flex items-center space-x-3 border border-gray-200/50">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-xl shrink-0">
+                    
+                    <div class="flex-grow min-w-0">
+                        <h4 class="font-serif text-xs font-semibold text-ink truncate">${item.name}</h4>
+                        <p class="text-[10px] text-inkLight mb-1">${item.colorName}</p>
+                        <p class="text-xs font-bold text-primary">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</p>
+                    </div>
+
+                    <!-- Qty Controls -->
+                    <div class="flex items-center space-x-1 bg-white/80 rounded-lg p-1 border border-gray-200">
+                        <button onclick="updateCartQuantity('${item.id}', -1)" class="w-5 h-5 rounded flex items-center justify-center hover:bg-gray-100 text-xs font-bold">-</button>
+                        <span class="text-xs font-medium px-1.5">${item.qty}</span>
+                        <button onclick="updateCartQuantity('${item.id}', 1)" class="w-5 h-5 rounded flex items-center justify-center hover:bg-gray-100 text-xs font-bold">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(open) {
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-drawer-backdrop');
+
+            if (open) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        /* -------------------------------------------------------------
+           7. QUICK VIEW MODAL
+        ------------------------------------------------------------- */
+        function openQuickView(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const modalContent = document.getElementById('quickview-content');
+            modalContent.innerHTML = `
+                <div class="p-6 bg-[#F4F1ED] flex items-center justify-center">
+                    <div class="w-full max-w-xs aspect-[3/4] arch-container overflow-hidden shadow-soft">
+                        <img src="${product.image}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-primary mb-1 block">${product.category} PLANNER</span>
+                        <h2 class="font-serif text-2xl font-bold text-ink mb-2">${product.name}</h2>
+                        
+                        <div class="flex items-center space-x-2 mb-4">
+                            <div class="flex text-amber-500 text-xs">
+                                ★★★★★
+                            </div>
+                            <span class="text-xs text-inkLight">(${product.reviews} customer reviews)</span>
+                        </div>
+
+                        <p class="font-bold text-xl text-ink mb-4">Rp ${product.price.toLocaleString('id-ID')}</p>
+                        <p class="text-xs text-inkLight leading-relaxed mb-6">${product.desc}</p>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-inkLight">Palette Variant:</span>
+                            <span class="text-xs font-semibold text-ink">${product.colorName}</span>
+                        </div>
+
+                        <button onclick="addToCart('${product.id}'); document.getElementById('quickview-modal').close()" 
+                                class="w-full btn-premium py-3 rounded-2xl text-xs font-semibold flex items-center justify-center space-x-2">
+                            <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('quickview-modal').showModal();
+        }
+
+        /* -------------------------------------------------------------
+           8. ANTI-SPAM CANVAS CAPTCHA GENERATOR
+        ------------------------------------------------------------- */
+        function generateCaptcha() {
+            const canvas = document.getElementById('captchaCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            // Clear Canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Generate Random String (5 Alphanumeric Characters)
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            generatedCaptchaCode = '';
+            for (let i = 0; i < 5; i++) {
+                generatedCaptchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            // Fill Background Noise Lines
+            ctx.fillStyle = '#F3EFEA';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < 7; i++) {
+                ctx.strokeStyle = `rgba(188, 163, 143, ${Math.random() * 0.6 + 0.2})`;
+                ctx.beginPath();
+                ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
+
+            // Render Distorted Characters
+            ctx.font = 'bold 22px Inter, sans-serif';
+            for (let i = 0; i < generatedCaptchaCode.length; i++) {
+                ctx.save();
+                ctx.fillStyle = '#333333';
+                const x = 18 + i * 25;
+                const y = 28 + (Math.random() * 4 - 2);
+                const angle = (Math.random() - 0.5) * 0.4;
+                
+                ctx.translate(x, y);
+                ctx.rotate(angle);
+                ctx.fillText(generatedCaptchaCode[i], 0, 0);
+                ctx.restore();
+            }
+
+            // Noise Dots
+            for (let i = 0; i < 30; i++) {
+                ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.3})`;
+                ctx.beginPath();
+                ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, 1, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Reset input error state if any
+            document.getElementById('captcha-error').classList.add('hidden');
+            document.getElementById('captcha-input').value = '';
+        }
+
+        /* -------------------------------------------------------------
+           9. CHECKOUT MODAL & ORDER SUBMISSION FLOW
+        ------------------------------------------------------------- */
+        function openCheckoutModal() {
+            if (cartState.length === 0) {
+                showToast('Your cart is empty.');
+                return;
+            }
+
+            toggleCartDrawer(false);
+
+            // Calculate Subtotal & Item List Summary
+            const subtotal = cartState.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('checkout-summary-subtotal').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+
+            const itemsSummary = document.getElementById('checkout-items-summary');
+            itemsSummary.innerHTML = cartState.map(item => `
+                <div class="flex justify-between">
+                    <span>${item.qty}x ${item.name}</span>
+                    <span class="font-medium">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</span>
+                </div>
+            `).join('');
+
+            generateCaptcha();
+            document.getElementById('checkout-modal').showModal();
+        }
+
+        function handleOrderSubmission(event) {
+            event.preventDefault();
+
+            // 1. Verify Anti-Spam CAPTCHA
+            const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
+            const captchaErr = document.getElementById('captcha-error');
+
+            if (userInput !== generatedCaptchaCode) {
+                captchaErr.classList.remove('hidden');
+                generateCaptcha();
+                return;
+            }
+
+            captchaErr.classList.add('hidden');
+
+            // 2. Gather Customer Data
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const email = document.getElementById('cust-email').value;
+            const address = document.getElementById('cust-address').value;
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            const subtotal = cartState.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            // Generate Random Reference ID
+            const refCode = 'AP-' + Math.floor(1000 + Math.random() * 9000);
+
+            // 3. Populate Success Modal
+            document.getElementById('success-ref-code').textContent = `#${refCode}`;
+            document.getElementById('succ-name').textContent = name;
+            document.getElementById('succ-total').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+
+            // Close Checkout Modal & Show Success Modal
+            document.getElementById('checkout-modal').close();
+            document.getElementById('success-modal').showModal();
+
+            // 4. Construct WhatsApp Order Direct Message
+            let waMsg = `Halo *Aesthetics Planner*, saya ingin mengonfirmasi pesanan baru:\n\n`;
+            waMsg += `*No. Referensi:* #${refCode}\n`;
+            waMsg += `*Nama:* ${name}\n`;
+            waMsg += `*No. WA:* ${phone}\n`;
+            waMsg += `*Alamat:* ${address}\n`;
+            waMsg += `*Metode Pembayaran:* ${payment}\n\n`;
+            waMsg += `*Rincian Pesanan:*\n`;
+            
+            cartState.forEach((item, idx) => {
+                waMsg += `${idx + 1}. ${item.name} (${item.qty}x) - Rp ${(item.price * item.qty).toLocaleString('id-ID')}\n`;
+            });
+
+            waMsg += `\n*Total Tagihan:* Rp ${subtotal.toLocaleString('id-ID')}\n\nMohon informasi langkah pembayaran selanjutnya. Terima kasih!`;
+
+            // Reset Cart State
+            cartState = [];
+            updateCartUI();
+
+            // Redirect to WhatsApp after 3 seconds
+            setTimeout(() => {
+                const encodedMsg = encodeURIComponent(waMsg);
+                window.open(`https://wa.me/6281234567890?text=${encodedMsg}`, '_blank');
+            }, 3000);
+        }
+
+        /* -------------------------------------------------------------
+           10. TOAST NOTIFICATION UTILITY
+        ------------------------------------------------------------- */
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+
+            msgEl.textContent = message;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
