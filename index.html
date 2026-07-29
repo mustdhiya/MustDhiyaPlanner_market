@@ -1,415 +1,1353 @@
-
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Planner - Premium Organizer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="media/img/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aesthetic Planner">
+  <meta property="og:title" content="Daily Planner - Premium Organizer">
+  <meta property="og:description" content="Planner premium untuk membantu hidup lebih teratur, estetik, dan mindful setiap hari.">
+  <meta property="og:url" content="https://mustdhiya.space/">
+  <meta property="og:image" content="https://mustdhiya.space/media/img/image3.png">
+  <meta property="og:image:secure_url" content="https://mustdhiya.space/media/img/image3.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Preview Daily Planner Aesthetic Planner">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Daily Planner - Premium Organizer">
+  <meta name="twitter:description" content="Planner premium untuk membantu hidup lebih teratur, estetik, dan mindful setiap hari.">
+  <meta name="twitter:image" content="https://mustdhiya.space/media/img/image3.png">
 
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          serif: ['Playfair Display', 'serif'],
-          script: ['WindSong', 'cursive'],
+  <title>Daily Planner - Premium Organizer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="media/img/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.0/dist/full.css" rel="stylesheet" type="text/css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            script: ['WindSong', 'cursive'],
+          }
         }
       }
     }
-  }
-</script>
+  </script>
 
-<style>
-  :root {
-    --bg-color: #f7f4ee;
-    --surface-color: #ffffff;
-    --text-color: #33312e;
-    --text-muted: #787369;
-    --primary-color: #63768d;
-    --primary-light: #9db2c7;
-    --accent-color: #c9a491;
-    --border-color: #e5dfd3;
-    --theme-transition: background-color .6s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease;
-  }
-  body.theme-green      { --primary-color:#557256; --primary-light:#8fa690; --accent-color:#c48c71; }
-  body.theme-terracotta { --primary-color:#a86e58; --primary-light:#d4a38e; --accent-color:#576d75; }
+  <style>
+    :root {
+      --bg-color: #f7f4ee;
+      --surface-color: #ffffff;
+      --text-color: #33312e;
+      --text-muted: #787369;
+      --primary-color: #63768d;
+      --primary-light: #9db2c7;
+      --accent-color: #c9a491;
+      --border-color: #e5dfd3;
+      --theme-transition: background-color .6s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease, transform .4s ease;
+      --mx: 50%;
+      --my: 50%;
+      --tx: 0px;
+      --ty: 0px;
+    }
 
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: var(--theme-transition);
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
+    body.theme-green { --primary-color:#557256; --primary-light:#8fa690; --accent-color:#c48c71; }
+    body.theme-terracotta { --primary-color:#a86e58; --primary-light:#d4a38e; --accent-color:#576d75; }
 
-  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; vertical-align:middle; }
+    html { scroll-behavior: smooth; }
 
-  .shape-arch-inverted { border-radius: 0 0 9999px 9999px; }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: var(--theme-transition);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-  .shadow-premium { box-shadow: 0 20px 40px -10px rgba(0,0,0,.05), 0 10px 20px -5px rgba(0,0,0,.02); }
-  .shadow-hover   { box-shadow: 0 30px 60px -15px rgba(0,0,0,.1), 0 15px 30px -10px rgba(0,0,0,.05); }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;
+      vertical-align: middle;
+    }
 
-  .blob-bg { position:absolute; z-index:-1; opacity:.6; transition: var(--theme-transition); }
+    .shape-arch-inverted { border-radius: 0 0 9999px 9999px; }
 
-  @keyframes float {
-    0%   { transform: translate(0,0) rotate(0deg) scale(1); }
-    33%  { transform: translate(30px,-50px) rotate(10deg) scale(1.05); }
-    66%  { transform: translate(-20px,20px) rotate(-5deg) scale(.95); }
-    100% { transform: translate(0,0) rotate(0deg) scale(1); }
-  }
-  .animate-float-slow   { animation: float 20s ease-in-out infinite; }
-  .animate-float-medium { animation: float 15s ease-in-out infinite reverse; }
+    .shadow-premium {
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,.05), 0 10px 20px -5px rgba(0,0,0,.02);
+    }
 
-  .squiggly-line {
-    width:100px; height:20px;
-    background-image:url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 10C15 10 15 2 25 2C35 2 35 18 45 18C55 18 55 2 65 2C75 2 75 18 85 18C95 18 95 10 99 10' stroke='%2333312e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position:center;
-  }
+    .shadow-hover {
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,.1), 0 15px 30px -10px rgba(0,0,0,.05);
+    }
 
-  .pattern-dots {
-    background-image: radial-gradient(var(--primary-light) 1.5px, transparent 1.5px);
-    background-size:16px 16px; opacity:.3;
-  }
+    .blob-bg {
+      position: absolute;
+      z-index: -1;
+      opacity: .6;
+      transition: var(--theme-transition);
+    }
 
-  .glass-panel {
-    background: rgba(255,255,255,.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,.4);
-  }
+    @keyframes float {
+      0%   { transform: translate(0,0) rotate(0deg) scale(1); }
+      33%  { transform: translate(30px,-50px) rotate(10deg) scale(1.05); }
+      66%  { transform: translate(-20px,20px) rotate(-5deg) scale(.95); }
+      100% { transform: translate(0,0) rotate(0deg) scale(1); }
+    }
 
-  .transition-all-smooth { transition: all .4s cubic-bezier(.25,1,.5,1); }
+    @keyframes drift {
+      0% { transform: translate3d(0,0,0); }
+      50% { transform: translate3d(10px,-16px,0); }
+      100% { transform: translate3d(0,0,0); }
+    }
 
-  .reveal-up { opacity:0; transform:translateY(40px); transition: opacity .8s ease, transform .8s cubic-bezier(.25,1,.5,1); }
-  .reveal-up.active { opacity:1; transform:translateY(0); }
+    @keyframes pulseSoft {
+      0%, 100% { opacity: .55; transform: scale(1); }
+      50% { opacity: .9; transform: scale(1.06); }
+    }
 
-  /* Variant selector ring */
-  .variant-btn { position:relative; }
-  .variant-btn::after {
-    content:''; position:absolute; inset:-4px; border-radius:50%;
-    border:1px solid transparent; transition: all .3s ease;
-  }
-  .variant-btn.active::after { border-color: var(--text-color); transform: scale(1.1); }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-  /* Product photo card: swaps image, fades on change */
-  .product-photo-card {
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 10px 20px 40px rgba(0,0,0,.15);
-    aspect-ratio: 3/4;
-    max-width: 500px;
-    background: var(--surface-color);
-    transition: var(--theme-transition);
-  }
-  .product-photo-card img {
-    width: 100%; height: 100%; object-fit: cover; display:block;
-    transition: opacity .35s ease;
-  }
-  .product-photo-card img.fading { opacity: 0; }
-</style>
+    .animate-float-slow { animation: float 20s ease-in-out infinite; }
+    .animate-float-medium { animation: float 15s ease-in-out infinite reverse; }
+    .animate-drift { animation: drift 10s ease-in-out infinite; }
+    .animate-pulse-soft { animation: pulseSoft 8s ease-in-out infinite; }
+    .animate-spin-slow { animation: spinSlow 26s linear infinite; }
+
+    .squiggly-line {
+      width: 100px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 10C15 10 15 2 25 2C35 2 35 18 45 18C55 18 55 2 65 2C75 2 75 18 85 18C95 18 95 10 99 10' stroke='%2333312e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .pattern-dots {
+      background-image: radial-gradient(var(--primary-light) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+      opacity: .3;
+    }
+
+    .glass-panel {
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.4);
+    }
+
+    .transition-all-smooth {
+      transition: all .4s cubic-bezier(.25,1,.5,1);
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.25,1,.5,1);
+    }
+
+    .reveal-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .variant-btn { position: relative; }
+
+    .variant-btn::after {
+      content:'';
+      position:absolute;
+      inset:-4px;
+      border-radius:50%;
+      border:1px solid transparent;
+      transition: all .3s ease;
+    }
+
+    .variant-btn.active::after {
+      border-color: var(--text-color);
+      transform: scale(1.1);
+    }
+
+    .product-photo-card {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 10px 20px 40px rgba(0,0,0,.15);
+      aspect-ratio: 3/4;
+      max-width: 500px;
+      background: var(--surface-color);
+      transition: var(--theme-transition);
+    }
+
+    .product-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      transition: opacity .35s ease;
+    }
+
+    .product-photo-card img.fading { opacity: 0; }
+
+    .video-stage {
+      position: relative;
+      border-radius: 32px;
+      padding: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,255,255,.38));
+      border: 1px solid rgba(255,255,255,.6);
+      box-shadow: 0 30px 70px -28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .video-stage__frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      min-height: 520px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.35), transparent 35%),
+        linear-gradient(135deg, rgba(99,118,141,.18), rgba(201,164,145,.18)),
+        #1f1c1a;
+      isolation: isolate;
+    }
+
+    .video-stage__media {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      display: block;
+      background: #1f1c1a;
+    }
+
+    .video-stage__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,18,17,.68) 0%, rgba(20,18,17,.18) 38%, rgba(20,18,17,.02) 68%);
+      display: flex;
+      align-items: end;
+      padding: 1.25rem;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+
+    .video-stage.playing .video-stage__overlay,
+    .video-stage.playing .video-play-button {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .video-stage__meta {
+      max-width: 26rem;
+      border-radius: 24px;
+      padding: 1rem 1rem 1.1rem;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.5);
+    }
+
+    .video-stage__hud {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: .75rem;
+      pointer-events: none;
+    }
+
+    .video-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .6rem .85rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-color);
+      box-shadow: 0 10px 30px -20px rgba(0,0,0,.25);
+    }
+
+    .video-play-button {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      width: 92px;
+      height: 92px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.6);
+      background: rgba(255,255,255,.2);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px -22px rgba(0,0,0,.45);
+      transition: transform .35s cubic-bezier(.25,1,.5,1), opacity .3s ease, background-color .3s ease;
+    }
+
+    .video-play-button:hover {
+      transform: translate(-50%, -50%) scale(1.06);
+      background: rgba(255,255,255,.28);
+    }
+
+    .video-stage__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem .3rem .2rem;
+    }
+
+    .video-mini-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(255,255,255,.6);
+      box-shadow: 0 12px 30px -20px rgba(0,0,0,.28);
+      transition: transform .25s ease, background-color .25s ease;
+    }
+
+    .video-mini-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.9);
+    }
+
+    /* Hero upgrade */
+    .hero-section {
+      min-height: 96vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero-ambient {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .28;
+      background-image:
+        linear-gradient(rgba(99,118,141,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,118,141,.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 88%);
+      -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 88%);
+    }
+
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      opacity: .08;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 340px at var(--mx) var(--my), rgba(255,255,255,.55), transparent 58%),
+        radial-gradient(circle 480px at 15% 20%, color-mix(in srgb, var(--primary-light) 40%, transparent), transparent 62%),
+        radial-gradient(circle 420px at 82% 72%, color-mix(in srgb, var(--accent-color) 36%, transparent), transparent 64%);
+      opacity: .95;
+      transition: background .25s ease;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(28px);
+      opacity: .45;
+      transform: translate3d(calc(var(--tx) * .25), calc(var(--ty) * .25), 0);
+      transition: transform .2s ease-out, background-color .4s ease;
+    }
+
+    .hero-orb.one {
+      width: 30rem;
+      height: 30rem;
+      top: -6rem;
+      left: -5rem;
+      background: color-mix(in srgb, var(--primary-light) 78%, white 22%);
+      animation: float 22s ease-in-out infinite;
+    }
+
+    .hero-orb.two {
+      width: 24rem;
+      height: 24rem;
+      right: -4rem;
+      top: 10rem;
+      background: color-mix(in srgb, var(--accent-color) 74%, white 26%);
+      animation: float 18s ease-in-out infinite reverse;
+    }
+
+    .hero-orb.three {
+      width: 18rem;
+      height: 18rem;
+      left: 14%;
+      bottom: 7%;
+      background: color-mix(in srgb, var(--primary-color) 25%, white 75%);
+      animation: drift 14s ease-in-out infinite;
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px dashed rgba(99,118,141,.28);
+      opacity: .65;
+      transform: translate3d(calc(var(--tx) * -.12), calc(var(--ty) * -.12), 0);
+      transition: transform .22s ease-out;
+    }
+
+    .hero-ring.one {
+      width: 560px;
+      height: 560px;
+      top: 50%;
+      left: 50%;
+      margin-left: -280px;
+      margin-top: -280px;
+      animation: spinSlow 30s linear infinite;
+    }
+
+    .hero-ring.two {
+      width: 720px;
+      height: 720px;
+      top: 50%;
+      left: 50%;
+      margin-left: -360px;
+      margin-top: -360px;
+      border-style: solid;
+      border-color: rgba(201,164,145,.18);
+      animation: spinSlow 42s linear infinite reverse;
+    }
+
+    .hero-dots-cluster {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      opacity: .3;
+      background-image: radial-gradient(var(--primary-color) 1.2px, transparent 1.2px);
+      background-size: 14px 14px;
+      transform: translate3d(calc(var(--tx) * .18), calc(var(--ty) * .18), 0);
+      transition: transform .2s ease-out;
+    }
+
+    .hero-dots-cluster.one {
+      top: 12%;
+      right: 11%;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 82%);
+      -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 82%);
+    }
+
+    .hero-dots-cluster.two {
+      bottom: 10%;
+      left: 10%;
+      mask-image: radial-gradient(circle at center, black 36%, transparent 84%);
+      -webkit-mask-image: radial-gradient(circle at center, black 36%, transparent 84%);
+    }
+
+    .hero-shell {
+      position: relative;
+      max-width: 1180px;
+      width: 100%;
+      padding-inline: 1rem;
+      z-index: 1;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 40px;
+      padding: 1.25rem;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.62), rgba(255,255,255,.28));
+      border: 1px solid rgba(255,255,255,.52);
+      box-shadow:
+        0 30px 70px -28px rgba(0,0,0,.16),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.65), transparent 24%),
+        linear-gradient(135deg, rgba(99,118,141,.05), rgba(201,164,145,.06));
+      pointer-events: none;
+    }
+
+    .hero-content-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      padding: 1.25rem;
+    }
+
+    .hero-preview {
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate3d(calc(var(--tx) * .28), calc(var(--ty) * .28), 0);
+      transition: transform .22s ease-out;
+    }
+
+    .hero-preview-board {
+      position: relative;
+      width: min(100%, 520px);
+      aspect-ratio: 4 / 5;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.3)),
+        linear-gradient(135deg, rgba(99,118,141,.18), rgba(201,164,145,.12));
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 35px 80px -30px rgba(0,0,0,.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .hero-preview-board img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-float-card {
+      position: absolute;
+      border-radius: 24px;
+      padding: .9rem 1rem;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.58);
+      box-shadow: 0 20px 45px -24px rgba(0,0,0,.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      max-width: 220px;
+      transition: transform .22s ease-out;
+    }
+
+    .hero-float-card.one {
+      left: -12px;
+      top: 15%;
+      transform: translate3d(calc(var(--tx) * -.18), calc(var(--ty) * -.18), 0);
+    }
+
+    .hero-float-card.two {
+      right: -8px;
+      top: 9%;
+      transform: translate3d(calc(var(--tx) * .22), calc(var(--ty) * .22), 0);
+    }
+
+    .hero-float-card.three {
+      right: 2%;
+      bottom: 9%;
+      transform: translate3d(calc(var(--tx) * .16), calc(var(--ty) * .16), 0);
+    }
+
+    .hero-inline-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: .8rem;
+      margin-top: 2rem;
+    }
+
+    .hero-stat {
+      border-radius: 20px;
+      padding: 1rem;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.48);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .75rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.5);
+      box-shadow: 0 16px 40px -26px rgba(0,0,0,.15);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.2rem;
+    }
+
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      opacity: .6;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-preview {
+        min-height: auto;
+        margin-top: 1rem;
+      }
+
+      .hero-preview-board {
+        max-width: 460px;
+      }
+
+      .hero-ring.one { width: 460px; height: 460px; margin-left: -230px; margin-top: -230px; }
+      .hero-ring.two { width: 620px; height: 620px; margin-left: -310px; margin-top: -310px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: auto;
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+      }
+
+      .hero-card {
+        border-radius: 28px;
+        padding: .9rem;
+      }
+
+      .hero-copy {
+        padding: .6rem;
+      }
+
+      .hero-preview-board {
+        border-radius: 24px;
+      }
+
+      .hero-preview {
+        min-height: auto;
+      }
+
+      .hero-float-card {
+        max-width: 170px;
+        padding: .75rem .85rem;
+      }
+
+      .hero-float-card.one {
+        top: 11%;
+        left: -4px;
+      }
+
+      .hero-float-card.two {
+        right: -3px;
+        top: 7%;
+      }
+
+      .hero-float-card.three {
+        right: 0;
+        bottom: 4%;
+      }
+
+      .hero-inline-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .video-stage {
+        border-radius: 24px;
+        padding: 10px;
+      }
+
+      .video-stage__frame,
+      .video-stage__media {
+        min-height: 380px;
+        border-radius: 20px;
+      }
+
+      .video-play-button {
+        width: 74px;
+        height: 74px;
+      }
+
+      .video-stage__meta {
+        max-width: 100%;
+        padding: .9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body class="antialiased relative min-h-screen flex flex-col">
 
-<div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
-  <svg class="blob-bg animate-float-slow" style="top:-5%; left:-10%; width:400px; height:400px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <path fill="var(--primary-light)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.1,-46.3C90.4,-33.5,96.1,-18.1,96.4,-2.5C96.7,13.1,91.6,28.8,81.5,41.2C71.4,53.6,56.3,62.8,40.9,69.7C25.5,76.6,9.8,81.2,-5.3,79.5C-20.4,77.8,-34.8,69.8,-48.6,60.8C-62.4,51.8,-75.6,41.9,-83.4,28.7C-91.2,15.5,-93.6,-1.1,-89,-16.1C-84.4,-31.1,-72.8,-44.6,-59.1,-52.7C-45.4,-60.8,-29.6,-63.5,-15.1,-69.6C-0.6,-75.7,12.6,-85.2,26.7,-84.9C40.8,-84.6,55.9,-74.5,44.7,-76.4Z" transform="translate(100 100)" />
-  </svg>
-  <svg class="blob-bg animate-float-medium" style="bottom:-10%; right:-5%; width:500px; height:500px; opacity:.4;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <path fill="var(--accent-color)" d="M51.6,-66.1C64.9,-55.8,72.4,-38.2,76.6,-20.2C80.8,-2.2,81.7,16.2,74.5,31.7C67.3,47.2,52,59.8,35.2,67.6C18.4,75.4,0.1,78.4,-17,75.1C-34.1,71.8,-50,62.2,-61.8,48.4C-73.6,34.6,-81.3,16.6,-79.8,-.5C-78.3,-17.6,-67.6,-33.8,-54.3,-45C-41,-56.2,-25,-62.4,-8,-63.2C9,-64,28.1,-59.4,51.6,-66.1Z" transform="translate(100 100)" />
-  </svg>
-  <svg class="blob-bg" style="top:15%; right:10%; width:100px; height:100px; opacity:.8;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-dasharray="4 4" />
-    <circle cx="60" cy="40" r="25" fill="var(--primary-color)" opacity=".8" />
-  </svg>
-</div>
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+    <svg class="blob-bg animate-float-slow" style="top:-5%; left:-10%; width:400px; height:400px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="var(--primary-light)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.1,-46.3C90.4,-33.5,96.1,-18.1,96.4,-2.5C96.7,13.1,91.6,28.8,81.5,41.2C71.4,53.6,56.3,62.8,40.9,69.7C25.5,76.6,9.8,81.2,-5.3,79.5C-20.4,77.8,-34.8,69.8,-48.6,60.8C-62.4,51.8,-75.6,41.9,-83.4,28.7C-91.2,15.5,-93.6,-1.1,-89,-16.1C-84.4,-31.1,-72.8,-44.6,-59.1,-52.7C-45.4,-60.8,-29.6,-63.5,-15.1,-69.6C-0.6,-75.7,12.6,-85.2,26.7,-84.9C40.8,-84.6,55.9,-74.5,44.7,-76.4Z" transform="translate(100 100)" />
+    </svg>
 
-<header class="fixed top-0 w-full z-50" id="navbar">
-  <div class="glass-panel mx-auto max-w-6xl mt-4 rounded-full px-6 py-3 flex justify-between items-center shadow-sm transition-all-smooth">
-    <div class="flex items-center gap-2 cursor-pointer">
-      <span class="font-serif font-bold text-xl tracking-wider">Aesthetic</span>
-      <span class="font-script text-2xl -ml-1">Planner</span>
-    </div>
-    <nav class="hidden md:flex gap-8 font-sans text-sm tracking-wide font-medium">
-      <a href="#home" class="hover:text-[var(--primary-color)] transition-colors">Home</a>
-      <a href="#showcase" class="hover:text-[var(--primary-color)] transition-colors">Showcase</a>
-      <a href="#features" class="hover:text-[var(--primary-color)] transition-colors">Features</a>
-      <a href="about.html" class="hover:text-[var(--primary-color)] transition-colors">Philosophy</a>
-    </nav>
-    <a href="shopnow.html" class="bg-[var(--primary-color)] text-white px-6 py-2 rounded-full font-sans text-sm hover:opacity-90 hover:shadow-lg transition-all-smooth transform hover:-translate-y-0.5">
-      Shop Now
-    </a>
+    <svg class="blob-bg animate-float-medium" style="bottom:-10%; right:-5%; width:500px; height:500px; opacity:.4;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="var(--accent-color)" d="M51.6,-66.1C64.9,-55.8,72.4,-38.2,76.6,-20.2C80.8,-2.2,81.7,16.2,74.5,31.7C67.3,47.2,52,59.8,35.2,67.6C18.4,75.4,0.1,78.4,-17,75.1C-34.1,71.8,-50,62.2,-61.8,48.4C-73.6,34.6,-81.3,16.6,-79.8,-.5C-78.3,-17.6,-67.6,-33.8,-54.3,-45C-41,-56.2,-25,-62.4,-8,-63.2C9,-64,28.1,-59.4,51.6,-66.1Z" transform="translate(100 100)" />
+    </svg>
+
+    <svg class="blob-bg" style="top:15%; right:10%; width:100px; height:100px; opacity:.8;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-dasharray="4 4" />
+      <circle cx="60" cy="40" r="25" fill="var(--primary-color)" opacity=".8" />
+    </svg>
   </div>
-</header>
 
-<main class="flex-grow pt-32 pb-16">
-  <section id="home" class="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 relative z-10">
-    <div class="max-w-3xl mx-auto reveal-up">
-      <div class="flex justify-center items-center gap-4 mb-4">
-        <div class="h-[1px] w-12 bg-current opacity-30"></div>
-        <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--text-muted)]">Organize With Elegance</span>
-        <div class="h-[1px] w-12 bg-current opacity-30"></div>
+  <div class="md:hidden fixed top-3 left-0 w-full flex justify-center z-40 pointer-events-none">
+    <div class="glass-panel pointer-events-auto rounded-full px-5 py-2 flex items-center gap-1 shadow-sm transition-all-smooth top-mobile-logo">
+      <span class="font-serif font-bold text-lg tracking-wider">Aesthetic</span>
+      <span class="font-script text-xl -ml-1 text-[var(--primary-color)]">Planner</span>
+    </div>
+  </div>
+
+  <header class="fixed bottom-0 md:bottom-auto md:top-0 w-full z-50 pointer-events-none" id="navbar">
+    <div class="hidden md:flex pointer-events-auto glass-panel mx-auto max-w-6xl mt-4 rounded-full px-6 py-3 justify-between items-center shadow-sm transition-all-smooth desktop-nav">
+      <div class="flex items-center gap-2 cursor-pointer">
+        <span class="font-serif font-bold text-xl tracking-wider">Aesthetic</span>
+        <span class="font-script text-2xl -ml-1">Planner</span>
       </div>
 
-      <h1 class="font-serif text-6xl md:text-8xl font-bold leading-tight mb-2">
-        DAILY <span class="font-script font-normal text-[var(--primary-color)] text-7xl md:text-9xl -ml-4 align-middle">Planner</span>
-      </h1>
+      <nav class="flex gap-8 font-sans text-sm tracking-wide font-medium">
+        <a href="#home" class="hover:text-[var(--primary-color)] transition-colors">Home</a>
+        <a href="#showcase" class="hover:text-[var(--primary-color)] transition-colors">Showcase</a>
+        <a href="#features" class="hover:text-[var(--primary-color)] transition-colors">Features</a>
+        <a href="about.html" class="hover:text-[var(--primary-color)] transition-colors">Philosophy</a>
+      </nav>
 
-      <div class="flex justify-center my-6"><div class="squiggly-line"></div></div>
-
-      <p class="font-sans text-lg md:text-xl text-[var(--text-muted)] mb-10 max-w-xl mx-auto font-light leading-relaxed">
-        Designed to bring calm to your chaos. A premium living interface for your daily productivity and mindfulness journey.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#showcase" class="bg-[var(--text-color)] text-white px-8 py-4 rounded-full font-sans font-medium hover:opacity-90 transition-all-smooth shadow-premium hover:shadow-hover">
-          Explore Collection
-        </a>
-        <a href="#features" class="bg-transparent border border-[var(--text-color)] px-8 py-4 rounded-full font-sans font-medium hover:bg-white/50 transition-all-smooth">
-          View Details
-        </a>
-      </div>
+      <a href="shopnow.html" class="bg-[var(--primary-color)] text-white px-6 py-2 rounded-full font-sans text-sm hover:opacity-90 hover:shadow-lg transition-all-smooth transform hover:-translate-y-0.5">
+        Shop Now
+      </a>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce opacity-60">
-      <span class="text-xs uppercase tracking-widest mb-2 font-medium">Scroll</span>
-      <span class="material-symbols-outlined text-sm">arrow_downward</span>
+    <div class="md:hidden pointer-events-auto glass-panel w-full rounded-t-3xl px-6 py-2 pb-6 flex justify-between items-center shadow-[0_-10px_40px_rgba(0,0,0,0.05)] border-t border-[var(--border-color)] transition-all-smooth mobile-nav">
+      <a href="#home" class="flex flex-col items-center text-[var(--primary-color)] mt-2">
+        <span class="material-symbols-outlined text-[26px]">home</span>
+        <span class="text-[10px] font-medium mt-1">Home</span>
+      </a>
+      <a href="#showcase" class="flex flex-col items-center text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors mt-2">
+        <span class="material-symbols-outlined text-[26px]">view_carousel</span>
+        <span class="text-[10px] font-medium mt-1">Showcase</span>
+      </a>
+
+      <a href="shopnow.html" class="relative -top-6">
+        <div class="bg-[var(--primary-color)] text-white p-4 rounded-full shadow-lg hover:scale-105 transition-transform flex items-center justify-center border-4 border-[var(--bg-color)]">
+          <span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+        </div>
+      </a>
+
+      <a href="#features" class="flex flex-col items-center text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors mt-2">
+        <span class="material-symbols-outlined text-[26px]">star</span>
+        <span class="text-[10px] font-medium mt-1">Features</span>
+      </a>
+      <a href="about.html" class="flex flex-col items-center text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors mt-2">
+        <span class="material-symbols-outlined text-[26px]">spa</span>
+        <span class="text-[10px] font-medium mt-1">About</span>
+      </a>
     </div>
-  </section>
+  </header>
 
-  <section id="showcase" class="py-24 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="text-center mb-16 reveal-up">
-        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">The Collection</h2>
-        <p class="font-sans text-[var(--text-muted)] max-w-2xl mx-auto">Select a colorway to experience how it changes the mood of your workspace.</p>
+  <main class="flex-grow pt-20 md:pt-28 pb-8">
+    <section id="home" class="hero-section px-4 relative z-10">
+      <div class="hero-ambient" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-noise"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-orb one"></div>
+        <div class="hero-orb two"></div>
+        <div class="hero-orb three"></div>
+        <div class="hero-ring one"></div>
+        <div class="hero-ring two"></div>
+        <div class="hero-dots-cluster one"></div>
+        <div class="hero-dots-cluster two"></div>
       </div>
 
-      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      <div class="hero-shell">
+        <div class="hero-card reveal-up">
+          <div class="hero-content-grid">
+            <div class="hero-copy text-center lg:text-left">
+              <div class="flex justify-center lg:justify-start">
+                <div class="hero-badge mb-5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-[var(--primary-color)] animate-pulse-soft"></span>
+                  Organize With Elegance
+                </div>
+              </div>
 
-        <!-- Left: Interactive Variant Selector -->
-        <div class="w-full lg:w-1/3 flex flex-col items-center lg:items-start gap-8 reveal-up" style="transition-delay:100ms;">
-          <div class="bg-[var(--surface-color)] p-8 rounded-3xl shadow-premium w-full max-w-sm border border-[var(--border-color)] glass-panel relative overflow-hidden transition-all-smooth">
-            <div class="absolute -top-10 -right-10 w-32 h-32 bg-[var(--primary-light)] rounded-full opacity-20 blur-2xl"></div>
+              <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.98] mb-3">
+                DAILY
+                <span class="block lg:inline font-script font-normal text-[var(--primary-color)] text-6xl sm:text-7xl md:text-8xl lg:text-9xl lg:ml-2">
+                  Planner
+                </span>
+              </h1>
 
-            <h3 class="font-serif text-2xl font-semibold mb-6">Choose Your Vibe</h3>
+              <div class="flex justify-center lg:justify-start my-5">
+                <div class="squiggly-line"></div>
+              </div>
 
-            <div class="space-y-6" id="theme-selector">
-              <button type="button"
-                class="flex items-center gap-4 w-full text-left group"
-                data-theme="default"
-                data-image="media/img/image1.png"
-                aria-pressed="true">
-                <span class="variant-btn active w-8 h-8 rounded-full bg-[#63768d] shadow-inner transition-transform group-hover:scale-110 flex items-center justify-center">
-                  <span class="w-4 h-4 rounded-full bg-[#c9a491]"></span>
-                </span>
-                <span>
-                  <p class="font-medium group-hover:text-[var(--primary-color)] transition-colors">Nordic Blue</p>
-                  <p class="text-xs text-[var(--text-muted)]">Calm &amp; Focused (Default)</p>
-                </span>
-              </button>
+              <p class="font-sans text-base md:text-lg lg:text-xl text-[var(--text-muted)] max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                Designed to bring calm to your chaos. A premium living interface for daily productivity, quiet focus, and mindful routines — now wrapped in a more immersive, tactile hero experience.
+              </p>
 
-              <button type="button"
-                class="flex items-center gap-4 w-full text-left group"
-                data-theme="green"
-                data-image="media/img/image2.png"
-                aria-pressed="false">
-                <span class="variant-btn w-8 h-8 rounded-full bg-[#557256] shadow-inner transition-transform group-hover:scale-110 flex items-center justify-center">
-                  <span class="w-4 h-4 rounded-full bg-[#c48c71]"></span>
-                </span>
-                <span>
-                  <p class="font-medium group-hover:text-[var(--primary-color)] transition-colors">Botanical Sage</p>
-                  <p class="text-xs text-[var(--text-muted)]">Organic &amp; Grounding</p>
-                </span>
-              </button>
+              <div class="hero-cta-row lg:justify-start">
+                <a href="#showcase" class="bg-[var(--text-color)] text-white px-8 py-4 rounded-full font-sans font-medium hover:opacity-90 transition-all-smooth shadow-premium hover:shadow-hover">
+                  Explore Collection
+                </a>
+                <a href="#video-showcase" class="bg-transparent border border-[var(--text-color)] px-8 py-4 rounded-full font-sans font-medium hover:bg-white/50 transition-all-smooth">
+                  Watch Preview
+                </a>
+              </div>
 
-              <button type="button"
-                class="flex items-center gap-4 w-full text-left group"
-                data-theme="terracotta"
-                data-image="media/img/image3.png"
-                aria-pressed="false">
-                <span class="variant-btn w-8 h-8 rounded-full bg-[#a86e58] shadow-inner transition-transform group-hover:scale-110 flex items-center justify-center">
-                  <span class="w-4 h-4 rounded-full bg-[#576d75]"></span>
-                </span>
-                <span>
-                  <p class="font-medium group-hover:text-[var(--primary-color)] transition-colors">Warm Terracotta</p>
-                  <p class="text-xs text-[var(--text-muted)]">Earthy &amp; Energetic</p>
-                </span>
-              </button>
+              <div class="hero-inline-stats text-left">
+                <div class="hero-stat">
+                  <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Designed For</p>
+                  <p class="font-serif text-lg">Mindful Planning</p>
+                </div>
+                <div class="hero-stat">
+                  <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Paper Feel</p>
+                  <p class="font-serif text-lg">120gsm Smooth</p>
+                </div>
+                <div class="hero-stat">
+                  <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Layout Rhythm</p>
+                  <p class="font-serif text-lg">Structured Calm</p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="bg-[var(--primary-color)] text-white p-6 rounded-2xl shadow-premium w-full max-w-sm transition-colors">
-            <div class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-3xl opacity-80">auto_awesome</span>
-              <div>
-                <h4 class="font-serif font-semibold text-lg mb-1">Premium Quality</h4>
-                <p class="text-sm opacity-90 font-light leading-relaxed">Crafted with 120gsm textured paper. Minimal bleed, perfect for fountain pens.</p>
+            <div class="hero-preview">
+              <div class="hero-preview-board">
+                <img src="media/img/image1.png" alt="Preview planner premium aesthetic" loading="lazy">
+              </div>
+
+              <div class="hero-float-card one">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] mb-2">Morning Flow</p>
+                <p class="font-serif text-lg leading-tight">A softer start for focused work.</p>
+              </div>
+
+              <div class="hero-float-card two">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="material-symbols-outlined text-[18px] text-[var(--primary-color)]">auto_awesome</span>
+                  <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)]">Tactile Detail</p>
+                </div>
+                <p class="text-sm text-[var(--text-color)] leading-relaxed">Premium textures, elegant spacing, and calm visual hierarchy.</p>
+              </div>
+
+              <div class="hero-float-card three">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] mb-2">Daily Ritual</p>
+                <p class="font-serif text-lg leading-tight">Less noise, more intention.</p>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Right: Product photo, swaps with selected variant, card tints with theme -->
-        <div class="w-full lg:w-2/3 flex justify-center reveal-up" style="transition-delay:200ms;">
-          <div class="product-photo-card">
-            <img id="product-photo"
-                 src="media/img/image1.png"
-                 alt="Daily Planner - Nordic Blue colorway"
-                 loading="lazy">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="features" class="py-24 bg-[var(--surface-color)] relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="text-center mb-16 reveal-up">
-        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Thoughtful Design</h2>
-        <p class="font-sans text-[var(--text-muted)] max-w-2xl mx-auto">Every line, shape, and space is carefully considered to minimize cognitive load.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+      <div class="hero-scroll-cue animate-bounce">
+        <span class="text-xs uppercase tracking-widest font-medium">Scroll</span>
+        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+      </div>
+    </section>
 
-        <div class="md:col-span-2 bg-[var(--bg-color)] rounded-3xl p-8 flex flex-col justify-between overflow-hidden relative group reveal-up shadow-sm hover:shadow-md transition-shadow">
-          <div class="absolute right-0 top-0 w-64 h-64 bg-[var(--primary-light)] opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
-          <div class="z-10 relative">
-            <span class="material-symbols-outlined text-4xl text-[var(--primary-color)] mb-4">schedule</span>
-            <h3 class="font-serif text-2xl font-semibold mb-2">Time-Blocking Layout</h3>
-            <p class="font-sans text-[var(--text-muted)] max-w-md">Structured schedule columns from 06:00 AM to 10:00 PM, allowing for precise daily planning and time management.</p>
-          </div>
-          <div class="mt-4"><div class="h-1 w-full bg-white rounded-full overflow-hidden"><div class="h-full bg-[var(--primary-color)] w-3/4"></div></div></div>
+    <section id="showcase" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal-up">
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">The Collection</h2>
+          <p class="font-sans text-[var(--text-muted)] max-w-2xl mx-auto">Select a colorway to experience how it changes the mood of your workspace.</p>
         </div>
 
-        <div class="md:col-span-1 bg-[var(--bg-color)] rounded-3xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden group reveal-up shadow-sm hover:shadow-md transition-shadow" style="transition-delay:100ms;">
-          <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-            <span class="material-symbols-outlined text-3xl text-[var(--accent-color)]">self_improvement</span>
+        <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          <div class="w-full lg:w-1/3 flex flex-col items-center lg:items-start gap-8 reveal-up" style="transition-delay:100ms;">
+            <div class="bg-[var(--surface-color)] p-8 rounded-3xl shadow-premium w-full max-w-sm border border-[var(--border-color)] glass-panel relative overflow-hidden transition-all-smooth">
+              <div class="absolute -top-10 -right-10 w-32 h-32 bg-[var(--primary-light)] rounded-full opacity-20 blur-2xl"></div>
+
+              <h3 class="font-serif text-2xl font-semibold mb-6">Choose Your Vibe</h3>
+
+              <div class="space-y-6" id="theme-selector">
+                <button type="button" class="flex items-center gap-4 w-full text-left group" data-theme="default" data-image="media/img/image1.png" aria-pressed="true">
+                  <span class="variant-btn active w-8 h-8 rounded-full bg-[#63768d] shadow-inner transition-transform group-hover:scale-110 flex items-center justify-center">
+                    <span class="w-4 h-4 rounded-full bg-[#c9a491]"></span>
+                  </span>
+                  <span>
+                    <p class="font-medium group-hover:text-[var(--primary-color)] transition-colors">Nordic Blue</p>
+                    <p class="text-xs text-[var(--text-muted)]">Calm &amp; Focused (Default)</p>
+                  </span>
+                </button>
+
+                <button type="button" class="flex items-center gap-4 w-full text-left group" data-theme="green" data-image="media/img/image2.png" aria-pressed="false">
+                  <span class="variant-btn w-8 h-8 rounded-full bg-[#557256] shadow-inner transition-transform group-hover:scale-110 flex items-center justify-center">
+                    <span class="w-4 h-4 rounded-full bg-[#c48c71]"></span>
+                  </span>
+                  <span>
+                    <p class="font-medium group-hover:text-[var(--primary-color)] transition-colors">Botanical Sage</p>
+                    <p class="text-xs text-[var(--text-muted)]">Organic &amp; Grounding</p>
+                  </span>
+                </button>
+
+                <button type="button" class="flex items-center gap-4 w-full text-left group" data-theme="terracotta" data-image="media/img/image3.png" aria-pressed="false">
+                  <span class="variant-btn w-8 h-8 rounded-full bg-[#a86e58] shadow-inner transition-transform group-hover:scale-110 flex items-center justify-center">
+                    <span class="w-4 h-4 rounded-full bg-[#576d75]"></span>
+                  </span>
+                  <span>
+                    <p class="font-medium group-hover:text-[var(--primary-color)] transition-colors">Warm Terracotta</p>
+                    <p class="text-xs text-[var(--text-muted)]">Earthy &amp; Energetic</p>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-[var(--primary-color)] text-white p-6 rounded-2xl shadow-premium w-full max-w-sm transition-colors">
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-3xl opacity-80">auto_awesome</span>
+                <div>
+                  <h4 class="font-serif font-semibold text-lg mb-1">Premium Quality</h4>
+                  <p class="text-sm opacity-90 font-light leading-relaxed">Crafted with 120gsm textured paper. Minimal bleed, perfect for fountain pens.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 class="font-serif text-xl font-semibold mb-2">Daily Affirmation</h3>
-          <p class="font-sans text-sm text-[var(--text-muted)]">A dedicated space for daily gratitude and positive reinforcement.</p>
+
+          <div class="w-full lg:w-2/3 flex justify-center reveal-up" style="transition-delay:200ms;">
+            <div class="product-photo-card">
+              <img id="product-photo" src="media/img/image1.png" alt="Daily Planner - Nordic Blue colorway" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-24 bg-[var(--surface-color)] relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal-up">
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Thoughtful Design</h2>
+          <p class="font-sans text-[var(--text-muted)] max-w-2xl mx-auto">Every line, shape, and space is carefully considered to minimize cognitive load.</p>
         </div>
 
-        <div class="md:col-span-1 bg-[var(--primary-color)] text-white rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group reveal-up shadow-sm hover:shadow-md transition-shadow" style="transition-delay:200ms;">
-          <div class="absolute inset-0 pattern-dots opacity-20"></div>
-          <div class="z-10 relative">
-            <h3 class="font-serif text-xl font-semibold mb-2">Undated Format</h3>
-            <p class="font-sans text-sm text-white/80">Start anytime. No wasted pages if you miss a day. Complete freedom.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+          <div class="md:col-span-2 bg-[var(--bg-color)] rounded-3xl p-8 flex flex-col justify-between overflow-hidden relative group reveal-up shadow-sm hover:shadow-md transition-shadow">
+            <div class="absolute right-0 top-0 w-64 h-64 bg-[var(--primary-light)] opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+            <div class="z-10 relative">
+              <span class="material-symbols-outlined text-4xl text-[var(--primary-color)] mb-4">schedule</span>
+              <h3 class="font-serif text-2xl font-semibold mb-2">Time-Blocking Layout</h3>
+              <p class="font-sans text-[var(--text-muted)] max-w-md">Structured schedule columns from 06:00 AM to 10:00 PM, allowing for precise daily planning and time management.</p>
+            </div>
+            <div class="mt-4"><div class="h-1 w-full bg-white rounded-full overflow-hidden"><div class="h-full bg-[var(--primary-color)] w-3/4"></div></div></div>
           </div>
-          <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/10 rounded-full shape-arch-inverted"></div>
-        </div>
 
-        <div class="md:col-span-2 bg-[var(--bg-color)] rounded-3xl p-8 flex items-center justify-between overflow-hidden relative group reveal-up shadow-sm hover:shadow-md transition-shadow" style="transition-delay:300ms;">
-          <div class="z-10 relative max-w-sm">
-            <span class="material-symbols-outlined text-4xl text-[var(--accent-color)] mb-4">checklist</span>
-            <h3 class="font-serif text-2xl font-semibold mb-2">Prioritized To-Do</h3>
-            <p class="font-sans text-[var(--text-muted)]">Separate sections for top priorities and general tasks to help you focus on what truly matters.</p>
+          <div class="md:col-span-1 bg-[var(--bg-color)] rounded-3xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden group reveal-up shadow-sm hover:shadow-md transition-shadow" style="transition-delay:100ms;">
+            <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-3xl text-[var(--accent-color)]">self_improvement</span>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-2">Daily Affirmation</h3>
+            <p class="font-sans text-sm text-[var(--text-muted)]">A dedicated space for daily gratitude and positive reinforcement.</p>
           </div>
-          <div class="hidden sm:flex flex-col gap-3 opacity-50 rotate-3 group-hover:rotate-0 transition-transform duration-500">
-            <div class="flex items-center gap-2"><div class="w-5 h-5 rounded bg-white border border-[var(--border-color)] flex items-center justify-center"><span class="material-symbols-outlined text-[14px] text-[var(--primary-color)]">check</span></div><div class="w-24 h-2 bg-[var(--border-color)] rounded"></div></div>
-            <div class="flex items-center gap-2"><div class="w-5 h-5 rounded bg-white border border-[var(--border-color)]"></div><div class="w-32 h-2 bg-[var(--border-color)] rounded"></div></div>
-            <div class="flex items-center gap-2"><div class="w-5 h-5 rounded bg-white border border-[var(--border-color)]"></div><div class="w-20 h-2 bg-[var(--border-color)] rounded"></div></div>
+
+          <div class="md:col-span-1 bg-[var(--primary-color)] text-white rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group reveal-up shadow-sm hover:shadow-md transition-shadow" style="transition-delay:200ms;">
+            <div class="absolute inset-0 pattern-dots opacity-20"></div>
+            <div class="z-10 relative">
+              <h3 class="font-serif text-xl font-semibold mb-2">Undated Format</h3>
+              <p class="font-sans text-sm text-white/80">Start anytime. No wasted pages if you miss a day. Complete freedom.</p>
+            </div>
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-white/10 rounded-full shape-arch-inverted"></div>
+          </div>
+
+          <div class="md:col-span-2 bg-[var(--bg-color)] rounded-3xl p-8 flex items-center justify-between overflow-hidden relative group reveal-up shadow-sm hover:shadow-md transition-shadow" style="transition-delay:300ms;">
+            <div class="z-10 relative max-w-sm">
+              <span class="material-symbols-outlined text-4xl text-[var(--accent-color)] mb-4">checklist</span>
+              <h3 class="font-serif text-2xl font-semibold mb-2">Prioritized To-Do</h3>
+              <p class="font-sans text-[var(--text-muted)]">Separate sections for top priorities and general tasks to help you focus on what truly matters.</p>
+            </div>
+            <div class="hidden sm:flex flex-col gap-3 opacity-50 rotate-3 group-hover:rotate-0 transition-transform duration-500">
+              <div class="flex items-center gap-2"><div class="w-5 h-5 rounded bg-white border border-[var(--border-color)] flex items-center justify-center"><span class="material-symbols-outlined text-[14px] text-[var(--primary-color)]">check</span></div><div class="w-24 h-2 bg-[var(--border-color)] rounded"></div></div>
+              <div class="flex items-center gap-2"><div class="w-5 h-5 rounded bg-white border border-[var(--border-color)]"></div><div class="w-32 h-2 bg-[var(--border-color)] rounded"></div></div>
+              <div class="flex items-center gap-2"><div class="w-5 h-5 rounded bg-white border border-[var(--border-color)]"></div><div class="w-20 h-2 bg-[var(--border-color)] rounded"></div></div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
+    <section id="video-showcase" class="py-24 md:py-32 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute left-[8%] top-10 w-40 h-40 rounded-full blur-3xl opacity-20" style="background: var(--primary-light);"></div>
+        <div class="absolute right-[6%] bottom-8 w-56 h-56 rounded-full blur-3xl opacity-20" style="background: var(--accent-color);"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+          <div class="reveal-up">
+            <div class="inline-flex items-center gap-3 glass-panel rounded-full px-4 py-2 mb-6 shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-[var(--primary-color)] animate-pulse"></span>
+              <span class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--text-muted)]">Planner in Motion</span>
+            </div>
+
+            <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight font-bold mb-5">
+              See how each page
+              <span class="font-script font-normal text-[var(--primary-color)] text-5xl md:text-6xl lg:text-7xl ml-1">flows</span>
+            </h2>
+
+            <p class="font-sans text-[15px] md:text-lg text-[var(--text-muted)] leading-relaxed max-w-xl mb-8">
+              A calming walkthrough of the planner experience — from structured time blocks to mindful reflection space, wrapped in a tactile premium finish.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-3 mb-8">
+              <div class="glass-panel rounded-2xl px-4 py-4 shadow-sm">
+                <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Layout</p>
+                <p class="font-serif text-lg">Time Blocked</p>
+              </div>
+              <div class="glass-panel rounded-2xl px-4 py-4 shadow-sm">
+                <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Paper Feel</p>
+                <p class="font-serif text-lg">120gsm Smooth</p>
+              </div>
+              <div class="glass-panel rounded-2xl px-4 py-4 shadow-sm">
+                <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Designed For</p>
+                <p class="font-serif text-lg">Daily Rituals</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="video-open-btn" type="button" class="bg-[var(--text-color)] text-white px-7 py-3.5 rounded-full font-sans font-medium hover:opacity-90 transition-all-smooth shadow-premium hover:shadow-hover flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">play_arrow</span>
+                Watch Preview
+              </button>
+
+              <a href="shopnow.html" class="border border-[var(--border-color)] bg-white/40 px-7 py-3.5 rounded-full font-sans font-medium hover:bg-white/70 transition-all-smooth flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                View Collection
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal-up" style="transition-delay:140ms;">
+            <div class="video-stage shadow-hover">
+              <div class="video-stage__frame">
+                <div class="video-stage__hud">
+                  <div class="video-chip">
+                    <span class="material-symbols-outlined text-[15px]">movie</span>
+                    <span>Studio Preview</span>
+                  </div>
+                  <div class="video-chip">
+                    <span class="material-symbols-outlined text-[15px]">schedule</span>
+                    <span>01:28</span>
+                  </div>
+                </div>
+
+                <button id="video-inline-toggle" class="video-play-button" type="button" aria-label="Play planner preview video">
+                  <span class="material-symbols-outlined text-[34px]">play_arrow</span>
+                </button>
+
+                <video id="planner-video" class="video-stage__media" poster="media/img/image3.png" preload="metadata" playsinline controls>
+                  <source src="media/video/planner-preview.mp4" type="video/mp4">
+                  Browser Anda tidak mendukung video HTML5.
+                </video>
+
+                <div class="video-stage__overlay">
+                  <div class="video-stage__meta glass-panel">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] mb-2">Inside the planner</p>
+                    <h3 class="font-serif text-xl md:text-2xl mb-2">A more tactile way to plan your day</h3>
+                    <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                      Explore the cover texture, writing space, and calming layout rhythm in one cinematic preview.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="video-stage__footer">
+                <div>
+                  <p class="text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)] mb-1">Featured Preview</p>
+                  <p class="font-medium">Daily Planner Product Experience</p>
+                </div>
+
+                <button id="video-mute-btn" type="button" class="video-mini-btn" aria-label="Toggle sound">
+                  <span class="material-symbols-outlined text-[18px]">volume_up</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 md:py-32 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-[var(--primary-light)] opacity-10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 relative z-10">
+        <div class="glass-panel rounded-[2rem] md:rounded-[2.5rem] px-6 md:px-12 py-10 md:py-16 text-center shadow-premium border border-white/50 reveal-up">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--text-muted)] mb-6">
+            <span class="material-symbols-outlined text-base text-[var(--primary-color)]">auto_awesome</span>
+            A Daily Ritual Worth Keeping
+          </div>
+
+          <h2 class="font-serif text-4xl md:text-6xl font-bold leading-tight mb-5">
+            Create a calmer rhythm
+            <span class="font-script font-normal text-[var(--primary-color)] ml-1 text-5xl md:text-7xl">every day</span>
+          </h2>
+
+          <p class="font-sans text-[var(--text-muted)] text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+            More than a planner, this is a tactile space for focus, intention, and quiet clarity — designed to make your days feel beautifully structured.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+            <div class="glass-panel rounded-full px-4 py-2 text-xs font-medium text-[var(--text-color)]">Undated Format</div>
+            <div class="glass-panel rounded-full px-4 py-2 text-xs font-medium text-[var(--text-color)]">120gsm Premium Paper</div>
+            <div class="glass-panel rounded-full px-4 py-2 text-xs font-medium text-[var(--text-color)]">Ships Across Indonesia</div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="shopnow.html" class="bg-[var(--primary-color)] text-white px-8 py-4 rounded-full font-sans font-medium hover:opacity-90 hover:shadow-hover transition-all-smooth transform hover:-translate-y-1">
+              Shop The Collection
+            </a>
+            <a href="#video-showcase" class="border border-[var(--text-color)] px-8 py-4 rounded-full font-sans font-medium hover:bg-white/50 transition-all-smooth">
+              Watch Product Preview
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[var(--surface-color)] border-t border-[var(--border-color)] pt-8 pb-28 md:pb-8">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-serif font-bold text-lg">Aesthetic</span>
+        <span class="font-script text-xl -ml-1">Planner</span>
+      </div>
+      <p class="text-xs font-sans text-[var(--text-muted)]">© 2026 Premium Organizer. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors">
+          <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+        </a>
+        <a href="#" class="text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors">
+          <span class="material-symbols-outlined text-[20px]">alternate_email</span>
+        </a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section class="py-24 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-[var(--primary-light)] opacity-10 rounded-full blur-3xl z-[-1]"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const THEME_CLASS_MAP = { green: 'theme-green', terracotta: 'theme-terracotta' };
+      const selectorButtons = document.querySelectorAll('#theme-selector button');
+      const productPhoto = document.getElementById('product-photo');
 
-    <div class="max-w-4xl mx-auto text-center px-4 reveal-up">
-      <span class="material-symbols-outlined text-5xl text-[var(--accent-color)] mb-6">local_florist</span>
-      <h2 class="font-serif text-4xl md:text-6xl font-bold mb-6">Ready to organize your life beautifully?</h2>
-      <p class="font-sans text-[var(--text-muted)] mb-10 text-lg">Join thousands of others who have found balance through our aesthetic planners.</p>
-      <button class="bg-[var(--primary-color)] text-white px-10 py-5 rounded-full font-sans font-medium text-lg hover:opacity-90 hover:shadow-hover transition-all-smooth transform hover:-translate-y-1">
-        Get Your Planner Today
-      </button>
-    </div>
-  </section>
-</main>
+      const plannerVideo = document.getElementById('planner-video');
+      const videoStage = document.querySelector('.video-stage');
+      const videoInlineToggle = document.getElementById('video-inline-toggle');
+      const videoOpenBtn = document.getElementById('video-open-btn');
+      const videoMuteBtn = document.getElementById('video-mute-btn');
 
-<footer class="bg-[var(--surface-color)] border-t border-[var(--border-color)] py-8">
-  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-    <div class="flex items-center gap-2">
-      <span class="font-serif font-bold text-lg">Aesthetic</span>
-      <span class="font-script text-xl -ml-1">Planner</span>
-    </div>
-    <p class="text-xs font-sans text-[var(--text-muted)]">© 2026 Premium Organizer. All rights reserved.</p>
-    <div class="flex gap-4">
-      <a href="#" class="text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors"><span class="material-symbols-outlined text-[20px]">photo_camera</span></a>
-      <a href="#" class="text-[var(--text-muted)] hover:text-[var(--primary-color)] transition-colors"><span class="material-symbols-outlined text-[20px]">alternate_email</span></a>
-    </div>
-  </div>
-</footer>
+      const hero = document.getElementById('home');
+      const root = document.documentElement;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
+      function applyTheme(theme) {
+        document.body.classList.remove(...Object.values(THEME_CLASS_MAP));
+        if (THEME_CLASS_MAP[theme]) document.body.classList.add(THEME_CLASS_MAP[theme]);
+      }
 
-  const THEME_CLASS_MAP = { green: 'theme-green', terracotta: 'theme-terracotta' };
+      function swapPhoto(newSrc, label) {
+        if (!newSrc || !productPhoto) return;
+        const currentPath = productPhoto.getAttribute('src');
+        if (currentPath === newSrc) return;
 
-  const selectorButtons = document.querySelectorAll('#theme-selector button');
-  const productPhoto = document.getElementById('product-photo');
+        productPhoto.classList.add('fading');
+        setTimeout(() => {
+          productPhoto.src = newSrc;
+          productPhoto.alt = `Daily Planner - ${label} colorway`;
+          productPhoto.classList.remove('fading');
+        }, 200);
+      }
 
-  function applyTheme(theme) {
-    document.body.classList.remove(...Object.values(THEME_CLASS_MAP));
-    if (THEME_CLASS_MAP[theme]) document.body.classList.add(THEME_CLASS_MAP[theme]);
-  }
+      selectorButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectorButtons.forEach(b => {
+            b.querySelector('.variant-btn').classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
 
-  function swapPhoto(newSrc, label) {
-    if (!newSrc || productPhoto.src === newSrc) return;
-    productPhoto.classList.add('fading');
-    setTimeout(() => {
-      productPhoto.src = newSrc;
-      productPhoto.alt = `Daily Planner - ${label} colorway`;
-      productPhoto.classList.remove('fading');
-    }, 200);
-  }
+          btn.querySelector('.variant-btn').classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
 
-  selectorButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectorButtons.forEach(b => {
-        b.querySelector('.variant-btn').classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
+          applyTheme(btn.dataset.theme);
+          swapPhoto(btn.dataset.image, btn.querySelector('p')?.textContent || btn.dataset.theme);
+        });
       });
-      btn.querySelector('.variant-btn').classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
 
-      applyTheme(btn.dataset.theme);
-      swapPhoto(btn.dataset.image, btn.querySelector('p')?.textContent || btn.dataset.theme);
-    });
-  });
+      const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-  const revealOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
+      document.querySelectorAll('.reveal-up').forEach(el => revealOnScroll.observe(el));
+
+      const topMobileLogo = document.querySelector('.top-mobile-logo');
+      const desktopNav = document.querySelector('.desktop-nav');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY > 50;
+        const bgScrolled = 'rgba(255,255,255,.9)';
+        const bgNormal = 'rgba(255,255,255,.7)';
+
+        if (desktopNav) {
+          desktopNav.classList.toggle('shadow-md', scrolled);
+          desktopNav.style.backgroundColor = scrolled ? bgScrolled : bgNormal;
+        }
+
+        if (topMobileLogo) {
+          topMobileLogo.classList.toggle('shadow-md', scrolled);
+          topMobileLogo.style.backgroundColor = scrolled ? bgScrolled : bgNormal;
+        }
+
+        if (mobileNav) {
+          mobileNav.style.backgroundColor = scrolled ? bgScrolled : bgNormal;
+        }
+      });
+
+      function playPlannerVideo() {
+        if (!plannerVideo) return;
+        plannerVideo.play();
+        if (videoStage) videoStage.classList.add('playing');
+      }
+
+      function pausePlannerVideo() {
+        if (!plannerVideo) return;
+        plannerVideo.pause();
+        if (videoStage) videoStage.classList.remove('playing');
+      }
+
+      if (videoInlineToggle) {
+        videoInlineToggle.addEventListener('click', playPlannerVideo);
+      }
+
+      if (videoOpenBtn) {
+        videoOpenBtn.addEventListener('click', () => {
+          const videoSection = document.getElementById('video-showcase');
+          if (videoSection) {
+            videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          setTimeout(playPlannerVideo, 450);
+        });
+      }
+
+      if (plannerVideo) {
+        plannerVideo.muted = true;
+
+        plannerVideo.addEventListener('play', () => {
+          if (videoStage) videoStage.classList.add('playing');
+        });
+
+        plannerVideo.addEventListener('pause', () => {
+          if (videoStage) videoStage.classList.remove('playing');
+        });
+
+        plannerVideo.addEventListener('ended', () => {
+          if (videoStage) videoStage.classList.remove('playing');
+        });
+      }
+
+      if (videoMuteBtn && plannerVideo) {
+        videoMuteBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">volume_off</span>';
+
+        videoMuteBtn.addEventListener('click', () => {
+          plannerVideo.muted = !plannerVideo.muted;
+          videoMuteBtn.innerHTML = plannerVideo.muted
+            ? '<span class="material-symbols-outlined text-[18px]">volume_off</span>'
+            : '<span class="material-symbols-outlined text-[18px]">volume_up</span>';
+        });
+      }
+
+      if (hero && !prefersReducedMotion) {
+        hero.addEventListener('pointermove', (e) => {
+          const rect = hero.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+          const tx = ((e.clientX - rect.left) / rect.width - 0.5) * 24;
+          const ty = ((e.clientY - rect.top) / rect.height - 0.5) * 24;
+
+          root.style.setProperty('--mx', `${x}%`);
+          root.style.setProperty('--my', `${y}%`);
+          root.style.setProperty('--tx', `${tx}px`);
+          root.style.setProperty('--ty', `${ty}px`);
+        });
+
+        hero.addEventListener('pointerleave', () => {
+          root.style.setProperty('--mx', '50%');
+          root.style.setProperty('--my', '50%');
+          root.style.setProperty('--tx', '0px');
+          root.style.setProperty('--ty', '0px');
+        });
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal-up').forEach(el => revealOnScroll.observe(el));
-
-  const navInner = document.querySelector('#navbar > div');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY > 50;
-    navInner.classList.toggle('shadow-md', scrolled);
-    navInner.style.backgroundColor = scrolled ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.7)';
-  });
-
-});
-</script>
+  </script>
 </body>
 </html>

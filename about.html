@@ -1,15 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aesthetic Planner">
+    <meta property="og:title" content="Daily Planner - Premium Organizer">
+    <meta property="og:description"
+        content="Planner premium untuk membantu hidup lebih teratur, estetik, dan mindful setiap hari.">
+    <meta property="og:url" content="https://mustdhiya.space/">
+    <meta property="og:image" content="https://mustdhiya.space/media/img/image3.png">
+    <meta property="og:image:secure_url" content="https://mustdhiya.space/media/img/image3.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Preview Daily Planner Aesthetic Planner">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daily Planner - Premium Organizer">
+    <meta name="twitter:description"
+        content="Planner premium untuk membantu hidup lebih teratur, estetik, dan mindful setiap hari.">
+    <meta name="twitter:image" content="https://mustdhiya.space/media/img/image3.png">
     <title>About Us - Aesthetic Planner</title>
 
     <!-- Fonts: Playfair Display (Heading), WindSong (Accent), Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=WindSong:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -117,14 +135,30 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
-            33% { transform: translate(30px, -50px) rotate(10deg) scale(1.05); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg) scale(0.95); }
-            100% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
+            0% {
+                transform: translate(0px, 0px) rotate(0deg) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) rotate(10deg) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(-5deg) scale(0.95);
+            }
+
+            100% {
+                transform: translate(0px, 0px) rotate(0deg) scale(1);
+            }
         }
 
-        .animate-float-slow { animation: float 20s ease-in-out infinite; }
-        .animate-float-medium { animation: float 15s ease-in-out infinite reverse; }
+        .animate-float-slow {
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+            animation: float 15s ease-in-out infinite reverse;
+        }
 
         .squiggly-line {
             width: 100px;
@@ -175,7 +209,9 @@
         }
 
         @media (max-width: 768px) {
-            .timeline-line::before { left: 20px; }
+            .timeline-line::before {
+                left: 20px;
+            }
         }
 
         /* --- New: Profile Card interactive hover/press states --- */
@@ -183,71 +219,107 @@
             cursor: pointer;
             transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease, border-color 0.4s ease;
         }
+
         .profile-card:hover,
         .profile-card:focus-visible {
             transform: translateY(-8px) scale(1.015);
             border-color: var(--primary-color);
         }
-        .profile-card:active { transform: translateY(-3px) scale(1.005); }
-        .profile-card:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 4px; }
+
+        .profile-card:active {
+            transform: translateY(-3px) scale(1.005);
+        }
+
+        .profile-card:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 4px;
+        }
 
         .profile-avatar-ring {
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .profile-card:hover .profile-avatar-ring { transform: scale(1.08) rotate(3deg); }
+
+        .profile-card:hover .profile-avatar-ring {
+            transform: scale(1.08) rotate(3deg);
+        }
 
         .profile-cta {
             opacity: 0.7;
             transform: translateX(-4px);
             transition: opacity 0.35s ease, transform 0.35s ease;
         }
-        .profile-card:hover .profile-cta { opacity: 1; transform: translateX(0); }
+
+        .profile-card:hover .profile-cta {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
         /* --- New: Modal structural hooks (no visual behavior/logic yet) --- */
         #profile-modal {
-            display: none; /* toggled by future JS via [data-state] or class */
+            display: none;
+            /* toggled by future JS via [data-state] or class */
         }
+
         #profile-modal[data-state="open"] {
             display: flex;
         }
 
         /* --- Profile Modal --- */
-        #profile-modal.hidden { display: none; }
-        #profile-modal[data-state="open"] { display: flex; }
+        #profile-modal.hidden {
+            display: none;
+        }
+
+        #profile-modal[data-state="open"] {
+            display: flex;
+        }
 
         .modal-backdrop {
             opacity: 0;
             transition: opacity 0.35s ease;
         }
-        #profile-modal[data-state="open"] .modal-backdrop { opacity: 1; }
+
+        #profile-modal[data-state="open"] .modal-backdrop {
+            opacity: 1;
+        }
 
         .modal-panel {
             opacity: 0;
             transform: translateY(24px) scale(0.97);
             transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
+
         #profile-modal[data-state="open"] .modal-panel {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        body.modal-open { overflow: hidden; }
-
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
+
 <body class="antialiased relative min-h-screen flex flex-col">
 
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
-        <svg class="blob-bg animate-float-slow" style="top: -8%; left: -8%; width: 450px; height: 450px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="var(--primary-light)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.1,-46.3C90.4,-33.5,96.1,-18.1,96.4,-2.5C96.7,13.1,91.6,28.8,81.5,41.2C71.4,53.6,56.3,62.8,40.9,69.7C25.5,76.6,9.8,81.2,-5.3,79.5C-20.4,77.8,-34.8,69.8,-48.6,60.8C-62.4,51.8,-75.6,41.9,-83.4,28.7C-91.2,15.5,-93.6,-1.1,-89,-16.1C-84.4,-31.1,-72.8,-44.6,-59.1,-52.7C-45.4,-60.8,-29.6,-63.5,-15.1,-69.6C-0.6,-75.7,12.6,-85.2,26.7,-84.9C40.8,-84.6,55.9,-74.5,44.7,-76.4Z" transform="translate(100 100)" />
+        <svg class="blob-bg animate-float-slow" style="top: -8%; left: -8%; width: 450px; height: 450px;"
+            viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="var(--primary-light)"
+                d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.1,-46.3C90.4,-33.5,96.1,-18.1,96.4,-2.5C96.7,13.1,91.6,28.8,81.5,41.2C71.4,53.6,56.3,62.8,40.9,69.7C25.5,76.6,9.8,81.2,-5.3,79.5C-20.4,77.8,-34.8,69.8,-48.6,60.8C-62.4,51.8,-75.6,41.9,-83.4,28.7C-91.2,15.5,-93.6,-1.1,-89,-16.1C-84.4,-31.1,-72.8,-44.6,-59.1,-52.7C-45.4,-60.8,-29.6,-63.5,-15.1,-69.6C-0.6,-75.7,12.6,-85.2,26.7,-84.9C40.8,-84.6,55.9,-74.5,44.7,-76.4Z"
+                transform="translate(100 100)" />
         </svg>
-        <svg class="blob-bg animate-float-medium" style="bottom: -10%; right: -5%; width: 520px; height: 520px; opacity: 0.35;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="var(--accent-color)" d="M51.6,-66.1C64.9,-55.8,72.4,-38.2,76.6,-20.2C80.8,-2.2,81.7,16.2,74.5,31.7C67.3,47.2,52,59.8,35.2,67.6C18.4,75.4,0.1,78.4,-17,75.1C-34.1,71.8,-50,62.2,-61.8,48.4C-73.6,34.6,-81.3,16.6,-79.8,-0.5C-78.3,-17.6,-67.6,-33.8,-54.3,-45C-41,-56.2,-25,-62.4,-8,-63.2C9,-64,28.1,-59.4,51.6,-66.1Z" transform="translate(100 100)" />
+        <svg class="blob-bg animate-float-medium"
+            style="bottom: -10%; right: -5%; width: 520px; height: 520px; opacity: 0.35;" viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill="var(--accent-color)"
+                d="M51.6,-66.1C64.9,-55.8,72.4,-38.2,76.6,-20.2C80.8,-2.2,81.7,16.2,74.5,31.7C67.3,47.2,52,59.8,35.2,67.6C18.4,75.4,0.1,78.4,-17,75.1C-34.1,71.8,-50,62.2,-61.8,48.4C-73.6,34.6,-81.3,16.6,-79.8,-0.5C-78.3,-17.6,-67.6,-33.8,-54.3,-45C-41,-56.2,-25,-62.4,-8,-63.2C9,-64,28.1,-59.4,51.6,-66.1Z"
+                transform="translate(100 100)" />
         </svg>
     </div>
 
     <header class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
-        <div class="glass-panel mx-auto max-w-6xl mt-4 rounded-full px-6 py-3 flex justify-between items-center shadow-sm">
+        <div
+            class="glass-panel mx-auto max-w-6xl mt-4 rounded-full px-6 py-3 flex justify-between items-center shadow-sm">
             <a href="index.html" class="flex items-center gap-2 cursor-pointer">
                 <span class="font-serif font-bold text-xl tracking-wider text-brand-text">Aesthetic</span>
                 <span class="font-script text-2xl text-brand-text -ml-1">Planner</span>
@@ -257,11 +329,13 @@
                 <a href="index.html" class="hover:text-[var(--primary-color)] transition-colors">Home</a>
                 <a href="index.html#showcase" class="hover:text-[var(--primary-color)] transition-colors">Showcase</a>
                 <a href="index.html#features" class="hover:text-[var(--primary-color)] transition-colors">Features</a>
-                <a href="about.html" class="text-[var(--primary-color)] font-semibold border-b-2 border-[var(--primary-color)] pb-0.5">Philosophy</a>
+                <a href="about.html"
+                    class="text-[var(--primary-color)] font-semibold border-b-2 border-[var(--primary-color)] pb-0.5">Philosophy</a>
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="shopnow.html" class="bg-[var(--primary-color)] text-white px-6 py-2 rounded-full font-sans text-sm hover:bg-opacity-90 hover:shadow-lg transition-all-smooth transform hover:-translate-y-0.5">
+                <a href="shopnow.html"
+                    class="bg-[var(--primary-color)] text-white px-6 py-2 rounded-full font-sans text-sm hover:bg-opacity-90 hover:shadow-lg transition-all-smooth transform hover:-translate-y-0.5">
                     Shop Now
                 </a>
             </div>
@@ -273,44 +347,191 @@
             <div class="max-w-4xl mx-auto reveal-up">
                 <div class="flex justify-center items-center gap-4 mb-4">
                     <div class="h-[1px] w-12 bg-brand-text opacity-30"></div>
-                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--text-muted)]">Our Story & Essence</span>
+                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--text-muted)]">Our Story &
+                        Essence</span>
                     <div class="h-[1px] w-12 bg-brand-text opacity-30"></div>
                 </div>
 
                 <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-4 text-brand-text">
-                    Crafting <span class="font-script font-normal text-[var(--primary-color)] text-6xl md:text-8xl -ml-2 align-middle">Mindful</span> Days
+                    Crafting <span
+                        class="font-script font-normal text-[var(--primary-color)] text-6xl md:text-8xl -ml-2 align-middle">Mindful</span>
+                    Days
                 </h1>
 
                 <div class="flex justify-center my-4">
                     <div class="squiggly-line"></div>
                 </div>
 
-                <p class="font-sans text-lg md:text-xl text-[var(--text-muted)] max-w-2xl mx-auto font-light leading-relaxed mb-8">
-                    We believe planning shouldn't feel like a chore. It is an art form-a quiet ritual to align your inner intentions with daily action.
+                <p
+                    class="font-sans text-lg md:text-xl text-[var(--text-muted)] max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                    We believe planning shouldn't feel like a chore. It is an art form-a quiet ritual to align your
+                    inner intentions with daily action.
                 </p>
             </div>
         </section>
+        <section class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1.2fr] gap-10 lg:gap-14 items-center">
 
+                    <!-- Left: Personal Portrait Card -->
+                    <div class="reveal-up">
+                        <button type="button" id="developer-story-trigger"
+                            class="group w-full text-left bg-[var(--surface-color)]/85 backdrop-blur-md border border-[var(--border-color)] rounded-[2rem] p-6 sm:p-7 shadow-premium hover:shadow-hover transition-all-smooth profile-card"
+                            aria-haspopup="dialog" aria-controls="developer-story-modal" aria-expanded="false">
+
+                            <div
+                                class="relative overflow-hidden rounded-[1.6rem] bg-[var(--bg-color)] border border-white/70 p-6 sm:p-7">
+                                <div
+                                    class="absolute top-0 right-0 w-40 h-40 rounded-full bg-[var(--primary-light)]/20 blur-3xl pointer-events-none">
+                                </div>
+                                <div
+                                    class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-[var(--accent-color)]/15 blur-3xl pointer-events-none">
+                                </div>
+
+                                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center gap-5">
+                                    <div
+                                        class="profile-avatar-ring w-24 h-24 shrink-0 rounded-full bg-[var(--primary-color)] p-1.5 shadow-inner">
+                                        <div
+                                            class="w-full h-full rounded-full bg-[#E8E1D8] flex items-center justify-center font-serif text-2xl font-bold text-[var(--primary-color)]">
+                                            <img src="media/img/fit.png" alt="Muhammad Fauzan Nur Ilham S.Kom" 
+                                                class="w-full h-full rounded-full object-cover bg-white">
+                                        </div>
+                                    </div>
+
+                                    <div class="min-w-0">
+                                        <span
+                                            class="uppercase tracking-[0.24em] text-[11px] font-semibold text-[var(--accent-color)]">
+                                            Personal Note
+                                        </span>
+                                        <h3
+                                            class="font-serif text-2xl sm:text-3xl font-bold mt-2 text-[var(--text-color)] leading-tight">
+                                            Meet the Builder Behind
+                                            <span
+                                                class="font-script text-[var(--primary-color)] text-3xl sm:text-4xl ml-1">Aesthetic
+                                                Planner</span>
+                                        </h3>
+                                        <p
+                                            class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-3 max-w-lg">
+                                            A short introduction to the person who imagined a planner not just as a
+                                            product,
+                                            but as a calm system for real life.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="relative z-10 grid grid-cols-3 gap-3 mt-7">
+                                    <div class="bg-white/75 rounded-2xl py-4 px-3 border border-white/70 text-center">
+                                        <span
+                                            class="material-symbols-outlined text-2xl text-[var(--primary-color)]">code</span>
+                                        <p class="text-[11px] text-[var(--text-muted)] mt-2">Developer</p>
+                                    </div>
+                                    <div class="bg-white/75 rounded-2xl py-4 px-3 border border-white/70 text-center">
+                                        <span
+                                            class="material-symbols-outlined text-2xl text-[var(--accent-color)]">lightbulb</span>
+                                        <p class="text-[11px] text-[var(--text-muted)] mt-2">Product Thinker</p>
+                                    </div>
+                                    <div class="bg-white/75 rounded-2xl py-4 px-3 border border-white/70 text-center">
+                                        <span
+                                            class="material-symbols-outlined text-2xl text-[var(--primary-color)]">routine</span>
+                                        <p class="text-[11px] text-[var(--text-muted)] mt-2">Mindful Maker</p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="relative z-10 flex items-center justify-between mt-7 pt-5 border-t border-[var(--border-color)]">
+                                    <p class="text-xs text-[var(--text-muted)]">
+                                        Click to open full story
+                                    </p>
+                                    <span
+                                        class="profile-cta material-symbols-outlined text-2xl text-[var(--primary-color)]">arrow_forward</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Right: Story Intro -->
+                    <div class="reveal-up space-y-6" style="transition-delay: 100ms;">
+                        <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">
+                            The Personal Story
+                        </span>
+
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold leading-tight text-[var(--text-color)]">
+                            Built by someone who wanted structure without losing softness.
+                        </h2>
+
+                        <div
+                            class="space-y-4 text-[15px] font-sans text-[var(--text-muted)] leading-relaxed font-light">
+                            <p>
+                                Before this became a product concept, it began as a quiet frustration:
+                                why did most planning tools feel either too rigid, too noisy, or too cold to live with
+                                every day?
+                            </p>
+                            <p>
+                                The idea for Aesthetic Planner grew from a personal need to create something more human
+                                a tool that feels calm on the desk, clear in the mind, and practical in the rhythm of
+                                real work.
+                            </p>
+                            <p>
+                                What emerged was not just a planner, but an attempt to translate thoughtful system
+                                design
+                                into a tactile object people would actually want to return to each morning.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3">
+                            <div
+                                class="bg-[var(--surface-color)] border border-[var(--border-color)] rounded-3xl p-5 shadow-sm">
+                                <h4 class="font-serif text-lg font-semibold mb-2">Thoughtful</h4>
+                                <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                                    Designed from real habits, not generic productivity clichés.
+                                </p>
+                            </div>
+                            <div
+                                class="bg-[var(--surface-color)] border border-[var(--border-color)] rounded-3xl p-5 shadow-sm">
+                                <h4 class="font-serif text-lg font-semibold mb-2">Functional</h4>
+                                <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                                    Every layout decision aims to reduce friction and support focus.
+                                </p>
+                            </div>
+                            <div
+                                class="bg-[var(--surface-color)] border border-[var(--border-color)] rounded-3xl p-5 shadow-sm">
+                                <h4 class="font-serif text-lg font-semibold mb-2">Personal</h4>
+                                <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                                    Rooted in the journey of a builder who values calm, clarity, and craft.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
         <section class="py-16 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
                     <div class="reveal-up flex justify-center">
-                        <div class="relative w-full max-w-md aspect-[4/5] shape-arch bg-gradient-to-b from-[var(--primary-light)] to-[var(--bg-color)] p-2 shadow-premium">
-                            <div class="w-full h-full shape-arch bg-white/80 backdrop-blur border border-white p-8 flex flex-col justify-between items-center text-center relative overflow-hidden">
-                                <div class="w-20 h-20 rounded-full bg-[var(--bg-color)] flex items-center justify-center mt-6">
-                                    <span class="material-symbols-outlined text-4xl text-[var(--primary-color)]">spa</span>
+                        <div
+                            class="relative w-full max-w-md aspect-[4/5] shape-arch bg-gradient-to-b from-[var(--primary-light)] to-[var(--bg-color)] p-2 shadow-premium">
+                            <div
+                                class="w-full h-full shape-arch bg-white/80 backdrop-blur border border-white p-8 flex flex-col justify-between items-center text-center relative overflow-hidden">
+                                <div
+                                    class="w-20 h-20 rounded-full bg-[var(--bg-color)] flex items-center justify-center mt-6">
+                                    <span
+                                        class="material-symbols-outlined text-4xl text-[var(--primary-color)]">spa</span>
                                 </div>
 
                                 <div class="space-y-3 z-10">
                                     <span class="font-script text-3xl text-[var(--accent-color)]">Quiet Elegance</span>
                                     <p class="font-serif text-2xl font-semibold text-gray-800">Designed for Clarity</p>
                                     <p class="font-sans text-xs text-[var(--text-muted)] max-w-xs leading-relaxed">
-                                        Stripping away digital clutter to restore tactile focus and peace of mind in every written line.
+                                        Stripping away digital clutter to restore tactile focus and peace of mind in
+                                        every written line.
                                     </p>
                                 </div>
 
-                                <div class="w-full py-3 border-t border-gray-100 font-serif text-xs tracking-widest text-gray-400 uppercase">
+                                <div
+                                    class="w-full py-3 border-t border-gray-100 font-serif text-xs tracking-widest text-gray-400 uppercase">
                                     Aesthetic Planner - Est. 2022
                                 </div>
                             </div>
@@ -318,15 +539,19 @@
                     </div>
 
                     <div class="reveal-up space-y-6" style="transition-delay: 150ms;">
-                        <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">The Founding Vision</span>
+                        <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">The
+                            Founding Vision</span>
                         <h2 class="font-serif text-3xl md:text-4xl font-bold leading-snug">
                             Born from a desire for tactile calm in a hyper-digital world.
                         </h2>
                         <p class="font-sans text-[var(--text-muted)] leading-relaxed font-light">
-                            In an age dominated by notifications and endless screens, we lost touch with the therapeutic power of putting pen to paper. Aesthetic Planner was founded to reclaim that lost space.
+                            In an age dominated by notifications and endless screens, we lost touch with the therapeutic
+                            power of putting pen to paper. Aesthetic Planner was founded to reclaim that lost space.
                         </p>
                         <p class="font-sans text-[var(--text-muted)] leading-relaxed font-light">
-                            Every page is structured around human rhythm rather than rigid machinery. We blend minimal arch silhouettes, earthy color palettes, and archival-quality paper to give your daily thoughts a home they deserve.
+                            Every page is structured around human rhythm rather than rigid machinery. We blend minimal
+                            arch silhouettes, earthy color palettes, and archival-quality paper to give your daily
+                            thoughts a home they deserve.
                         </p>
 
                         <div class="pt-4 flex items-center gap-6">
@@ -355,37 +580,47 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 reveal-up">
                     <h2 class="font-serif text-4xl font-bold mb-4">Uncompromising Craftsmanship</h2>
-                    <p class="font-sans text-[var(--text-muted)] max-w-xl mx-auto">Materials sourced with ethical responsibility and crafted for tactile bliss.</p>
+                    <p class="font-sans text-[var(--text-muted)] max-w-xl mx-auto">Materials sourced with ethical
+                        responsibility and crafted for tactile bliss.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-[var(--border-color)] reveal-up hover:shadow-premium transition-all-smooth">
-                        <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 text-[var(--primary-color)] shadow-sm">
+                    <div
+                        class="bg-[var(--bg-color)] p-8 rounded-3xl border border-[var(--border-color)] reveal-up hover:shadow-premium transition-all-smooth">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 text-[var(--primary-color)] shadow-sm">
                             <span class="material-symbols-outlined text-3xl">menu_book</span>
                         </div>
                         <h3 class="font-serif text-xl font-semibold mb-3">120 GSM Smooth Paper</h3>
                         <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
-                            Thick, warm-white paper engineered to prevent fountain pen ghosting and feathering while offering a silky smooth write.
+                            Thick, warm-white paper engineered to prevent fountain pen ghosting and feathering while
+                            offering a silky smooth write.
                         </p>
                     </div>
 
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-[var(--border-color)] reveal-up hover:shadow-premium transition-all-smooth" style="transition-delay: 100ms;">
-                        <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 text-[var(--accent-color)] shadow-sm">
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-[var(--border-color)] reveal-up hover:shadow-premium transition-all-smooth"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 text-[var(--accent-color)] shadow-sm">
                             <span class="material-symbols-outlined text-3xl">eco</span>
                         </div>
                         <h3 class="font-serif text-xl font-semibold mb-3">Sustainable & Ethical</h3>
                         <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
-                            Crafted using 100% FSC-certified wood pulp and acid-free archival materials that stand the test of time without harming our forests.
+                            Crafted using 100% FSC-certified wood pulp and acid-free archival materials that stand the
+                            test of time without harming our forests.
                         </p>
                     </div>
 
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-[var(--border-color)] reveal-up hover:shadow-premium transition-all-smooth" style="transition-delay: 200ms;">
-                        <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 text-[var(--primary-color)] shadow-sm">
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-[var(--border-color)] reveal-up hover:shadow-premium transition-all-smooth"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 text-[var(--primary-color)] shadow-sm">
                             <span class="material-symbols-outlined text-3xl">auto_fix</span>
                         </div>
                         <h3 class="font-serif text-xl font-semibold mb-3">Smyth-Sewn Flat Lay</h3>
                         <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
-                            Opens completely flat at 180 degrees for effortless writing from edge to edge, whether you are left-handed or right-handed.
+                            Opens completely flat at 180 degrees for effortless writing from edge to edge, whether you
+                            are left-handed or right-handed.
                         </p>
                     </div>
                 </div>
@@ -395,7 +630,8 @@
         <section class="py-24 relative">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 reveal-up">
-                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">Milestones</span>
+                    <span
+                        class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">Milestones</span>
                     <h2 class="font-serif text-4xl font-bold mt-2">The Evolution of Calm</h2>
                 </div>
 
@@ -404,29 +640,41 @@
                         <div class="w-full md:w-5/12 md:text-right">
                             <span class="font-script text-3xl text-[var(--primary-color)]">2022</span>
                             <h3 class="font-serif text-xl font-bold text-gray-800">The First Prototype</h3>
-                            <p class="font-sans text-sm text-[var(--text-muted)] mt-2">Designed in a cozy studio with hand-cut paper samples to find the ideal balance between schedule space and mindful prompts.</p>
+                            <p class="font-sans text-sm text-[var(--text-muted)] mt-2">Designed in a cozy studio with
+                                hand-cut paper samples to find the ideal balance between schedule space and mindful
+                                prompts.</p>
                         </div>
-                        <div class="z-10 w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center font-serif text-xs font-bold border-4 border-[var(--bg-color)]">01</div>
+                        <div
+                            class="z-10 w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center font-serif text-xs font-bold border-4 border-[var(--bg-color)]">
+                            01</div>
                         <div class="w-full md:w-5/12"></div>
                     </div>
 
-                    <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 reveal-up" style="transition-delay: 100ms;">
+                    <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-8 reveal-up"
+                        style="transition-delay: 100ms;">
                         <div class="w-full md:w-5/12 md:text-left">
                             <span class="font-script text-3xl text-[var(--accent-color)]">2023</span>
                             <h3 class="font-serif text-xl font-bold text-gray-800">Organic Color Series</h3>
-                            <p class="font-sans text-sm text-[var(--text-muted)] mt-2">Introduced earth-inspired palettes-Botanical Sage and Warm Terracotta-mirroring nature's calming color tones.</p>
+                            <p class="font-sans text-sm text-[var(--text-muted)] mt-2">Introduced earth-inspired
+                                palettes-Botanical Sage and Warm Terracotta-mirroring nature's calming color tones.</p>
                         </div>
-                        <div class="z-10 w-10 h-10 rounded-full bg-[var(--accent-color)] text-white flex items-center justify-center font-serif text-xs font-bold border-4 border-[var(--bg-color)]">02</div>
+                        <div
+                            class="z-10 w-10 h-10 rounded-full bg-[var(--accent-color)] text-white flex items-center justify-center font-serif text-xs font-bold border-4 border-[var(--bg-color)]">
+                            02</div>
                         <div class="w-full md:w-5/12"></div>
                     </div>
 
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 reveal-up" style="transition-delay: 200ms;">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 reveal-up"
+                        style="transition-delay: 200ms;">
                         <div class="w-full md:w-5/12 md:text-right">
                             <span class="font-script text-3xl text-[var(--primary-color)]">2024 - 2026</span>
                             <h3 class="font-serif text-xl font-bold text-gray-800">Global Community</h3>
-                            <p class="font-sans text-sm text-[var(--text-muted)] mt-2">Over 50,000 creators, writers, and thinkers around the globe now organize their days with our aesthetic tools.</p>
+                            <p class="font-sans text-sm text-[var(--text-muted)] mt-2">Over 50,000 creators, writers,
+                                and thinkers around the globe now organize their days with our aesthetic tools.</p>
                         </div>
-                        <div class="z-10 w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center font-serif text-xs font-bold border-4 border-[var(--bg-color)]">03</div>
+                        <div
+                            class="z-10 w-10 h-10 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center font-serif text-xs font-bold border-4 border-[var(--bg-color)]">
+                            03</div>
                         <div class="w-full md:w-5/12"></div>
                     </div>
                 </div>
@@ -437,7 +685,8 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 reveal-up">
                     <h2 class="font-serif text-4xl font-bold mb-3">Our Core Principles</h2>
-                    <p class="font-sans text-[var(--text-muted)]">What guides every layout, line width, and shade of paper.</p>
+                    <p class="font-sans text-[var(--text-muted)]">What guides every layout, line width, and shade of
+                        paper.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
@@ -445,23 +694,28 @@
                         <span class="material-symbols-outlined text-3xl text-[var(--primary-color)]">palette</span>
                         <div>
                             <h3 class="font-serif text-lg font-bold">Intentional Aesthetics</h3>
-                            <p class="font-sans text-xs text-[var(--text-muted)] mt-1">Beauty inspires peace. Every grid element is designed with gentle margins and proportion.</p>
+                            <p class="font-sans text-xs text-[var(--text-muted)] mt-1">Beauty inspires peace. Every grid
+                                element is designed with gentle margins and proportion.</p>
                         </div>
                     </div>
 
-                    <div class="bg-[var(--primary-color)] text-white p-8 rounded-3xl flex flex-col justify-between reveal-up shadow-sm" style="transition-delay: 100ms;">
+                    <div class="bg-[var(--primary-color)] text-white p-8 rounded-3xl flex flex-col justify-between reveal-up shadow-sm"
+                        style="transition-delay: 100ms;">
                         <span class="material-symbols-outlined text-3xl opacity-80">favorite</span>
                         <div>
                             <h3 class="font-serif text-lg font-bold">Mindful Productivity</h3>
-                            <p class="font-sans text-xs opacity-80 mt-1">Focusing on quality over quantity. Encouraging realistic daily commitments.</p>
+                            <p class="font-sans text-xs opacity-80 mt-1">Focusing on quality over quantity. Encouraging
+                                realistic daily commitments.</p>
                         </div>
                     </div>
 
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl flex flex-col justify-between reveal-up shadow-sm" style="transition-delay: 200ms;">
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl flex flex-col justify-between reveal-up shadow-sm"
+                        style="transition-delay: 200ms;">
                         <span class="material-symbols-outlined text-3xl text-[var(--accent-color)]">forest</span>
                         <div>
                             <h3 class="font-serif text-lg font-bold">Harmonious Living</h3>
-                            <p class="font-sans text-xs text-[var(--text-muted)] mt-1">Supporting environmental wellness through responsible production practices.</p>
+                            <p class="font-sans text-xs text-[var(--text-muted)] mt-1">Supporting environmental wellness
+                                through responsible production practices.</p>
                         </div>
                     </div>
                 </div>
@@ -471,36 +725,50 @@
         <section class="py-24 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 reveal-up">
-                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--text-muted)]">Behind The Pages</span>
+                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--text-muted)]">Behind The
+                        Pages</span>
                     <h2 class="font-serif text-4xl font-bold mt-2">Meet Our Creative Collective</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-[var(--surface-color)] p-6 rounded-3xl border border-[var(--border-color)] reveal-up text-center shadow-sm hover:shadow-premium transition-all-smooth">
+                    <div
+                        class="bg-[var(--surface-color)] p-6 rounded-3xl border border-[var(--border-color)] reveal-up text-center shadow-sm hover:shadow-premium transition-all-smooth">
                         <div class="w-28 h-28 mx-auto rounded-full bg-[var(--primary-light)] p-1 mb-4 shadow-inner">
-                            <div class="w-full h-full rounded-full bg-[#e8ded1] flex items-center justify-center font-serif text-2xl font-bold text-[var(--primary-color)]">EA</div>
+                            <div
+                                class="w-full h-full rounded-full bg-[#e8ded1] flex items-center justify-center font-serif text-2xl font-bold text-[var(--primary-color)]">
+                                EA</div>
                         </div>
                         <h3 class="font-serif text-xl font-bold">Elena Arisandi</h3>
                         <p class="font-script text-lg text-[var(--accent-color)] mb-2">Founder & Creative Director</p>
-                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Passionate about typography, paper grain, and slow living routines.</p>
+                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Passionate about
+                            typography, paper grain, and slow living routines.</p>
                     </div>
 
-                    <div class="bg-[var(--surface-color)] p-6 rounded-3xl border border-[var(--border-color)] reveal-up text-center shadow-sm hover:shadow-premium transition-all-smooth" style="transition-delay: 100ms;">
-                        <div class="w-28 h-28 mx-auto rounded-full bg-[var(--accent-color)] opacity-80 p-1 mb-4 shadow-inner">
-                            <div class="w-full h-full rounded-full bg-[#dbe3e6] flex items-center justify-center font-serif text-2xl font-bold text-[var(--brand-text)]">DN</div>
+                    <div class="bg-[var(--surface-color)] p-6 rounded-3xl border border-[var(--border-color)] reveal-up text-center shadow-sm hover:shadow-premium transition-all-smooth"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="w-28 h-28 mx-auto rounded-full bg-[var(--accent-color)] opacity-80 p-1 mb-4 shadow-inner">
+                            <div
+                                class="w-full h-full rounded-full bg-[#dbe3e6] flex items-center justify-center font-serif text-2xl font-bold text-[var(--brand-text)]">
+                                DN</div>
                         </div>
                         <h3 class="font-serif text-xl font-bold">Davin Narendra</h3>
                         <p class="font-script text-lg text-[var(--primary-color)] mb-2">Lead Product Designer</p>
-                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Focuses on spatial proportions, ergonomics, and grid balance.</p>
+                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Focuses on spatial
+                            proportions, ergonomics, and grid balance.</p>
                     </div>
 
-                    <div class="bg-[var(--surface-color)] p-6 rounded-3xl border border-[var(--border-color)] reveal-up text-center shadow-sm hover:shadow-premium transition-all-smooth" style="transition-delay: 200ms;">
+                    <div class="bg-[var(--surface-color)] p-6 rounded-3xl border border-[var(--border-color)] reveal-up text-center shadow-sm hover:shadow-premium transition-all-smooth"
+                        style="transition-delay: 200ms;">
                         <div class="w-28 h-28 mx-auto rounded-full bg-[var(--primary-color)] p-1 mb-4 shadow-inner">
-                            <div class="w-full h-full rounded-full bg-[#efe8de] flex items-center justify-center font-serif text-2xl font-bold text-[var(--accent-color)]">MK</div>
+                            <div
+                                class="w-full h-full rounded-full bg-[#efe8de] flex items-center justify-center font-serif text-2xl font-bold text-[var(--accent-color)]">
+                                MK</div>
                         </div>
                         <h3 class="font-serif text-xl font-bold">Maya Kencana</h3>
                         <p class="font-script text-lg text-[var(--accent-color)] mb-2">Community & Sustainability</p>
-                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Ensures FSC standards and connects with our global community of writers.</p>
+                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Ensures FSC standards and
+                            connects with our global community of writers.</p>
                     </div>
                 </div>
             </div>
@@ -511,36 +779,40 @@
              Interactive profile card. Clicking opens a modal (structure
              only - no content/logic yet, to be wired up in the next step).
         ============================================================ -->
+
         <section id="profile" class="py-20 bg-[var(--surface-color)] relative border-t border-[var(--border-color)]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-14 reveal-up">
-                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">The Person Behind The Code</span>
+                    <span class="uppercase tracking-[0.2em] text-xs font-semibold text-[var(--accent-color)]">The Person
+                        Behind The Code</span>
                     <h2 class="font-serif text-4xl font-bold mt-2">Meet the Developer</h2>
-                    <p class="font-sans text-[var(--text-muted)] mt-3 max-w-xl mx-auto">Click the card below to view a full profile.</p>
+                    <p class="font-sans text-[var(--text-muted)] mt-3 max-w-xl mx-auto">Click the card below to view a
+                        full profile.</p>
                 </div>
 
-                <button
-                    type="button"
-                    id="profile-trigger"
+                <button type="button" id="profile-trigger"
                     class="profile-card group w-full max-w-md mx-auto flex items-center gap-6 bg-[var(--bg-color)] p-6 rounded-3xl border border-[var(--border-color)] shadow-sm reveal-up text-left"
-                    aria-haspopup="dialog"
-                    aria-controls="profile-modal"
-                    aria-expanded="false"
-                    data-modal-target="profile-modal"
-                >
-                    <div class="profile-avatar-ring w-20 h-20 shrink-0 rounded-full bg-[var(--primary-color)] p-1 shadow-inner">
-                        <div class="w-full h-full rounded-full bg-[#e3e9ee] flex items-center justify-center font-serif text-xl font-bold text-[var(--primary-color)]">
-                            MF
+                    aria-haspopup="dialog" aria-controls="profile-modal" aria-expanded="false"
+                    data-modal-target="profile-modal">
+                    <div
+                        class="profile-avatar-ring w-20 h-20 shrink-0 rounded-full bg-[var(--primary-color)] p-1 shadow-inner">
+                        <div
+                            class="w-full h-full rounded-full bg-[#e3e9ee] flex items-center justify-center font-serif text-xl font-bold text-[var(--primary-color)]">
+                            <img src="media/img/fau.png" alt="Muhammad Fauzan Nur Ilham S.Kom" 
+                                                class="w-full h-full rounded-full object-cover bg-white">
                         </div>
                     </div>
 
                     <div class="flex-1">
                         <h3 class="font-serif text-xl font-bold">Must Fauzan</h3>
-                        <p class="font-script text-lg text-[var(--primary-color)] mb-1">Full-Stack Developer & Founder</p>
-                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Building thoughtful digital tools from Samarinda, Indonesia.</p>
+                        <p class="font-script text-lg text-[var(--primary-color)] mb-1">Full-Stack Developer & Founder
+                        </p>
+                        <p class="font-sans text-xs text-[var(--text-muted)] leading-relaxed">Building thoughtful
+                            digital tools from Samarinda, Indonesia.</p>
                     </div>
 
-                    <span class="profile-cta material-symbols-outlined text-2xl text-[var(--primary-color)] shrink-0">arrow_forward</span>
+                    <span
+                        class="profile-cta material-symbols-outlined text-2xl text-[var(--primary-color)] shrink-0">arrow_forward</span>
                 </button>
             </div>
         </section>
@@ -549,9 +821,11 @@
             <div class="max-w-4xl mx-auto text-center px-4 reveal-up">
                 <span class="material-symbols-outlined text-5xl text-[var(--accent-color)] mb-4">auto_awesome</span>
                 <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Begin Your Mindful Journey</h2>
-                <p class="font-sans text-[var(--text-muted)] mb-8 text-lg max-w-xl mx-auto font-light">Explore our collection and find the layout that speaks to your daily life.</p>
+                <p class="font-sans text-[var(--text-muted)] mb-8 text-lg max-w-xl mx-auto font-light">Explore our
+                    collection and find the layout that speaks to your daily life.</p>
 
-                <a href="index.html#showcase" class="inline-block bg-[var(--primary-color)] text-white px-10 py-4 rounded-full font-sans font-medium text-lg hover:bg-opacity-90 hover:shadow-hover transition-all-smooth transform hover:-translate-y-1">
+                <a href="index.html#showcase"
+                    class="inline-block bg-[var(--primary-color)] text-white px-10 py-4 rounded-full font-sans font-medium text-lg hover:bg-opacity-90 hover:shadow-hover transition-all-smooth transform hover:-translate-y-1">
                     Explore The Collection
                 </a>
             </div>
@@ -567,7 +841,8 @@
             <p class="text-xs font-sans text-[var(--text-muted)]">© 2026 Premium Organizer. All rights reserved.</p>
             <div class="flex gap-4">
                 <a href="index.html" class="text-xs text-[var(--text-muted)] hover:text-[var(--primary-color)]">Home</a>
-                <a href="about.html" class="text-xs text-[var(--text-muted)] hover:text-[var(--primary-color)]">Philosophy</a>
+                <a href="about.html"
+                    class="text-xs text-[var(--text-muted)] hover:text-[var(--primary-color)]">Philosophy</a>
             </div>
         </div>
     </footer>
@@ -575,288 +850,522 @@
     <!-- ============================================================
      PROFILE MODAL (refined layout + copy)
 ============================================================ -->
-<div
-    id="profile-modal"
-    class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="profile-modal-title"
-    data-state="closed"
->
-    <div class="absolute inset-0 bg-black/55 backdrop-blur-sm modal-backdrop" data-modal-backdrop></div>
+    <div id="developer-story-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6"
+        role="dialog" aria-modal="true" aria-labelledby="developer-story-title" data-state="closed">
 
-    <div
-        class="modal-panel relative bg-[var(--surface-color)] rounded-[2rem] shadow-hover max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-white/40"
-        data-modal-panel
-        tabindex="-1"
-    >
-        <!-- Ambient gradients -->
-        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[var(--primary-light)]/35 to-transparent pointer-events-none"></div>
-        <div class="absolute -top-12 -right-8 w-36 h-36 rounded-full bg-[var(--accent-color)]/18 blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-[var(--primary-light)]/16 blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 bg-black/55 backdrop-blur-sm" data-story-backdrop></div>
+        <div class="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-[2rem] border border-white/40 bg-[var(--surface-color)] shadow-hover"
+            data-story-panel
+            tabindex="-1">
+            <div
+                class="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[var(--primary-light)]/30 to-transparent pointer-events-none">
+            </div>
+            <div
+                class="absolute -top-10 right-0 w-40 h-40 rounded-full bg-[var(--accent-color)]/15 blur-3xl pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-44 h-44 rounded-full bg-[var(--primary-light)]/15 blur-3xl pointer-events-none">
+            </div>
 
-        <!-- Close -->
-        <button
-            type="button"
-            class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:bg-[var(--primary-color)] transition-all-smooth"
-            data-modal-close
-            aria-label="Tutup profil"
-        >
-            <span class="material-symbols-outlined text-xl">close</span>
-        </button>
+            <button type="button"
+                class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:bg-[var(--primary-color)] transition-all-smooth"
+                data-story-close aria-label="Close developer story">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
 
-        <div class="relative p-6 sm:p-8 lg:p-10">
-            <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1.35fr] gap-8 lg:gap-10 items-start">
+            <div class="relative p-6 sm:p-8 lg:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.25fr] gap-8 lg:gap-10 items-start">
 
-                <!-- Left: Identity + Philosophy -->
-                <aside class="space-y-6">
-                    <!-- Identity card -->
-                    <section class="bg-[var(--bg-color)]/90 border border-[var(--border-color)] rounded-[1.75rem] p-6 shadow-premium">
-                        <div class="flex flex-col items-center text-center">
-                            <div class="w-28 h-28 rounded-full bg-[var(--primary-color)] p-1.5 shadow-inner mb-4">
-                                <div class="w-full h-full rounded-full bg-[#e3e9ee] flex items-center justify-center font-serif text-3xl font-bold text-[var(--primary-color)]">
-                                    MF
+                    <aside class="space-y-6">
+                        <section
+                            class="bg-[var(--bg-color)]/90 border border-[var(--border-color)] rounded-[1.75rem] p-6 shadow-premium">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-28 h-28 rounded-full bg-[var(--primary-color)] p-1.5 shadow-inner mb-4">
+                                    <img src="media/img/fit.png" alt="Fitri Nur Andriyani" 
+                                        class="w-full h-full rounded-full object-cover bg-white">
                                 </div>
-                            </div>
-                            <span class="uppercase tracking-[0.24em] text-[11px] font-semibold text-[var(--accent-color)] mb-2">
-                                Creative Builder
-                            </span>
-                            <h3 id="profile-modal-title" class="font-serif text-3xl font-bold leading-tight">
-                                Must Fauzan
-                            </h3>
-                            <p class="font-script text-2xl text-[var(--primary-color)] mt-1">
-                                Full-Stack Developer &amp; Founder
-                            </p>
-                            <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-4 max-w-sm">
-                                Perancang sistem dan produk digital yang menyukai struktur rapi, antarmuka hangat, dan solusi yang terasa sederhana
-                                meski menjawab persoalan bisnis yang kompleks.
-                            </p>
-                        </div>
 
-                        <div class="flex justify-center my-5">
-                            <div class="squiggly-line"></div>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-3 text-center">
-                            <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
-                                <span class="material-symbols-outlined text-2xl text-[var(--primary-color)]">code</span>
-                                <p class="text-[11px] font-sans text-[var(--text-muted)] mt-2">Django &amp; JS</p>
-                            </div>
-                            <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
-                                <span class="material-symbols-outlined text-2xl text-[var(--accent-color)]">rocket_launch</span>
-                                <p class="text-[11px] font-sans text-[var(--text-muted)] mt-2">Founder</p>
-                            </div>
-                            <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
-                                <span class="material-symbols-outlined text-2xl text-[var(--primary-color)]">location_on</span>
-                                <p class="text-[11px] font-sans text-[var(--text-muted)] mt-2">Samarinda</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Philosophy card -->
-                    <section class="bg-[var(--primary-color)] text-white rounded-[1.75rem] p-6 shadow-premium relative overflow-hidden">
-                        <div class="absolute inset-0 pattern-dots opacity-15"></div>
-                        <div class="relative z-10">
-                            <span class="uppercase tracking-[0.2em] text-[11px] font-semibold text-white/70">
-                                Design Philosophy
-                            </span>
-                            <h4 class="font-serif text-2xl font-semibold mt-3 mb-3">
-                                Build less, solve more.
-                            </h4>
-                            <p class="font-sans text-sm text-white/85 leading-relaxed">
-                                Percaya bahwa software yang baik bukan tentang fitur terbanyak, tapi keputusan yang paling jernih:
-                                mengurangi friksi, memendekkan jarak dari niat ke aksi, dan membuat pengguna merasa dimengerti.
-                            </p>
-                        </div>
-                    </section>
-                </aside>
-
-                <!-- Right: Story + Highlights -->
-                <section class="space-y-6">
-                    <!-- Story -->
-                    <article class="bg-[var(--surface-color)] border border-[var(--border-color)] rounded-[1.75rem] p-6 sm:p-7 shadow-sm">
-                        <span class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--accent-color)]">
-                            Short Story
-                        </span>
-                        <h4 class="font-serif text-3xl font-bold mt-3 mb-4 leading-snug">
-                            From code experiments to thoughtful digital systems.
-                        </h4>
-                        <div class="space-y-4 text-[15px] font-sans text-[var(--text-muted)] leading-relaxed">
-                            <p>
-                                Perjalanan Must bermula dari rasa penasaran sederhana: mengapa satu tampilan bisa membuat orang tenang bekerja,
-                                sementara tampilan lain justru membuat lelah dalam hitungan menit. Dari proyek eksperimen kecil, ia belajar
-                                bahwa baris kode adalah medium untuk mengatur ritme kerja manusia.
-                            </p>
-                            <p>
-                                Rasa penasaran itu berkembang menjadi fokus pada full‑stack: merangkai backend yang kokoh dengan frontend yang halus.
-                                Ia menikmati proses memetakan alur yang kusut, memotong langkah yang tidak perlu, lalu menyusunnya kembali menjadi
-                                sistem yang logis dan ringan dipakai setiap hari.
-                            </p>
-                            <p>
-                                Kini, banyak karyanya berputar di seputar sistem operasional, edukasi, dan pengelolaan aset-produk yang tidak selalu
-                                terlihat glamor, tetapi diam‑diam menyelamatkan jam kerja dan energi banyak orang di belakang layar.
-                            </p>
-                        </div>
-                    </article>
-
-                    <!-- Three traits -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <article class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
-                            <span class="material-symbols-outlined text-3xl text-[var(--primary-color)] mb-3">inventory_2</span>
-                            <h5 class="font-serif text-lg font-semibold mb-2">System Thinking</h5>
-                            <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
-                                Nyaman bekerja dari skema database hingga micro‑interaction, memastikan setiap layer saling mendukung,
-                                bukan saling membebani.
-                            </p>
-                        </article>
-                        <article class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
-                            <span class="material-symbols-outlined text-3xl text-[var(--accent-color)] mb-3">school</span>
-                            <h5 class="font-serif text-lg font-semibold mb-2">Learning Builder</h5>
-                            <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
-                                Tertarik merancang platform belajar yang tidak hanya informatif, tapi membantu orang fokus menjalankan
-                                latihan kecil setiap hari.
-                            </p>
-                        </article>
-                        <article class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
-                            <span class="material-symbols-outlined text-3xl text-[var(--primary-color)] mb-3">tactic</span>
-                            <h5 class="font-serif text-lg font-semibold mb-2">Founder Mindset</h5>
-                            <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
-                                Melihat software sebagai mesin pertumbuhan jangka panjang, bukan hanya fitur yang tampak menarik
-                                di demo pertama.
-                            </p>
-                        </article>
-                    </div>
-
-                    <!-- Highlights -->
-                    <article class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.75rem] p-6 sm:p-7 shadow-sm">
-                        <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
-                            <div>
-                                <span class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--text-muted)]">
-                                    Selected Highlights
+                                <span
+                                    class="uppercase tracking-[0.24em] text-[11px] font-semibold text-[var(--accent-color)] mb-2">
+                                    Pharmaceutical &amp; Service Specialist
                                 </span>
-                                <h4 class="font-serif text-2xl font-bold mt-2">
-                                    A profile shaped by craft and clarity
+
+                                <h3 id="developer-story-title" class="font-serif text-3xl font-bold leading-tight">
+                                    Fitri Nur Andriyani
+                                </h3>
+
+                                <p class="font-script text-2xl text-[var(--primary-color)] mt-1">
+                                    Pharmacy Associate &amp; Customer Relations
+                                </p>
+
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-4 max-w-sm">
+                                    Profesional muda yang berdedikasi tinggi di bidang teknologi farmasi dan pelayanan pelanggan di Samarinda. Berpengalaman mengelola transaksi keuangan, meracik sediaan obat dasar, serta memelihara kenyamanan operasional ritel.
+                                </p>
+                            </div>
+
+                            <div class="flex justify-center my-5">
+                                <div class="squiggly-line"></div>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
+                                    <span
+                                        class="material-symbols-outlined text-2xl text-[var(--primary-color)]">science</span>
+                                    <p class="text-[11px] text-[var(--text-muted)] mt-2">Pharmacy</p>
+                                </div>
+                                <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
+                                    <span
+                                        class="material-symbols-outlined text-2xl text-[var(--accent-color)]">support_agent</span>
+                                    <p class="text-[11px] text-[var(--text-muted)] mt-2">Service</p>
+                                </div>
+                                <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
+                                    <span
+                                        class="material-symbols-outlined text-2xl text-[var(--primary-color)]">location_on</span>
+                                    <p class="text-[11px] text-[var(--text-muted)] mt-2">Samarinda</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section
+                            class="bg-[var(--primary-color)] text-white rounded-[1.75rem] p-6 shadow-premium relative overflow-hidden">
+                            <div class="absolute inset-0 pattern-dots opacity-15"></div>
+                            <div class="relative z-10">
+                                <span class="uppercase tracking-[0.2em] text-[11px] font-semibold text-white/70">
+                                    Personal Philosophy
+                                </span>
+                                <h4 class="font-serif text-2xl font-semibold mt-3 mb-3">
+                                    Serve with care, execute with precision.
                                 </h4>
+                                <p class="font-sans text-sm text-white/85 leading-relaxed">
+                                    Percaya bahwa layanan terbaik lahir dari empati yang tulus dan ketelitian yang disiplin. Setiap sediaan obat yang diracik dan setiap sen transaksi kasir yang dihitung adalah wujud nyata dalam menjaga amanah pelanggan.
+                                </p>
                             </div>
-                            <div class="px-4 py-2 rounded-full bg-white border border-[var(--border-color)] text-xs font-medium text-[var(--primary-color)]">
-                                Always building thoughtfully
+                        </section>
+                    </aside>
+
+                    <section class="space-y-6">
+                        <article
+                            class="bg-[var(--surface-color)] border border-[var(--border-color)] rounded-[1.75rem] p-6 sm:p-7 shadow-sm">
+                            <span
+                                class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--accent-color)]">
+                                Professional Story
+                            </span>
+                            <h4 class="font-serif text-3xl font-bold mt-3 mb-4 leading-snug">
+                                Bridging pharmaceutical rigor with empathetic customer care.
+                            </h4>
+
+                            <div class="space-y-4 text-[15px] font-sans text-[var(--text-muted)] leading-relaxed">
+                                <p>
+                                    Ketertarikan Fitri Nur Andriyani pada bidang kesehatan dan kepuasan pelanggan dimulai sejak menempuh pendidikan di SMK Muhammadiyah 2 Samarinda, di mana ia mendalami pembuatan sediaan sediaan farmasi dasar serta penulisan salinan resep medis. Pengetahuan ini kini terus berkembang melalui studinya pada Program Studi Teknologi Farmasi di Universitas Muhammadiyah Kalimantan Timur (UMKT).
+                                </p>
+                                <p>
+                                    Pengalaman praktisnya teruji kuat melalui program Praktik Kerja Lapangan (PKL) selama 6 bulan di Apotek Cucu Sukarno 4 Loa Bakung. Menjalankan peran multifungsi secara penuh waktu, ia tidak hanya bertugas meracik obat dan mendampingi dokter sebagai asisten klinis, tetapi juga menangani kasir dan memberikan pelayanan langsung kepada ratusan pasien harian.
+                                </p>
+                                <p>
+                                    Selain di sektor kesehatan, ia memiliki etos kerja mandiri yang terbukti dari keberhasilannya mengelola bisnis kuliner keluarga "Tahu Bakso Mamat" dan pengalaman 6 bulan sebagai kasir ritel modern di Bigmall Samarinda dan Cendana. Melalui disiplin, kejujuran, serta kemampuannya beradaptasi, Fitri selalu siap memberikan kontribusi terbaik di lingkungan profesional baru.
+                                </p>
                             </div>
+                        </article>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <article
+                                class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-[var(--primary-color)] mb-3">pill</span>
+                                <h5 class="font-serif text-lg font-semibold mb-2">Pharmacy Care</h5>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
+                                    Terlatih dalam meracik sediaan obat dasar, menyalin resep medis, serta menguasai wawasan produk kecantikan dan perawatan kulit (skincare).
+                                </p>
+                            </article>
+
+                            <article
+                                class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-[var(--accent-color)]">point_of_sale</span>
+                                <h5 class="font-serif text-lg font-semibold mb-2">Retail Operations</h5>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
+                                    Mahir mengelola transaksi keuangan harian, sistem POS kasir ritel modern, rekonsiliasi kas harian, serta tata kelola stok inventaris.
+                                </p>
+                            </article>
+
+                            <article
+                                class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-[var(--primary-color)]">volunteer_activism</span>
+                                <h5 class="font-serif text-lg font-semibold mb-2">Client Empathy</h5>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
+                                    Mengedepankan komunikasi yang ramah, santun, jujur, dan amanah demi menjaga kepercayaan dan kenyamanan setiap pengunjung.
+                                </p>
+                            </article>
                         </div>
 
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-[20px] text-[var(--primary-color)]">layers</span>
-                                </div>
+                        <article
+                            class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.75rem] p-6 sm:p-7 shadow-sm">
+                            <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
                                 <div>
-                                    <h5 class="font-serif text-lg font-semibold">Clean architecture with practical priorities</h5>
-                                    <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
-                                        Lebih memilih struktur yang jelas dan mudah dirawat ketimbang solusi yang terlihat canggih namun
-                                        menyulitkan tim beberapa bulan ke depan.
-                                    </p>
+                                    <span
+                                        class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--text-muted)]">
+                                        Selected Milestones
+                                    </span>
+                                    <h4 class="font-serif text-2xl font-bold mt-2">
+                                        Shaped by retail practice and medical discipline
+                                    </h4>
+                                </div>
+
+                                <div
+                                    class="px-4 py-2 rounded-full bg-white border border-[var(--border-color)] text-xs font-medium text-[var(--primary-color)]">
+                                    Samarinda, East Kalimantan
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-[20px] text-[var(--accent-color)]">auto_graph</span>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
+                                        <span
+                                            class="material-symbols-outlined text-[20px] text-[var(--primary-color)]">medical_services</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-serif text-lg font-semibold">6-Month Pharmacy Assistant Intern</h5>
+                                        <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
+                                            Berhasil mengurus logistik kefarmasian harian, mengelola kasir penuh waktu, dan mendampingi pelayanan dokter di Apotek Cucu Sukarno 4.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h5 class="font-serif text-lg font-semibold">Built for real operational value</h5>
-                                    <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
-                                        Selalu bertanya: bagian mana dari proses kerja yang benar‑benar melambat, dan bagaimana software
-                                        bisa menghapus bottleneck itu dengan elegan.
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
-                                    <span class="material-symbols-outlined text-[20px] text-[var(--primary-color)]">design_services</span>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
+                                        <span
+                                            class="material-symbols-outlined text-[20px] text-[var(--accent-color)]">storefront</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-serif text-lg font-semibold">SME &amp; Modern Retail Sales Management</h5>
+                                        <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
+                                            Dipercaya menjalankan operasional harian usaha mandiri keluarga secara produktif serta memiliki riwayat kasir ritel di Bigmall Samarinda.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h5 class="font-serif text-lg font-semibold">Aesthetic, but never decorative‑only</h5>
-                                    <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
-                                        Visual yang hangat dan modern dipakai untuk menegaskan hierarki informasi dan membantu fokus-
-                                        bukan sekadar pemanis di permukaan.
-                                    </p>
+
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
+                                        <span
+                                            class="material-symbols-outlined text-[20px] text-[var(--primary-color)]">menu_book</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-serif text-lg font-semibold">Pharmaceutical &amp; Skincare Literacy</h5>
+                                        <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
+                                            Memiliki fondasi kuat dalam menganalisis formula sediaan bahan kosmetik, perawatan kulit, dan penataan sediaan obat yang terstandar.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                        </article>
+
+                        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                            <a href="mailto:ftrnrandriyani@gmail.com"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[var(--text-color)] text-white px-6 py-3.5 rounded-full font-sans text-sm font-medium hover:opacity-90 transition-all-smooth">
+                                <span class="material-symbols-outlined text-lg">mail</span>
+                                Contact ftrnrandriyani@gmail.com
+                            </a>
+                            <a href="mailto:fitrinurandriyani3@gmail.com"
+                                class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-[var(--border-color)] px-6 py-3.5 rounded-full font-sans text-sm font-medium hover:bg-[var(--bg-color)] transition-all-smooth">
+                                <span class="material-symbols-outlined text-lg">drafts</span>
+                                Alternative Gmail
+                            </a>
                         </div>
-                    </article>
+                    </section>
 
-                    <!-- Actions -->
-                    <div class="flex flex-col sm:flex-row gap-3 pt-1">
-                        <a
-                            href="https://github.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="flex-1 flex items-center justify-center gap-2 bg-[var(--text-color)] text-white px-6 py-3.5 rounded-full font-sans text-sm font-medium hover:opacity-90 transition-all-smooth"
-                        >
-                            <span class="material-symbols-outlined text-lg">terminal</span>
-                            Explore GitHub
-                        </a>
-                        <a
-                            href="mailto:hello@example.com"
-                            class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-[var(--border-color)] px-6 py-3.5 rounded-full font-sans text-sm font-medium hover:bg-[var(--bg-color)] transition-all-smooth"
-                        >
-                            <span class="material-symbols-outlined text-lg">mail</span>
-                            Start a Conversation
-                        </a>
-                    </div>
-                </section>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div id="profile-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6" role="dialog"
+        aria-modal="true" aria-labelledby="profile-modal-title" data-state="closed">
+        <div class="absolute inset-0 bg-black/55 backdrop-blur-sm modal-backdrop" data-modal-backdrop></div>
 
+        <div class="modal-panel relative bg-[var(--surface-color)] rounded-[2rem] shadow-hover max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-white/40"
+            data-modal-panel tabindex="-1">
+            <!-- Ambient gradients -->
+            <div
+                class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[var(--primary-light)]/35 to-transparent pointer-events-none">
+            </div>
+            <div
+                class="absolute -top-12 -right-8 w-36 h-36 rounded-full bg-[var(--accent-color)]/18 blur-3xl pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-[var(--primary-light)]/16 blur-3xl pointer-events-none">
+            </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Scroll Reveal Animation (Intersection Observer)
-            const revealElements = document.querySelectorAll('.reveal-up');
-            const revealOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+            <!-- Close -->
+            <button type="button"
+                class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:bg-[var(--primary-color)] transition-all-smooth"
+                data-modal-close aria-label="Tutup profil">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
 
-            const revealOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
+            <div class="relative p-6 sm:p-8 lg:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1.35fr] gap-8 lg:gap-10 items-start">
 
-            revealElements.forEach(el => revealOnScroll.observe(el));
+                    <!-- Left: Identity + Philosophy -->
+                    <aside class="space-y-6">
+                        <!-- Identity card -->
+                        <section
+                            class="bg-[var(--bg-color)]/90 border border-[var(--border-color)] rounded-[1.75rem] p-6 shadow-premium">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-28 h-28 rounded-full bg-[var(--primary-color)] p-1.5 shadow-inner mb-4">
+                                    <img src="media/img/fau.png" alt="Muhammad Fauzan Nur Ilham S.Kom" 
+                                        class="w-full h-full rounded-full object-cover bg-white">
+                                </div>
+                                <span
+                                    class="uppercase tracking-[0.24em] text-[11px] font-semibold text-[var(--accent-color)] mb-2">
+                                    Systems Engineer &amp; Researcher
+                                </span>
+                                <h3 id="profile-modal-title" class="font-serif text-3xl font-bold leading-tight">
+                                    Must Fauzan
+                                </h3>
+                                <p class="font-script text-2xl text-[var(--primary-color)] mt-1">
+                                    Full-Stack Developer &amp; AI Researcher
+                                </p>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-4 max-w-sm">
+                                    M. Fauzan Nur Ilham, S.Kom.  Perancang sistem enterprise institusional dan peneliti AI di Samarinda. Berfokus pada arsitektur Laravel/Django/JS yang bersih, optimasi algoritma, serta penyederhanaan sistem kompleks.
+                                </p>
+                            </div>
 
-            // Navbar background effect on scroll
-            const navbar = document.getElementById('navbar');
-            const navInner = navbar?.querySelector('div');
+                            <div class="flex justify-center my-5">
+                                <div class="squiggly-line"></div>
+                            </div>
 
-            window.addEventListener('scroll', () => {
-                if (!navInner) return;
-                if (window.scrollY > 40) {
-                    navInner.classList.add('shadow-md');
-                    navInner.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-                } else {
-                    navInner.classList.remove('shadow-md');
-                    navInner.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
+                                    <span
+                                        class="material-symbols-outlined text-2xl text-[var(--primary-color)]">code</span>
+                                    <p class="text-[11px] font-sans text-[var(--text-muted)] mt-2">Django &amp; JS</p>
+                                </div>
+                                <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
+                                    <span
+                                        class="material-symbols-outlined text-2xl text-[var(--accent-color)]">analytics</span>
+                                    <p class="text-[11px] font-sans text-[var(--text-muted)] mt-2">AI &amp; DSS</p>
+                                </div>
+                                <div class="bg-white/80 rounded-2xl py-4 px-3 border border-white/70">
+                                    <span
+                                        class="material-symbols-outlined text-2xl text-[var(--primary-color)]">location_on</span>
+                                    <p class="text-[11px] font-sans text-[var(--text-muted)] mt-2">Samarinda</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Philosophy card -->
+                        <section
+                            class="bg-[var(--primary-color)] text-white rounded-[1.75rem] p-6 shadow-premium relative overflow-hidden">
+                            <div class="absolute inset-0 pattern-dots opacity-15"></div>
+                            <div class="relative z-10">
+                                <span class="uppercase tracking-[0.2em] text-[11px] font-semibold text-white/70">
+                                    Design Philosophy
+                                </span>
+                                <h4 class="font-serif text-2xl font-semibold mt-3 mb-3">
+                                    Build less, solve more.
+                                </h4>
+                                <p class="font-sans text-sm text-white/85 leading-relaxed">
+                                    Software yang baik bukan tentang menumpuk fitur terbanyak, melainkan kejernihan arsitektur: mengurangi friksi operasional, memendekkan alur kerja pengguna, dan memastikan keputusan sistem didasari data terstruktur.
+                                </p>
+                            </div>
+                        </section>
+                    </aside>
+
+                    <!-- Right: Story + Highlights -->
+                    <section class="space-y-6">
+                        <!-- Story -->
+                        <article
+                            class="bg-[var(--surface-color)] border border-[var(--border-color)] rounded-[1.75rem] p-6 sm:p-7 shadow-sm">
+                            <span
+                                class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--accent-color)]">
+                                Academic &amp; Tech Journey
+                            </span>
+                            <h4 class="font-serif text-3xl font-bold mt-3 mb-4 leading-snug">
+                                Bridging enterprise system engineering with empirical research.
+                            </h4>
+                            <div class="space-y-4 text-[15px] font-sans text-[var(--text-muted)] leading-relaxed">
+                                <p>
+                                    Perjalanan akademik Muhammad Fauzan Nur Ilham, S.Kom. di Teknik Informatika UMKT Samarinda dibentuk oleh integrasi kuat antara rekayasa perangkat lunak praktis dan analisis ilmiah.
+                                </p>
+                                <p>
+                                    Sebagai bagian dari TIMDEV UMKT, ia aktif mengarsitekturi dan memelihara berbagai platform inti universitas, mulai dari Insentif, Berkas, Psikologi, Pengabdian masyarakat, Survey, hingga portal kinerja dan kemahasiswaan yang melayani ribuan pengguna harian.
+                                </p>
+                                <p>
+                                    Di ranah riset, kontribusinya terbentang dari optimasi algoritma seleksi (Greedy, Genetika, sampai Bubble Sort Brute Force), pemodelan keputusan AHP, Machine Learning (Random Forest + SMOTE), hingga pemberdayaan digitalisasi UMKM di Kalimantan Timur sampai dengan 15 Jurnal Riset lainnya.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Three traits -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <article
+                                class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-[var(--primary-color)] mb-3">inventory_2</span>
+                                <h5 class="font-serif text-lg font-semibold mb-2">Systems Thinking</h5>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
+                                    Menguasai alur penuh dari perancangan skema basis data, REST API backend Django, hingga micro-interaction frontend yang responsif.
+                                </p>
+                            </article>
+                            <article
+                                class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-[var(--accent-color)] mb-3">school</span>
+                                <h5 class="font-serif text-lg font-semibold mb-2">Algorithmic Rigor</h5>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
+                                    Menerapkan analisis kompleksitas komputasi dan pemodelan matematis (AHP, SMOTE) untuk menyelesaikan hambatan teknis yang nyata.
+                                </p>
+                            </article>
+                            <article
+                                class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.5rem] p-5 shadow-sm hover:shadow-premium transition-all-smooth">
+                                <span
+                                    class="material-symbols-outlined text-3xl text-[var(--primary-color)] mb-3">tactic</span>
+                                <h5 class="font-serif text-lg font-semibold mb-2">Impact Builder</h5>
+                                <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
+                                    Melihat sistem digital sebagai penggerak efisiensi institusi pendidikan tinggi dan katalis modernisasi UMKM daerah.
+                                </p>
+                            </article>
+                        </div>
+
+                        <!-- Highlights -->
+                        <article
+                            class="bg-[var(--bg-color)] border border-[var(--border-color)] rounded-[1.75rem] p-6 sm:p-7 shadow-sm">
+                            <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
+                                <div>
+                                    <span
+                                        class="uppercase tracking-[0.22em] text-[11px] font-semibold text-[var(--text-muted)]">
+                                        Selected Highlights
+                                    </span>
+                                    <h4 class="font-serif text-2xl font-bold mt-2">
+                                        Engineering rigor backboned by research
+                                    </h4>
+                                </div>
+                                <div
+                                    class="px-4 py-2 rounded-full bg-white border border-[var(--border-color)] text-xs font-medium text-[var(--primary-color)]">
+                                    UMKT Samarinda &amp; TIMDEV UNIT IT
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
+                                        <span
+                                            class="material-symbols-outlined text-[20px] text-[var(--primary-color)]">layers</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-serif text-lg font-semibold">Enterprise Campus Systems Architecture</h5>
+                                        <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
+                                            Pengembang aktif modul Simpel v3, SIONIK Mobile, My SIRKA, dan Sertiva pada infrastruktur digital UMKT.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
+                                        <span
+                                            class="material-symbols-outlined text-[20px] text-[var(--accent-color)]">auto_graph</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-serif text-lg font-semibold">Published AI &amp; Decision Support Research</h5>
+                                        <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
+                                            Penulis karya ilmiah terpublikasi mengenai AHP, Random Forest SMOTE, dan optimasi algoritma seleksi di jurnal nasional terindeks.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-white border border-[var(--border-color)] flex items-center justify-center shrink-0">
+                                        <span
+                                            class="material-symbols-outlined text-[20px] text-[var(--primary-color)]">design_services</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-serif text-lg font-semibold">Regional Digital &amp; MSME Empowerment</h5>
+                                        <p class="font-sans text-sm text-[var(--text-muted)] leading-relaxed mt-1">
+                                            Pelaksana pengabdian masyarakat berbasis teknologi untuk legalitas kehalalan, branding, dan digitalisasi usaha lokal Samarinda.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Actions -->
+                        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                            <a href="https://github.com/mustdhiya" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 flex items-center justify-center gap-2 bg-[var(--text-color)] text-white px-6 py-3.5 rounded-full font-sans text-sm font-medium hover:opacity-90 transition-all-smooth">
+                                <span class="material-symbols-outlined text-lg">terminal</span>
+                                Explore GitHub
+                            </a>
+                            <a href="mailto:mfn520@umkt.ac.id"
+                                class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-[var(--border-color)] px-6 py-3.5 rounded-full font-sans text-sm font-medium hover:bg-[var(--bg-color)] transition-all-smooth">
+                                <span class="material-symbols-outlined text-lg">mail</span>
+                                Start a Conversation
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal-up');
+        const revealOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
                 }
             });
+        }, revealOptions);
 
-            // Profile modal logic
-            const modal = document.getElementById('profile-modal');
-            const trigger = document.getElementById('profile-trigger');
-            const closeBtn = modal?.querySelector('[data-modal-close]');
-            const backdrop = modal?.querySelector('[data-modal-backdrop]');
-            const panel = modal?.querySelector('[data-modal-panel]');
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // Navbar background effect on scroll
+        const navbar = document.getElementById('navbar');
+        const navInner = navbar?.querySelector('div');
+
+        window.addEventListener('scroll', () => {
+            if (!navInner) return;
+            if (window.scrollY > 40) {
+                navInner.classList.add('shadow-md');
+                navInner.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                navInner.classList.remove('shadow-md');
+                navInner.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
+            }
+        });
+
+        function setupModal({
+            modalId,
+            triggerId,
+            closeSelector,
+            backdropSelector,
+            panelSelector,
+            warningName
+        }) {
+            const modal = document.getElementById(modalId);
+            const trigger = document.getElementById(triggerId);
+            const closeBtn = modal?.querySelector(closeSelector);
+            const backdrop = modal?.querySelector(backdropSelector);
+            const panel = modal?.querySelector(panelSelector);
             let lastFocusedEl = null;
 
             if (!modal || !trigger || !closeBtn || !backdrop || !panel) {
-                console.warn('Modal elements not found. Check #profile-modal and #profile-trigger structure.');
+                console.warn(`Modal elements not found. Check ${warningName} structure.`);
                 return;
             }
 
-            const getFocusable = () => panel.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const getFocusable = () =>
+                panel.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
 
             const onKeydown = (e) => {
                 if (e.key === 'Escape') {
@@ -885,9 +1394,11 @@
                 lastFocusedEl = document.activeElement;
                 modal.classList.remove('hidden');
                 modal.style.display = 'flex';
+
                 requestAnimationFrame(() => {
                     modal.setAttribute('data-state', 'open');
                 });
+
                 document.body.classList.add('modal-open');
                 trigger.setAttribute('aria-expanded', 'true');
                 setTimeout(() => panel.focus(), 50);
@@ -899,6 +1410,7 @@
                 document.body.classList.remove('modal-open');
                 trigger.setAttribute('aria-expanded', 'false');
                 document.removeEventListener('keydown', onKeydown);
+
                 setTimeout(() => {
                     modal.classList.add('hidden');
                     modal.style.display = 'none';
@@ -909,7 +1421,29 @@
             trigger.addEventListener('click', openModal);
             closeBtn.addEventListener('click', closeModal);
             backdrop.addEventListener('click', closeModal);
+        }
+
+        // Existing profile modal
+        setupModal({
+            modalId: 'profile-modal',
+            triggerId: 'profile-trigger',
+            closeSelector: '[data-modal-close]',
+            backdropSelector: '[data-modal-backdrop]',
+            panelSelector: '[data-modal-panel]',
+            warningName: '#profile-modal and #profile-trigger'
         });
-    </script>
+
+        // New developer story modal
+        setupModal({
+            modalId: 'developer-story-modal',
+            triggerId: 'developer-story-trigger',
+            closeSelector: '[data-story-close]',
+            backdropSelector: '[data-story-backdrop]',
+            panelSelector: '[data-story-panel]',
+            warningName: '#developer-story-modal and #developer-story-trigger'
+        });
+    });
+</script>
 </body>
+
 </html>
