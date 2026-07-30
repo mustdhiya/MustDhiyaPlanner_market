@@ -83,6 +83,8 @@
             --blob-1: #E6DCD3;
             --blob-2: #F0EAE1;
             --border-soft: rgba(255, 255, 255, 0.82);
+            --mobile-bottom-nav-h: 78px;
+            --mobile-topbar-h: 72px;
         }
 
         .theme-blue {
@@ -122,6 +124,7 @@
             color: var(--text-ink);
             overflow-x: hidden;
             transition: background-color .4s ease, color .4s ease;
+            padding-bottom: 0;
         }
 
         img {
@@ -288,6 +291,278 @@
                 scroll-behavior: auto !important;
             }
         }
+
+        .mobile-top-actions {
+            display: none;
+        }
+
+        .mobile-bottom-nav {
+            display: none;
+        }
+
+        .mobile-bottom-nav a,
+        .mobile-bottom-nav button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-bottom-nav .nav-item {
+            min-width: 0;
+            flex: 1 1 0;
+        }
+
+        .mobile-bottom-nav .nav-item.active {
+            color: var(--color-primary);
+        }
+
+        .mobile-bottom-nav .nav-item.active .nav-pill {
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 12px 30px -15px var(--color-primary-glow);
+        }
+
+        .mobile-bottom-nav .nav-pill {
+            transition: all .25s ease;
+        }
+
+        .mobile-bottom-nav .nav-item:active .nav-pill {
+            transform: scale(.96);
+        }
+
+        .mobile-cart-badge {
+            position: absolute;
+            top: 2px;
+            right: 18%;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary);
+            color: #fff;
+            transform: scale(0);
+            transition: transform .25s ease;
+        }
+
+        .mobile-cart-badge.show {
+            transform: scale(1);
+        }
+
+        .modal {
+            padding: 1rem;
+        }
+
+        .modal::backdrop {
+            background: rgba(25, 20, 16, 0.26);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .modal-box {
+            max-height: min(88vh, 900px);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-gutter: stable;
+        }
+
+        #quickview-modal .modal-box {
+            max-width: 56rem;
+        }
+
+        #quickview-content {
+            max-height: none;
+        }
+
+        #search-modal .modal-box {
+            max-height: min(75vh, 720px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #search-results {
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #checkout-modal .modal-box {
+            max-height: min(90vh, 960px);
+        }
+
+        #checkout-form {
+            min-height: 0;
+        }
+
+        #checkout-map {
+            min-height: 260px;
+        }
+
+        #cart-drawer {
+            overflow: hidden;
+        }
+
+        #cart-items-container {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding-bottom: calc(var(--mobile-bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+            }
+
+            main {
+                padding-top: calc(var(--mobile-topbar-h) + 2rem) !important;
+                padding-bottom: calc(var(--mobile-bottom-nav-h) + 2rem) !important;
+            }
+
+            footer {
+                padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+            }
+
+            .glass-nav {
+                height: var(--mobile-topbar-h);
+            }
+
+            .desktop-nav-links {
+                display: none !important;
+            }
+
+            .desktop-only-action {
+                display: none !important;
+            }
+
+            .mobile-top-actions {
+                display: flex;
+                align-items: center;
+                gap: .35rem;
+            }
+
+            .mobile-bottom-nav {
+                display: block !important;
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                z-index: 9999 !important;
+                background: rgba(249, 248, 246, 0.88);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border-top: 1px solid rgba(255,255,255,.65);
+                box-shadow: 0 -10px 40px rgba(0,0,0,.06);
+            }
+
+            .mobile-bottom-nav .nav-wrap {
+                display: flex;
+                align-items: stretch;
+                justify-content: space-between;
+                gap: .4rem;
+                max-width: 560px;
+                margin: 0 auto;
+            }
+
+            .mobile-bottom-nav .nav-pill {
+                min-height: 58px;
+                border-radius: 1.15rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: .15rem;
+                color: var(--text-ink-light);
+                background: transparent;
+                font-size: 11px;
+                font-weight: 600;
+            }
+
+            .mobile-bottom-nav .material-symbols-outlined {
+                font-size: 22px;
+            }
+
+            #quickview-modal {
+                padding: 0;
+                align-items: end;
+            }
+
+            #quickview-modal .modal-box {
+                width: 100%;
+                max-width: 100%;
+                max-height: 88vh;
+                border-radius: 1.75rem 1.75rem 0 0;
+                margin: 0;
+            }
+
+            #quickview-content {
+                display: flex !important;
+                flex-direction: column;
+            }
+
+            #quickview-content > div:first-child {
+                padding: 1rem;
+            }
+
+            #quickview-content > div:last-child {
+                padding: 1.25rem;
+            }
+
+            #checkout-modal {
+                padding: 0;
+                align-items: end;
+            }
+
+            #checkout-modal .modal-box {
+                width: 100%;
+                max-width: 100%;
+                max-height: 92vh;
+                border-radius: 1.75rem 1.75rem 0 0;
+                margin: 0;
+                padding: 1.1rem 1rem 1.2rem;
+            }
+
+            #search-modal {
+                padding: 0;
+                align-items: start;
+            }
+
+            #search-modal .modal-box {
+                width: calc(100% - 1rem);
+                max-width: calc(100% - 1rem);
+                margin: .5rem auto 0;
+                border-radius: 1.4rem;
+                max-height: 82vh;
+                padding: 1rem;
+            }
+
+            #success-modal {
+                padding: 0;
+                align-items: end;
+            }
+
+            #success-modal .modal-box {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 1.75rem 1.75rem 0 0;
+                margin: 0;
+                max-height: 85vh;
+                overflow-y: auto;
+            }
+
+            #cart-drawer {
+                width: 100%;
+            }
+
+            .toast-mobile-fix {
+                bottom: calc(var(--mobile-bottom-nav-h) + 1rem) !important;
+                right: 1rem !important;
+                left: 1rem !important;
+                width: auto !important;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen relative font-sans text-ink flex flex-col justify-between">
@@ -296,43 +571,54 @@
     <div class="blob w-[24rem] h-[24rem] rounded-full bottom-10 left-[15%]" style="background-color: var(--blob-1); animation-delay: -12s;"></div>
 
     <nav class="glass-nav fixed w-full z-40 top-0 transition-all duration-300 h-20 flex items-center shadow-sm">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
-            <a href="index.html" class="font-serif text-2xl md:text-3xl font-bold tracking-tight text-ink transition-colors duration-300 hover:text-primary flex items-center">
-                Aesthetic<span class="font-script text-3xl md:text-4xl font-normal ml-1 text-primary">Planner</span>
+        <div class="container mx-auto px-4 md:px-12 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl md:text-3xl font-bold tracking-tight text-ink transition-colors duration-300 hover:text-primary flex items-center">
+                Aesthetic<span class="font-script text-2xl md:text-4xl font-normal ml-1 text-primary">Planner</span>
             </a>
 
-            <div class="hidden md:flex space-x-10 items-center">
+            <div class="desktop-nav-links hidden md:flex space-x-10 items-center">
                 <a href="index.html" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
                 <a href="shopnow.html" class="text-sm font-semibold text-primary border-b-2 border-primary pb-1">Shop Collection</a>
                 <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">Philosophy</a>
                 <a href="journal.html" class="text-sm font-medium hover:text-primary transition-colors">Journal</a>
             </div>
 
-            <div class="flex items-center space-x-3 md:space-x-5">
-                <a href="agreement.html" class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center" title="Check Agreement Status" aria-label="Check agreement status">
+            <div class="flex items-center space-x-2 md:space-x-5">
+                <a href="agreement.html"
+                class="desktop-only-action p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center"
+                title="Check Agreement Status"
+                aria-label="Check agreement status">
                     <span class="material-symbols-outlined text-[22px]">fact_check</span>
                 </a>
 
-                <button id="search-open-btn" class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center" title="Search Planners" aria-label="Open search">
+                <button id="search-open-btn"
+                        class="desktop-only-action p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center"
+                        title="Search Planners"
+                        aria-label="Open search">
                     <span class="material-symbols-outlined text-[22px]">search</span>
                 </button>
 
-                <button id="cart-open-btn" class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center relative" title="Shopping Cart" aria-label="Open cart">
+                <button id="cart-open-btn"
+                        class="desktop-only-action p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center relative"
+                        title="Shopping Cart"
+                        aria-label="Open cart">
                     <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
                     <span id="cart-badge" class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center transform scale-0 transition-transform duration-300">0</span>
                 </button>
 
-                <div class="dropdown dropdown-end md:hidden">
-                    <div tabindex="0" role="button" class="p-2 rounded-full hover:bg-white/80" aria-label="Open mobile menu">
-                        <span class="material-symbols-outlined">menu</span>
-                    </div>
-                    <ul tabindex="0" class="dropdown-content z-[1] menu p-3 shadow-float glass-modal rounded-2xl w-52 mt-3 space-y-2 text-ink font-medium">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shopnow.html" class="active text-primary">Shop Collection</a></li>
-                        <li><a href="about.html">Philosophy</a></li>
-                        <li><a href="journal.html">Journal</a></li>
-                        <li><a href="agreement.html">Agreement Status</a></li>
-                    </ul>
+                <div class="mobile-top-actions">
+                    <button id="mobile-search-open-btn"
+                            class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center"
+                            aria-label="Open search on mobile">
+                        <span class="material-symbols-outlined text-[22px]">search</span>
+                    </button>
+
+                    <button id="mobile-cart-open-btn"
+                            class="p-2.5 rounded-full hover:bg-white/80 transition-all hover:text-primary flex items-center justify-center relative"
+                            aria-label="Open cart on mobile">
+                        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+                        <span id="mobile-cart-badge" class="mobile-cart-badge">0</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -454,7 +740,47 @@
                 </div>
             </div>
         </div>
+
+        
     </footer>
+    <nav class="mobile-bottom-nav" aria-label="Mobile bottom navigation">
+            <div class="nav-wrap">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-pill">
+                        <span class="material-symbols-outlined">home</span>
+                        <span>Home</span>
+                    </span>
+                </a>
+
+                <a href="shopnow.html" class="nav-item active" aria-current="page">
+                    <span class="nav-pill">
+                        <span class="material-symbols-outlined">storefront</span>
+                        <span>Shop</span>
+                    </span>
+                </a>
+
+                <a href="journal.html" class="nav-item" aria-current="page">
+                    <span class="nav-pill">
+                        <span class="material-symbols-outlined">Book</span>
+                        <span>My Journal</span>
+                    </span>
+                </a>
+                <a href="about.html" class="nav-item" aria-current="page">
+                    <span class="nav-pill">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <span>Philosophy</span>
+                    </span>
+                </a>
+
+                <a href="agreement.html" class="nav-item">
+                    <span class="nav-pill">
+                        <span class="material-symbols-outlined">fact_check</span>
+                        <span>Status</span>
+                    </span>
+                </a>
+
+            </div>
+        </nav>
 
     <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
@@ -506,10 +832,11 @@
                 <span class="material-symbols-outlined text-sm">fact_check</span>
                 <span>Already ordered? Check agreement status</span>
             </a>
-        </aside>
+        </div>
+    </aside>
 
     <dialog id="quickview-modal" class="modal modal-bottom sm:modal-middle backdrop-blur-md">
-        <div class="modal-box glass-modal p-0 max-w-3xl rounded-3xl overflow-hidden shadow-float">
+        <div class="modal-box glass-modal p-0 max-w-3xl rounded-3xl shadow-float overflow-y-auto">
             <button id="quickview-close-btn" class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 z-20 text-ink" aria-label="Close quick view">✕</button>
             <div id="quickview-content" class="grid grid-cols-1 md:grid-cols-2"></div>
         </div>
@@ -600,7 +927,6 @@
                     </div>
                 </div>
 
-                
                 <div class="space-y-3">
                     <h4 class="font-serif text-sm font-semibold text-ink border-b pb-1">Select Payment Method</h4>
 
@@ -618,25 +944,26 @@
 
                     <div id="payment-details-panel" class="glass-card rounded-2xl p-4 border border-gray-200/70"></div>
                 </div>
-                <div class="space-y-3">
-                <h4 class="font-serif text-sm font-semibold text-ink border-b pb-1">Upload Bukti Pembayaran</h4>
 
-                <div>
-                    <label class="block text-xs font-medium text-inkLight mb-1" for="payment-proof">
-                        Bukti Pembayaran *
-                    </label>
-                    <input
-                        type="file"
-                        id="payment-proof"
-                        accept="image/*,.pdf"
-                        required
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white/80"
-                    >
-                    <p class="text-[11px] text-inkLight mt-1">
-                        Upload screenshot transfer, QRIS, atau PDF bukti pembayaran.
-                    </p>
+                <div class="space-y-3">
+                    <h4 class="font-serif text-sm font-semibold text-ink border-b pb-1">Upload Bukti Pembayaran</h4>
+
+                    <div>
+                        <label class="block text-xs font-medium text-inkLight mb-1" for="payment-proof">
+                            Bukti Pembayaran *
+                        </label>
+                        <input
+                            type="file"
+                            id="payment-proof"
+                            accept="image/*,.pdf"
+                            required
+                            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white/80"
+                        >
+                        <p class="text-[11px] text-inkLight mt-1">
+                            Upload screenshot transfer, QRIS, atau PDF bukti pembayaran.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
                 <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200/70 space-y-3">
                     <div class="flex items-center justify-between">
@@ -696,11 +1023,10 @@
                 Redirecting you to the agreement page to check whether your order has been approved...
             </p>
 
-            <button id="success-close-btn" class="w-full btn-premium py-3 rounded-xl text-xs font-semibold">
+            <button id="success-close-btn" class="w-full btn-premium py-3 rounded-xl text-xs font-semibold mb-2">
                 Check Agreement Status
             </button>
-            or
-            <button id="success-close-btn" class="w-full btn-premium py-3 rounded-xl text-xs font-semibold">
+            <button id="success-back-shop-btn" class="w-full btn-outline-premium py-3 rounded-xl text-xs font-semibold">
                 Back to Shop
             </button>
         </div>
@@ -713,16 +1039,17 @@
                 <input type="text" id="search-input" placeholder="Search planners by keyword (e.g., 'Wood', 'Botanical', 'Weekly')..." class="w-full bg-transparent text-base focus:outline-none text-ink">
                 <button id="search-close-btn" class="text-xs text-inkLight hover:text-ink">ESC</button>
             </div>
-            <div id="search-results" class="mt-4 max-h-60 overflow-y-auto space-y-2 text-xs">
+            <div id="search-results" class="mt-4 space-y-2 text-xs">
                 <p class="text-inkLight text-center py-4">Start typing to filter catalog in real-time...</p>
             </div>
         </div>
     </dialog>
 
-    <div id="toast" class="fixed bottom-8 right-8 transform translate-y-24 opacity-0 transition-all duration-300 z-50 glass-modal px-6 py-4 rounded-2xl flex items-center space-x-3 shadow-float pointer-events-none border border-white">
+    <div id="toast" class="toast-mobile-fix fixed bottom-8 right-8 transform translate-y-24 opacity-0 transition-all duration-300 z-50 glass-modal px-6 py-4 rounded-2xl flex items-center space-x-3 shadow-float pointer-events-none border border-white">
         <span id="toast-icon" class="material-symbols-outlined text-primary">check_circle</span>
         <p class="text-xs font-semibold text-ink" id="toast-message">Item added to cart</p>
     </div>
+
 <script>
     const ORDER_API_URL = 'https://script.google.com/macros/s/AKfycbxdisf_annxpupEDHkg65OTixCdt70t1w90Lkp8XYZ3oFlpRYBNLoN6qr1HcuXXF8bD/exec';
 
@@ -858,6 +1185,7 @@
         initBlobParallax();
         renderPaymentDetails();
     });
+
     function formatRupiah(value) {
         return `Rp ${Number(value || 0).toLocaleString('id-ID')}`;
     }
@@ -865,7 +1193,7 @@
     function getDiscountPercent(product) {
         if (!product.originalPrice || product.originalPrice <= product.price) return 0;
         return Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-    }   
+    }
 
     function cacheElements() {
         els.productsGrid = document.getElementById('products-grid');
@@ -879,6 +1207,13 @@
         els.searchResults = document.getElementById('search-results');
         els.searchOpenBtn = document.getElementById('search-open-btn');
         els.searchCloseBtn = document.getElementById('search-close-btn');
+
+        els.mobileSearchOpenBtn = document.getElementById('mobile-search-open-btn');
+        els.mobileCartOpenBtn = document.getElementById('mobile-cart-open-btn');
+        els.mobileBottomSearchBtn = document.getElementById('mobile-bottom-search-btn');
+        els.mobileBottomCartBtn = document.getElementById('mobile-bottom-cart-btn');
+        els.mobileCartBadge = document.getElementById('mobile-cart-badge');
+        els.mobileBottomCartBadge = document.getElementById('mobile-bottom-cart-badge');
 
         els.cartDrawer = document.getElementById('cart-drawer');
         els.cartDrawerBackdrop = document.getElementById('cart-drawer-backdrop');
@@ -926,6 +1261,7 @@
 
         els.successModal = document.getElementById('success-modal');
         els.successCloseBtn = document.getElementById('success-close-btn');
+        els.successBackShopBtn = document.getElementById('success-back-shop-btn');
         els.successRefCode = document.getElementById('success-ref-code');
         els.succName = document.getElementById('succ-name');
         els.succTotal = document.getElementById('succ-total');
@@ -941,6 +1277,22 @@
 
         if (els.searchLocationBtn) {
             els.searchLocationBtn.addEventListener('click', searchLocationOnMap);
+        }
+
+        if (els.mobileSearchOpenBtn) {
+            els.mobileSearchOpenBtn.addEventListener('click', () => toggleSearchModal(true));
+        }
+
+        if (els.mobileCartOpenBtn) {
+            els.mobileCartOpenBtn.addEventListener('click', () => toggleCartDrawer(true));
+        }
+
+        if (els.mobileBottomSearchBtn) {
+            els.mobileBottomSearchBtn.addEventListener('click', () => toggleSearchModal(true));
+        }
+
+        if (els.mobileBottomCartBtn) {
+            els.mobileBottomCartBtn.addEventListener('click', () => toggleCartDrawer(true));
         }
 
         document.querySelectorAll('input[name="payment"]').forEach(radio => {
@@ -972,10 +1324,18 @@
 
         els.quickviewCloseBtn.addEventListener('click', () => els.quickviewModal.close());
         els.checkoutCloseBtn.addEventListener('click', () => els.checkoutModal.close());
+
         els.successCloseBtn.addEventListener('click', () => {
             const ref = els.successRefCode.textContent.replace('#', '').trim();
             window.location.href = `agreement.html?ref=${encodeURIComponent(ref)}`;
         });
+
+        if (els.successBackShopBtn) {
+            els.successBackShopBtn.addEventListener('click', () => {
+                els.successModal.close();
+                window.location.href = 'shopnow.html';
+            });
+        }
 
         els.refreshCaptchaBtn.addEventListener('click', generateCaptcha);
         els.captchaCanvas.addEventListener('click', generateCaptcha);
@@ -1199,11 +1559,18 @@
         `).join('');
     }
 
+    function resetModalScroll(dialogEl) {
+        if (!dialogEl) return;
+        const modalBox = dialogEl.querySelector('.modal-box');
+        if (modalBox) modalBox.scrollTop = 0;
+    }
+
     function toggleSearchModal(show) {
         if (show) {
             state.lastFocusedElement = document.activeElement;
             els.searchModal.showModal();
-            els.searchInput.focus();
+            resetModalScroll(els.searchModal);
+            setTimeout(() => els.searchInput.focus(), 80);
         } else if (els.searchModal.open) {
             els.searchModal.close();
         }
@@ -1241,7 +1608,7 @@
         setTimeout(() => {
             els.cartBadge.classList.remove('scale-125');
             els.cartBadge.classList.add('scale-100');
-        }, 18000);
+        }, 300);
     }
 
     function updateCartQuantity(productId, delta) {
@@ -1260,6 +1627,16 @@
 
         els.cartBadge.textContent = totalItems;
         els.drawerItemCount.textContent = `(${totalItems})`;
+
+        if (els.mobileCartBadge) {
+            els.mobileCartBadge.textContent = totalItems;
+            els.mobileCartBadge.classList.toggle('show', totalItems > 0);
+        }
+
+        if (els.mobileBottomCartBadge) {
+            els.mobileBottomCartBadge.textContent = totalItems;
+            els.mobileBottomCartBadge.classList.toggle('show', totalItems > 0);
+        }
 
         if (totalItems > 0) {
             els.cartBadge.classList.remove('scale-0');
@@ -1368,6 +1745,7 @@
         `;
 
         els.quickviewModal.showModal();
+        resetModalScroll(els.quickviewModal);
 
         document.getElementById('quickview-add-btn').addEventListener('click', () => {
             addToCart(product.id);
@@ -1446,7 +1824,7 @@
 
         setTimeout(() => {
             state.checkoutMap.invalidateSize();
-        }, 2000);
+        }, 200);
 
         if (!state.selectedCoords) {
             setMapLocation(defaultLat, defaultLng, false);
@@ -1647,11 +2025,13 @@
 
         generateCaptcha();
         els.checkoutModal.showModal();
+        resetModalScroll(els.checkoutModal);
+
         renderPaymentDetails();
 
         setTimeout(() => {
             initCheckoutMap();
-        }, 1200);
+        }, 200);
     }
 
     function fileToBase64(file) {
